@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   createBrowserRouter,
+  createHashRouter,
   createRoutesFromElements,
   Route,
   RouterProvider
@@ -10,7 +11,7 @@ import HomePage from './pages/HomePage';
 import DegreesPage from './pages/DegreesPage';
 import StudentPage from './pages/StudentPage';
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements(
     <>
       <Route path='/' element={<MainLayout />}>
