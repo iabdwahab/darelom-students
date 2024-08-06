@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import SideBarTableBodyTr from './sub_components/sidebar_degrees/SideBarTableBodyTr';
 import { Link } from 'react-router-dom';
 import SideBarDegreesTableHead from './sub_components/sidebar_degrees/SideBarDegreesTableHead';
 import SideBarDegreesTableBody from './sub_components/sidebar_degrees/SideBarDegreesTableBody';
@@ -8,7 +7,8 @@ const SideBarDegrees = () => {
   const [degrees, setDegrees] = useState([]);
 
   useEffect(() => {
-    fetch("/src/data/top_degrees_2023_24.json")
+    // fetch("/src/data/top_degrees_2023_24.json")
+    fetch("https://iabdwahab.me/darelom-students-data/top_degrees_2023_24.json")
       .then(res => res.json())
       .then(data => {
         setDegrees(data);
