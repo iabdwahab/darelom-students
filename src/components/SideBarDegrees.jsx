@@ -8,7 +8,7 @@ const SideBarDegrees = () => {
   const [degrees, setDegrees] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5173/src/data/top_degrees_2023_24.json")
+    fetch("/src/data/top_degrees_2023_24.json")
       .then(res => res.json())
       .then(data => {
         setDegrees(data);

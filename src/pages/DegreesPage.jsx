@@ -11,7 +11,7 @@ const DegreesPage = () => {
   const { grade } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5173/src/data/degrees/2023_24/degrees_${grade}.json`)
+    fetch(`/src/data/degrees/2023_24/degrees_${grade}.json`)
       .then(res => res.json())
       .then(data => {
 
