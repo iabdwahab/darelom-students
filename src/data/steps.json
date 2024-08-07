@@ -1,10 +1,50 @@
 [
   {
-    "title": "اختر الفرقة",
+    "title": "اختر الفرقة:",
     "options": [
       {
-        "option_text": "الفرقة الأولى",
-        "option_"
+        "text": "الفرقة الأولى",
+        "data_name": "grade_1"
+      },
+      {
+        "text": "الفرقة الثانية",
+        "data_name": "grade_2"
+      },
+      {
+        "text": "الفرقة الثالثة",
+        "data_name": "grade_3"
+      },
+      {
+        "text": "الفرقة الرابعة",
+        "data_name": "grade_4"
+      }
+    ]
+  },
+  {
+    "title": "اختر الفصل الدراسي:",
+    "options": [
+      {
+        "text": "الفصل الدراسي الأول",
+        "data_name": "term_1"
+      },
+      {
+        "text": "الفصل الدراسي الثاني",
+        "data_name": "term_2"
+      }
+    ]
+  },
+  {
+    "title": "عم تبحث؟",
+    "options": [
+      {
+        "text": "المواد",
+        "data_name": "subjects",
+        "available": true
+      },
+      {
+        "text": "جدول المحاضرات",
+        "data_name": "schdule",
+        "available": false
       }
     ]
   }

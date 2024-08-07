@@ -8,7 +8,8 @@ const SideBar = () => {
 
   return (
     <aside className='py-1'>
-      {pathname === '/' ? <SideBarDegrees /> : ''}
+      <SideBarDegrees />
+      {/* {pathname === '/' ? <SideBarDegrees /> : ''} */}
     </aside >
   )
 }

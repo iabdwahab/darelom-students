@@ -9,7 +9,7 @@ const Header = () => {
           منصة طلاب دار العلوم
         </Link>
       </h1>
-      <p className='text-danger fw-medium'>[منصة غير تابعة لإدارة الكلية]</p>
+      <p className='text-danger fw-bold'>[المنصة غير تابعة لإدارة الكلية]</p>
     </header>
   )
 }

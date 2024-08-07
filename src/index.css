@@ -3,7 +3,7 @@
 }
 
 * {
-  font-family: "Cairo", sans-serif;
+  font-family: "Cairo", sans-serif !important;
 }
 
 a {
@@ -17,7 +17,8 @@ h4,
 h5,
 h6,
 table {
-  margin-bottom: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .degree_tr-linked:hover {

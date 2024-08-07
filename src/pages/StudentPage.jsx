@@ -10,9 +10,10 @@ const StudentPage = () => {
 
   useEffect(() => {
     fetch(`/src/data/degrees/2023_24/degrees_${grade}.json`)
+      // fetch(`https://iabdwahab.me/darelom-students-data/degrees/2023_24/degrees_${grade}.json`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+
         setSubjects(data.subjects);
 
         data.degrees.forEach((arrStudent) => {
@@ -25,52 +26,84 @@ const StudentPage = () => {
 
   return (
     <div>
-      <div className='d-grid gap-1'>
-        <h4>
-          <span className='fw-bold'>الاسم: </span>
-          <span>
-            {student.name}.
-          </span>
-        </h4>
-        <h4>
-          <span className='fw-bold'>رقم  الجلوس: </span>
-          <span>
-            {student.id}.
-          </span>
-        </h4>
-        <h4>
-          <span className='fw-bold'>الترتيب: </span>
-          <span>
-            {studentRank}.
-          </span>
-        </h4>
-        <h4>
-          <span className='fw-bold'>التقدير: </span>
-          <span>
-            {student.total_grade}.
-          </span>
-        </h4>
-      </div>
+      <StudentPersonalInfo student={student} studentRank={studentRank} />
 
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">المادة</th>
-            <th scope="col" className='text-center'>النتيجة</th>
-          </tr>
-        </thead>
+      <table className="table table-striped border table-bordered mt-4">
+        <TableHead />
+
         <tbody>
           {subjects.map((subject, index) => {
-            return (
-              <tr key={index}>
-                <th key={index} scope="row">{subject.name}</th>
-                <td className='text-center'>{student.degrees[index]}</td>
-              </tr>
-            )
+            return <TableBodyTr key={index} subject={subject} student={student} index={index} />
           })}
         </tbody>
       </table>
     </div>
+  )
+}
+
+function StudentPersonalInfo({ student, studentRank }) {
+  const personalData = [
+    {
+      title: "الاسم",
+      value: student.name
+    },
+    {
+      title: "رقم الجلوس",
+      value: student.id
+    },
+    {
+      title: "الترتيب",
+      value: studentRank
+    },
+    {
+      title: "التقدير",
+      value: student.total_grade
+    },
+  ]
+
+  return (
+    <div>
+      {
+        personalData.map((data, index) => {
+          return <StudentPersonalInfoLine key={index} title={data.title} value={data.value} />
+        })
+      }
+    </div>
+  )
+}
+
+function StudentPersonalInfoLine({ title, value }) {
+  return (
+    <h4 className='mb-1'>
+      <span className='fw-bold text-primary'>{title}: </span>
+      <span>
+        {value}.
+      </span>
+    </h4>
+  )
+}
+
+function TableHead() {
+  return (
+    <thead>
+      <tr>
+        <th scope="col">المادة</th>
+        <th scope="col" className='text-center'>النتيجة</th>
+      </tr>
+    </thead>
+  )
+}
+
+function TableBodyTr({ subject, student, index }) {
+  const subjectDegree = student.degrees[index]
+
+  const isSucceed = subjectDegree > 50 ? 'bg-success' : 'bg-danger';
+
+  return (
+    <tr>
+      <th key={index} scope="row">{subject.name}</th>
+      <td className={`text-center text-light ${isSucceed}`}>{subjectDegree}</td>
+    </tr>
   )
 }
 

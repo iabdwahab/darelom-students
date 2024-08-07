@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import DegreesPageTableHeadTr from '../components/sub_components/DegreesPageTableHeadTr';
+import { useNavigate, useParams } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
-import DegreesPageTableBodyTr from '../components/sub_components/DegreesPageTableBodyTr';
-import { calculateTotal } from '../utils/Degrees';
+import { calculatePercentage, calculateTotal } from '../utils/Degrees';
 
 const DegreesPage = () => {
   const [degrees, setDegrees] = useState([]);
@@ -12,6 +10,7 @@ const DegreesPage = () => {
 
   useEffect(() => {
     fetch(`/src/data/degrees/2023_24/degrees_${grade}.json`)
+      // fetch(`https://iabdwahab.me/darelom-students-data/degrees/2023_24/degrees_${grade}.json`)
       .then(res => res.json())
       .then(data => {
 
@@ -31,16 +30,14 @@ const DegreesPage = () => {
   }, []);
 
   return (
-    <div className='table-responsive'>
-      <table className="table table-striped">
-        <thead>
-          <DegreesPageTableHeadTr />
-        </thead>
+    <div className='table-responsive border'>
+      <table className="table table-striped table-bordered">
+        <TableHead />
 
         <tbody>
           {degrees.map((student, index) => {
             return (
-              <DegreesPageTableBodyTr key={index} index={index} student={student} grade={grade} />
+              <TableBodyTr key={index} index={index} student={student} grade={grade} />
             )
           })}
         </tbody>
@@ -50,6 +47,38 @@ const DegreesPage = () => {
   )
 }
 
+function TableHead() {
+  return (
+    <thead>
+      <tr>
+        <th scope="col" className='text-center'>#</th>
+        <th scope='col' className='text-center'>رقم الجلوس</th>
+        <th scope='col'>الاسم</th>
+        <th scope='col' className='text-center'>الإجمالي</th>
+        <th scope='col' className='text-center'>النسبة</th>
+      </tr>
+    </thead>
+  )
+}
+
+const TableBodyTr = ({ index, student, grade }) => {
+  const navigate = useNavigate();
+  const studentRank = index + 1;
+
+  function navigateToStudentPage() {
+    navigate(`/degrees/${grade}/2023_24/${student.id}`, { state: { studentRank: studentRank } })
+  }
+
+  return (
+    <tr className='degree_tr-linked' onClick={navigateToStudentPage}>
+      <th scope="row" className='text-center'>{studentRank}</th>
+      <td className='text-center'>{student.id}</td>
+      <td style={{ whiteSpace: 'nowrap' }}>{student.name}</td>
+      <td className='text-center'>{student.total}</td>
+      <td className='text-center'>{calculatePercentage(student.total, grade)}</td>
+    </tr>
+  )
+}
 
 
 export default DegreesPage
