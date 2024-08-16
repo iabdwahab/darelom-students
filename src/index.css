@@ -1,0 +1,32 @@
+:root {
+  --main-color: var(--primary);
+}
+
+* {
+  font-family: "Cairo", sans-serif !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.degree_tr-linked:hover {
+  cursor: pointer;
+}
+.degree_tr-linked:hover th,
+.degree_tr-linked:hover td {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(13 110 253);
+}
