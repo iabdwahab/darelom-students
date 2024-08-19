@@ -1,5 +1,6 @@
 import React from 'react'
 import Steps from '../components/Steps'
+import TestYourself from './TestYourself'
 
 const stepsList = [
   {
@@ -27,7 +28,7 @@ const stepsList = [
         option_text: "الفرقة الرابعة",
         option_data: "grade_4",
         will_next: true,
-        available: false,
+        available: true,
       },
     ]
   },
@@ -47,10 +48,10 @@ const stepsList = [
         available: true,
       },
       {
-        option_text: "اختبر نفسك - الامتحانات السابقة",
+        option_text: "اختبر نفسك [نسخة تجريبية]",
         option_data: "test_yourself",
         will_next: false,
-        available: false,
+        available: true,
       },
       {
         option_text: "امتحانات الأعوام السابقة",

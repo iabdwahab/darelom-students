@@ -3,18 +3,13 @@
 // document.querySelectorAll('.KL4NAf span').forEach(el => arr.push(el.textContent))
 // ###################
 const booksList =
-  "https://drive.google.com/file/d/1O3Xr6JVoEpsXK3jgXMvipaJZ5fayR8Hq/view?usp=drive_link, https://drive.google.com/file/d/1pRCxSSoRXqEoWiM0WSShLGnqSiQBDuj2/view?usp=drive_link, https://drive.google.com/file/d/1sa9HxzaUv3YlRIrjKEVHDptY71rsGDFx/view?usp=drive_link, https://drive.google.com/file/d/1oy-5U1wJjTmAivke66uhFhCLlCQMJdmv/view?usp=drive_link, https://drive.google.com/file/d/1MSOJLHvG4VMmilV9R0NgmDMKXv-749eF/view?usp=drive_link, https://drive.google.com/file/d/1vMM3sn3eq1aZZow05oXEMlH79C9OQdyF/view?usp=drive_link, https://drive.google.com/file/d/1BuLY6weMEKuAzDsjaduEjDHBEyZqEYet/view?usp=drive_link, https://drive.google.com/file/d/1ngrc7mFWy6Yx4CsPWxvwkuLWZcM79jWU/view?usp=drive_link, https://drive.google.com/file/d/1U_OJfItVWOvTom4OXQj2u30Laap91rhn/view?usp=drive_link, https://drive.google.com/file/d/1gfmqLT0m1tgP92yILlQ7sjJrDMa3oNLE/view?usp=drive_link";
+  "https://drive.google.com/file/d/1dT74X1hKQbQBRvPbgvGnCIBdfWAKzNRP/view?usp=drive_link, https://drive.google.com/file/d/1N1wn5YrSqUIOhjYMSJ3_fNskz-yP6T2w/view?usp=drive_link, https://drive.google.com/file/d/1YSjRWcor7TvPxgA03OVOt9dmdr4gWoHT/view?usp=drive_link, https://drive.google.com/file/d/133An-fufipU1vPcPB8WqO2X2VeZaRihY/view?usp=drive_link, https://drive.google.com/file/d/1RPARZJ3TJqAX98vKKLqzz_MQJyesNxCf/view?usp=drive_link";
 const booksNames = [
-  "علوم القرآن والسنة.pdf",
-  "علم اللغة الحاسوبي وعلم الدلالة.pdf",
-  "النحو 3 - ممتدة.pdf",
-  "اللغة الفارسية 3.pdf",
-  "اللغة العبرية 3.pdf",
-  "اللغة الأوربية 3 - ممتدة.pdf",
-  "الصرف والعروض 3.pdf",
-  "التدريبات الأدبية - ممتدة.pdf",
-  "الأدب المقارن.pdf",
-  "الأدب العباسي والأندلسي.pdf",
+  "أصول الفقه الإسلامي.pdf",
+  "الأدب المقارن ونظرية الأدب.pdf",
+  "الاتجاهات اللغوية الحديثة.pdf",
+  "تحليل النص الشعري.pdf",
+  "علم الأخلاق والتصوف.pdf",
 ];
 
 function splitBookNames(booksNames) {

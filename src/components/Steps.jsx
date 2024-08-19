@@ -31,6 +31,10 @@ function StepButton({ option, stepsList, currentStepIndex, setCurrentStepIndex, 
   const navigate = useNavigate();
   function handleStep() {
 
+    if (option.option_data === 'test_yourself') {
+      return navigate('/test_yourself');
+    }
+
     if (currentStepIndex < stepsList.length - 1 && (option.will_next)) {
       setCurrentStepIndex(currentStepIndex + 1);
       setSelections([...selections, option.option_data]);
