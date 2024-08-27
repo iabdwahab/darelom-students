@@ -25,8 +25,8 @@ const Footer = () => {
           </div>
           <div className='text-end d-flex flex-column'>
             <h4 className='mb-3'>روابط شخصية:</h4>
-            <p className='m-0'>- <a href="https://github.com/iabdwahab/darelom-students">ملفات المشروع على GitHub.</a>
-            </p>
+            <p className='m-0'>- <a href="https://github.com/iabdwahab/darelom-students">ملفات المشروع على GitHub.</a></p>
+            <p className='m-0'>- <a href="https://iabdwahab.me">معرض الأعمال.</a></p>
             <p className='m-0'>- <a href="https://www.linkedin.com/in/iabdwahab/">LinkedIn.</a></p>
             <p className='m-0'>- <a href="https://github.com/iabdwahab">GitHub.</a></p>
           </div>

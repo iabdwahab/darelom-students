@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
-  createBrowserRouter,
   createHashRouter,
   createRoutesFromElements,
   Route,
@@ -15,6 +14,7 @@ import BooksPage from './pages/BooksPage';
 import BookPage from './pages/BookPage';
 import TestYourself from './pages/TestYourself'
 import TestResult from './components/TestResult';
+import Person from './pages/Person';
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -27,6 +27,7 @@ const router = createHashRouter(
         <Route path='/book' element={<BookPage />} />
         <Route path='/test_yourself' element={<TestYourself />} />
         <Route path='/test_yourself/test_result' element={<TestResult />} />
+        <Route path='/person/:personId' element={<Person />} />
       </Route>
     </>
   )

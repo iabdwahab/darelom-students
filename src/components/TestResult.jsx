@@ -9,7 +9,7 @@ const TestResult = () => {
     <>
       <h2>نتيجتك هي:</h2>
       <p className='text-center fs-1'>
-        <span className='fw-bold'>{result} </span>
+        <span className='fw-bold'>{result}</span>
         من
         <span className='fw-bold'> {fullMark}</span>.
       </p>

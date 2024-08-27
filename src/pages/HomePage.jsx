@@ -1,6 +1,6 @@
 import React from 'react'
 import Steps from '../components/Steps'
-import TestYourself from './TestYourself'
+import People from '../components/People'
 
 const stepsList = [
   {
@@ -96,6 +96,7 @@ const HomePage = () => {
   return (
     <>
       <Steps stepsList={stepsList} />
+      <People />
     </>
   )
 }

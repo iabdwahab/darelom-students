@@ -18,8 +18,8 @@ const TestYourself = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/src/darelom-students-data/questions/test_questions.json')
-      // fetch('https://iabdwahab.me/darelom-students-data/questions/test_questions.json')
+    // fetch('/src/darelom-students-data/questions/test_questions.json')
+    fetch('https://iabdwahab.me/darelom-students-data/questions/test_questions.json')
       .then(res => res.json())
       .then(data => {
         setQuestions(data);

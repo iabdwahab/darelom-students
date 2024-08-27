@@ -15,14 +15,16 @@ const MainLayout = () => {
       <SubHeader />
       <div className='container-xl flex-grow-1'>
         <div className='row py-3'>
-          <div className='col'>
+          <div>
             <Outlet />
           </div>
-          {
-            pathname === '/' ? <div className='col-lg-4'>
-              <SideBar />
-            </div> : ''
-          }
+          <div>
+            {
+              pathname === '/' ? <div>
+                <SideBar />
+              </div> : ''
+            }
+          </div>
 
         </div>
       </div>

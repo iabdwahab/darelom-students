@@ -22,18 +22,20 @@ const SideBarDegrees = () => {
       <h2 className='fs-4 p-2 fw-medium bg-dark text-center text-light'>أوائل الفرق</h2>
       {
         isDataLoading ? <LoadingSpinner /> :
-          degrees.map((gradeDegree) => {
-            return (
-              <div key={gradeDegree.id} className='border-secondary-subtle rounded-2 py-1 my-0'>
-                <h3 className='fs-5 bg-dark text-light p-2 my-0'>{gradeDegree.grade_ar_name}</h3>
-                <table className="table table-striped border">
-                  <TableHead />
-                  <TableBody gradeDegree={gradeDegree} />
-                </table>
-                <Link to={`degrees/grade_${gradeDegree.id}/2023_24`} className='d-block my-2 btn btn-primary fw-bold'>عرض القائمة كاملة</Link>
-              </div>
-            )
-          })
+          <div className='row g-2 mt-1'>
+            {degrees.map((gradeDegree) => {
+              return (
+                <div key={gradeDegree.id} className='border-secondary-subtle rounded-2 py-1 my-0 col-lg-6'>
+                  <h3 className='fs-5 bg-dark text-light p-2 my-0'>{gradeDegree.grade_ar_name}</h3>
+                  <table className="table table-striped border">
+                    <TableHead />
+                    <TableBody gradeDegree={gradeDegree} />
+                  </table>
+                  <Link to={`degrees/grade_${gradeDegree.id}/2023_24`} className='d-block my-2 btn btn-primary fw-bold'>عرض القائمة كاملة</Link>
+                </div>
+              )
+            })}
+          </div>
       }
     </>
   )
