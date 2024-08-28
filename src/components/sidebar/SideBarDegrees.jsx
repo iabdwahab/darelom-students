@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import LoadingSpinner from './LoadingSpinner';
-import { calculatePercentage } from '../utils/Degrees';
+import LoadingSpinner from '../global/LoadingSpinner';
+import { calculatePercentage } from '../../utils/Degrees';
+import SectionHeading from '../global/SectionHeading';
 
 const SideBarDegrees = () => {
   const [degrees, setDegrees] = useState([]);
   const [isDataLoading, setIsDataLoading] = useState(true);
 
   useEffect(() => {
-    // fetch("/src/darelom-students-data/top_degrees_2023_24.json")
-    fetch("https://iabdwahab.me/darelom-students-data/top_degrees_2023_24.json")
+    fetch("/src/darelom-students-data/top_degrees_2023_24.json")
+      // fetch("https://iabdwahab.me/darelom-students-data/top_degrees_2023_24.json")
       .then(res => res.json())
       .then(data => {
         setDegrees(data);
@@ -19,7 +20,7 @@ const SideBarDegrees = () => {
 
   return (
     <>
-      <h2 className='fs-4 p-2 fw-medium bg-dark text-center text-light'>أوائل الفرق</h2>
+      <SectionHeading>أوائل الفرق</SectionHeading>
       {
         isDataLoading ? <LoadingSpinner /> :
           <div className='row g-2 mt-1'>

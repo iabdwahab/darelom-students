@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import LoadingSpinner from '../components/LoadingSpinner';
+import LoadingSpinner from '../components/global/LoadingSpinner';
 import { calculatePercentage, calculateTotal } from '../utils/Degrees';
 
 const DegreesPage = () => {
@@ -8,8 +8,6 @@ const DegreesPage = () => {
   const [isDataLoading, setIsDataLoading] = useState(true);
   const { grade } = useParams();
   const [gradeNameAr, setGradeNameAr] = useState('');
-
-
 
   useEffect(() => {
     switch (grade) {

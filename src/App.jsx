@@ -13,8 +13,8 @@ import ErrorPage from './pages/ErrorPage';
 import BooksPage from './pages/BooksPage';
 import BookPage from './pages/BookPage';
 import TestYourself from './pages/TestYourself'
-import TestResult from './components/TestResult';
-import Person from './pages/Person';
+import TestResult from './components/test_yourself/TestResult';
+import PersonPage from './pages/PersonPage';
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -24,10 +24,10 @@ const router = createHashRouter(
         <Route path='/degrees/:grade/2023_24' element={<DegreesPage />} />
         <Route path='/degrees/:grade/2023_24/:studentId' element={<StudentPage />} />
         <Route path=':grade/books/:term' element={<BooksPage />} />
-        <Route path='/book' element={<BookPage />} />
+        <Route path='/book/:bookId' element={<BookPage />} />
         <Route path='/test_yourself' element={<TestYourself />} />
         <Route path='/test_yourself/test_result' element={<TestResult />} />
-        <Route path='/person/:personId' element={<Person />} />
+        <Route path='/person/:personId' element={<PersonPage />} />
       </Route>
     </>
   )

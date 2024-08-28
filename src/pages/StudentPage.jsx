@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
-import LoadingSpinner from '../components/LoadingSpinner';
+import LoadingSpinner from '../components/global/LoadingSpinner';
 
 const StudentPage = () => {
   const { grade, studentId } = useParams();

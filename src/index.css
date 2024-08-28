@@ -6,7 +6,9 @@
   font-family: "Cairo", sans-serif !important;
 }
 
-a {
+.header a,
+.subheader a,
+.footer a {
   text-decoration: none;
 }
 

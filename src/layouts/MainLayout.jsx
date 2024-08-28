@@ -1,10 +1,10 @@
 import React from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import Header from '../components/Header'
-import SideBar from '../components/SideBar'
-import Footer from '../components/Footer'
-import ScrollToTop from '../components/ScrollToTop'
-import SubHeader from '../components/SubHeader'
+import Header from '../components/header/Header'
+import SubHeader from '../components/header/SubHeader'
+import SideBar from '../components/sidebar/SideBar'
+import Footer from '../components/footer/Footer'
+import ScrollToTop from '../utils/ScrollToTop'
 
 const MainLayout = () => {
   const { pathname } = useLocation();

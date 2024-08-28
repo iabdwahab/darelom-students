@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import LoadingSpinner from '../components/LoadingSpinner';
+import LoadingSpinner from '../components/global/LoadingSpinner';
 
 const BooksPage = () => {
   const { grade, term } = useParams();
@@ -15,6 +15,7 @@ const BooksPage = () => {
 
         setBooks(data[term]);
         setIsLoading(false);
+
       })
   }, []);
 
@@ -62,7 +63,7 @@ function BookButton({ book }) {
   }
 
   function previewBook() {
-    navigate('/book', { state: { book } });
+    navigate(`/book/${book.book_gdrive_id}`, { state: { book_name: book.book_name } });
   }
 
   if (isOptionsDisplayed) {

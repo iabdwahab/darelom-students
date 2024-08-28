@@ -1,6 +1,5 @@
 // This component make website scroll to top when url change.
-
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 const ScrollToTop = () => {

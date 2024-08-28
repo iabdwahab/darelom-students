@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
+import PersonCard from './PersonCard'
+import SectionHeading from '../global/SectionHeading'
 const peopleList = [
   {
     id: 'anas_alsultan',
@@ -22,16 +24,16 @@ const peopleList = [
   },
 ]
 
-const People = () => {
+const Influencers = () => {
 
   return (
     <div className='my-3'>
-      <h2 className='fs-4 p-2 fw-medium bg-dark text-center text-light'>أشخاص مؤثرون</h2>
+      <SectionHeading>أشخاص مؤثرون</SectionHeading>
       <div className='my-1 row g-2'>
         {peopleList.map((person, index) => {
           return (
             <div className='col-lg-3 col-sm-6' key={index}>
-              <Card details={person} />
+              <PersonCard person={person} />
             </div>
           )
         })}
@@ -40,19 +42,5 @@ const People = () => {
   )
 }
 
-function Card({ details }) {
-  const { name, image } = details;
-  return (
-    <>
-      <div className="card">
-        <img src={image} className="card-img-top w-100" alt={name} style={{ height: '280px', objectFit: 'cover' }} />
-        <div className="card-body">
-          <h5 className="card-title fw-bold mb-3">{name}</h5>
-          <a href={`/#/person/${details.id}`} className="btn btn-primary w-100">عرض التفاصيل</a>
-        </div>
-      </div>
-    </>
-  )
-}
 
-export default People
+export default Influencers

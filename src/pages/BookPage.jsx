@@ -1,39 +1,23 @@
 import React, { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import LoadingSpinner from '../components/LoadingSpinner'
+import { useLocation, useParams } from 'react-router-dom'
+import LoadingSpinner from '../components/global/LoadingSpinner'
+import BackButton from '../components/book_page/BackButton'
+import BookIframe from '../components/book_page/BookIframe'
+import SectionHeading from '../components/global/SectionHeading'
 
 const BookPage = () => {
+  const { bookId } = useParams();
   const location = useLocation();
-  const book = location.state?.book;
-  const { book_name, book_gdrive_id } = book;
-
+  const book_name = location.state?.book_name;
   const [isIframeLoading, setIsIframeLoading] = useState(true);
 
   return (
     <>
-      <div className='d-flex justify-content-between align-items-center  mb-4'>
-        <h3 className='text-center' >
-          <span className='fw-bold text-primary'>كتاب: </span>
-          <span>"{book_name}".</span>
-        </h3>
-        <BackButton />
-      </div>
-      {
-        isIframeLoading ? <LoadingSpinner /> : ''
-      }
-      <iframe src={`https://drive.google.com/file/d/${book_gdrive_id}/preview`} onLoad={() => setIsIframeLoading(false)} className={`${isIframeLoading ? 'd-none' : ''}`} style={{ width: '100%', height: '500px' }}></iframe>
+      <SectionHeading>كتاب: {book_name}</SectionHeading>
+      <BackButton />
+      {isIframeLoading ? <LoadingSpinner /> : null}
+      <BookIframe bookId={bookId} isIframeLoading={isIframeLoading} setIsIframeLoading={setIsIframeLoading} />
     </>
-  )
-}
-
-function BackButton() {
-  const navigate = useNavigate();
-  function goBack() {
-    navigate(-1);
-  }
-
-  return (
-    <button className='btn btn-danger' onClick={goBack}>رجوع</button>
   )
 }
 

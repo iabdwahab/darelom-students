@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import JsxParser from 'react-jsx-parser';
-import LoadingSpinner from '../components/LoadingSpinner';
+import LoadingSpinner from '../components/global/LoadingSpinner';
+import SectionHeading from '../components/global/SectionHeading'
 
-
-const Person = () => {
+const PersonPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [person, setPerson] = useState({});
   const { personId } = useParams();
 
-
   useEffect(() => {
+    // fetch('http://127.0.0.1:5500/src/darelom-students-data/people/influencers.json')
     fetch('https://iabdwahab.me/darelom-students-data/people/influencers.json')
       .then(res => res.json())
       .then(data => {
@@ -28,7 +28,7 @@ const Person = () => {
             <img src={person.image} alt="person" className='w-100' />
           </div>
           <div className='col-lg'>
-            <h2 className='text-center bg-dark text-light p-2 mb-2 mt-2 mt-lg-0'>{person.name}</h2>
+            <SectionHeading>{person.name}</SectionHeading>
             <h2 className='fw-bold mb-2 mt-2'>تعريف:</h2>
             <p dangerouslySetInnerHTML={{ __html: person.description }} />
             <h3 className='fw-bold mb-2'>أبرز الأعمال:</h3>
@@ -48,4 +48,4 @@ const Person = () => {
   )
 }
 
-export default Person
+export default PersonPage
