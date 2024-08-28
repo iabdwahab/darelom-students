@@ -8,6 +8,8 @@ import TestReasonButton from '../components/test_yourself/TestReasonButton';
 import LoadingSpinner from '../components/global/LoadingSpinner'
 import SectionHeading from '../components/global/SectionHeading';
 
+import { API_URL } from '../utils/global-variables';
+
 const TestYourself = () => {
   const [isAnswered, setIsAnswered] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(location.state?.currentQuestionIndex || 0);
@@ -18,8 +20,7 @@ const TestYourself = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // fetch('/src/darelom-students-data/questions/test_questions.json')
-    fetch('https://iabdwahab.me/darelom-students-data/questions/test_questions.json')
+    fetch(`${API_URL}/darelom-students-data/questions/test_questions.json`)
       .then(res => res.json())
       .then(data => {
         setQuestions(data);

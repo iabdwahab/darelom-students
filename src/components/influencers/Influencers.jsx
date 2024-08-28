@@ -1,26 +1,27 @@
 import React from 'react'
 import PersonCard from './PersonCard'
 import SectionHeading from '../global/SectionHeading'
+import { API_URL } from '../../utils/global-variables'
 const peopleList = [
   {
     id: 'anas_alsultan',
     name: 'الشيخ أنس السلطان',
-    image: 'https://iabdwahab.me/darelom-students-data/people/images/anas_alsultan.jpg',
+    image: `${API_URL}/darelom-students-data/people/images/anas_alsultan.jpg`,
   },
   {
     id: 'ibrahim_almali',
     name: 'الشيخ إبراهيم المالي',
-    image: 'https://iabdwahab.me/darelom-students-data/people/images/ibrahim_almali.png',
+    image: `${API_URL}/darelom-students-data/people/images/ibrahim_almali.png`,
   },
   {
     id: 'adham_alasmi',
     name: 'الشيخ أدهم العاسمي',
-    image: 'https://iabdwahab.me/darelom-students-data/people/images/adham_alasmi.jpg',
+    image: `${API_URL}/darelom-students-data/people/images/adham_alasmi.jpg`,
   },
   {
     id: 'hisham_alkamel',
     name: 'الشيخ هشام الكامل',
-    image: 'https://iabdwahab.me/darelom-students-data/people/images/hisham_alkamel.jpg',
+    image: `${API_URL}/darelom-students-data/people/images/hisham_alkamel.jpg`,
   },
 ]
 

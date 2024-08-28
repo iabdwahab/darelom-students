@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import LoadingSpinner from '../components/global/LoadingSpinner';
 import { calculatePercentage, calculateTotal } from '../utils/Degrees';
+import { API_URL } from '../utils/global-variables';
+
 
 const DegreesPage = () => {
   const [degrees, setDegrees] = useState([]);
@@ -27,8 +29,7 @@ const DegreesPage = () => {
         setGradeNameAr('');
     }
 
-    // fetch(`/src/darelom-students-data/degrees/2023_24/degrees_${grade}.json`)
-    fetch(`https://iabdwahab.me/darelom-students-data/degrees/2023_24/degrees_${grade}.json`)
+    fetch(`${API_URL}/darelom-students-data/degrees/2023_24/degrees_${grade}.json`)
       .then(res => res.json())
       .then(data => {
 
@@ -45,7 +46,7 @@ const DegreesPage = () => {
         setDegrees(data.degrees);
         setIsDataLoading(false);
       })
-  }, [degrees]);
+  }, []);
 
   return (
     <div>

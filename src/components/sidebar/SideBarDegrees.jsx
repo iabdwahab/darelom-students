@@ -3,14 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../global/LoadingSpinner';
 import { calculatePercentage } from '../../utils/Degrees';
 import SectionHeading from '../global/SectionHeading';
+import { API_URL } from '../../utils/global-variables';
 
 const SideBarDegrees = () => {
   const [degrees, setDegrees] = useState([]);
   const [isDataLoading, setIsDataLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/src/darelom-students-data/top_degrees_2023_24.json")
-      // fetch("https://iabdwahab.me/darelom-students-data/top_degrees_2023_24.json")
+    fetch(`${API_URL}/darelom-students-data/top_degrees_2023_24.json`)
       .then(res => res.json())
       .then(data => {
         setDegrees(data);

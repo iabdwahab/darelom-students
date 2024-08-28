@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import JsxParser from 'react-jsx-parser';
 import LoadingSpinner from '../components/global/LoadingSpinner';
 import SectionHeading from '../components/global/SectionHeading'
+import { API_URL } from '../utils/global-variables';
 
 const PersonPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -10,8 +11,7 @@ const PersonPage = () => {
   const { personId } = useParams();
 
   useEffect(() => {
-    // fetch('http://127.0.0.1:5500/src/darelom-students-data/people/influencers.json')
-    fetch('https://iabdwahab.me/darelom-students-data/people/influencers.json')
+    fetch(`${API_URL}/darelom-students-data/people/influencers.json`)
       .then(res => res.json())
       .then(data => {
         setPerson(data[personId]);

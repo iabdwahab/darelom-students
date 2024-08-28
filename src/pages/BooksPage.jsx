@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import LoadingSpinner from '../components/global/LoadingSpinner';
+import { API_URL } from '../utils/global-variables';
 
 const BooksPage = () => {
   const { grade, term } = useParams();
@@ -8,8 +9,7 @@ const BooksPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://iabdwahab.me/darelom-students-data/books/2023_24/books_${grade}.json`)
-      // fetch(`/src/darelom-students-data/books/2023_24/books_${grade}.json`)
+    fetch(`${API_URL}/darelom-students-data/books/2023_24/books_${grade}.json`)
       .then(res => res.json())
       .then(data => {
 

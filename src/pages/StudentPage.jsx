@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import LoadingSpinner from '../components/global/LoadingSpinner';
-
+import { API_URL } from '../utils/global-variables';
 const StudentPage = () => {
   const { grade, studentId } = useParams();
   const [student, setStudent] = useState({});
@@ -11,8 +11,7 @@ const StudentPage = () => {
   const { studentRank } = state;
 
   useEffect(() => {
-    // fetch(`/src/darelom-students-data/degrees/2023_24/degrees_${grade}.json`)
-    fetch(`https://iabdwahab.me/darelom-students-data/degrees/2023_24/degrees_${grade}.json`)
+    fetch(`${API_URL}/darelom-students-data/degrees/2023_24/degrees_${grade}.json`)
       .then(res => res.json())
       .then(data => {
 
