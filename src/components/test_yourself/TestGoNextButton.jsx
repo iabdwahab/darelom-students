@@ -1,5 +1,5 @@
 import React from 'react'
-import TestPrimaryButton from './TestPrimaryButton';
+import Button from '../global/Button'
 
 function TestGoNextButton({ currentQuestionIndex, setCurrentQuestionIndex, setIsAnswered, answerButtons }) {
   function goNext() {
@@ -13,7 +13,7 @@ function TestGoNextButton({ currentQuestionIndex, setCurrentQuestionIndex, setIs
 
   }
 
-  return <TestPrimaryButton text='التالي' onClick={goNext} />
+  return <Button text='التالي' onClick={goNext} />
 }
 
 export default TestGoNextButton

@@ -1,9 +1,9 @@
 import React from 'react'
-import TestPrimaryButton from './TestPrimaryButton'
+import Button from '../global/Button'
 
 const TestReasonButton = ({ setIsModalOpen }) => {
   return (
-    <TestPrimaryButton text='عرض التعليل' onClick={() => setIsModalOpen(true)} />
+    <Button text='عرض التعليل' onClick={() => setIsModalOpen(true)} />
   )
 }
 

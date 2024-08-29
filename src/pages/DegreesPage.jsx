@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import LoadingSpinner from '../components/global/LoadingSpinner';
-import { calculatePercentage, calculateTotal } from '../utils/Degrees';
+import { calculateTotal } from '../utils/Degrees';
 import { API_URL } from '../utils/global-variables';
-
+import TableBodyTR from '../components/degrees_page/TableBodyTR';
+import TableHead from '../components/degrees_page/TableHead';
+import SectionHeading from '../components/global/SectionHeading'
 
 const DegreesPage = () => {
   const [degrees, setDegrees] = useState([]);
@@ -50,16 +52,13 @@ const DegreesPage = () => {
 
   return (
     <div>
-      <h2 className='text-center mb-4 fw-bold'>ترتيب نتائج {gradeNameAr} 2023/24</h2>
+      <SectionHeading fontSize={3} py={3}>ترتيب نتائج {gradeNameAr} 2023/24</SectionHeading>
       <div className='table-responsive border'>
         <table className="table table-striped table-bordered">
           <TableHead />
-
           <tbody>
             {degrees.map((student, index) => {
-              return (
-                <TableBodyTr key={index} index={index} student={student} grade={grade} />
-              )
+              return <TableBodyTR key={index} index={index} student={student} grade={grade} />
             })}
           </tbody>
         </table>
@@ -68,39 +67,5 @@ const DegreesPage = () => {
     </div>
   )
 }
-
-function TableHead() {
-  return (
-    <thead>
-      <tr>
-        <th scope="col" className='text-center'>#</th>
-        <th scope='col' className='text-center'>رقم الجلوس</th>
-        <th scope='col'>الاسم</th>
-        <th scope='col' className='text-center'>الإجمالي</th>
-        <th scope='col' className='text-center'>النسبة</th>
-      </tr>
-    </thead>
-  )
-}
-
-const TableBodyTr = ({ index, student, grade }) => {
-  const navigate = useNavigate();
-  const studentRank = index + 1;
-
-  function navigateToStudentPage() {
-    navigate(`/degrees/${grade}/2023_24/${student.id}`, { state: { studentRank: studentRank } })
-  }
-
-  return (
-    <tr className='degree_tr-linked' onClick={navigateToStudentPage}>
-      <th scope="row" className='text-center'>{studentRank}</th>
-      <td className='text-center'>{student.id}</td>
-      <td style={{ whiteSpace: 'nowrap' }}>{student.name}</td>
-      <td className='text-center'>{student.total}</td>
-      <td className='text-center'>{calculatePercentage(student.total, grade)}</td>
-    </tr>
-  )
-}
-
 
 export default DegreesPage

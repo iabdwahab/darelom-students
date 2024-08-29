@@ -15,7 +15,7 @@ const peopleList = [
   },
   {
     id: 'adham_alasmi',
-    name: 'الشيخ أدهم العاسمي',
+    name: 'الشيخ أدهم العَاسِمِي',
     image: `${API_URL}/darelom-students-data/people/images/adham_alasmi.jpg`,
   },
   {

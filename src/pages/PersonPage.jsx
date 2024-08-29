@@ -15,8 +15,7 @@ const PersonPage = () => {
       .then(res => res.json())
       .then(data => {
         setPerson(data[personId]);
-        setIsLoading(false
-        );
+        setIsLoading(false);
       })
   }, [])
 
@@ -25,7 +24,7 @@ const PersonPage = () => {
       {
         isLoading ? <LoadingSpinner /> : <>
           <div className='col-lg-4'>
-            <img src={person.image} alt="person" className='w-100' />
+            <img src={`${API_URL}${person.image}`} alt="person" className='w-100' />
           </div>
           <div className='col-lg'>
             <SectionHeading>{person.name}</SectionHeading>

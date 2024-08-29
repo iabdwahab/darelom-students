@@ -8,7 +8,7 @@ import {
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
 import DegreesPage from './pages/DegreesPage';
-import StudentPage from './pages/StudentPage';
+import StudentDegreesPage from './pages/StudentDegreesPage';
 import ErrorPage from './pages/ErrorPage';
 import BooksPage from './pages/BooksPage';
 import BookPage from './pages/BookPage';
@@ -22,7 +22,7 @@ const router = createHashRouter(
       <Route path='/' element={<MainLayout />} errorElement={<ErrorPage />}>
         <Route path='/' element={<HomePage />} />
         <Route path='/degrees/:grade/2023_24' element={<DegreesPage />} />
-        <Route path='/degrees/:grade/2023_24/:studentId' element={<StudentPage />} />
+        <Route path='/degrees/:grade/2023_24/:studentId' element={<StudentDegreesPage />} />
         <Route path=':grade/books/:term' element={<BooksPage />} />
         <Route path='/book/:bookId' element={<BookPage />} />
         <Route path='/test_yourself' element={<TestYourself />} />
