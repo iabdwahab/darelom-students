@@ -28,23 +28,26 @@ const PersonPage = () => {
           </div>
           <div className='col-lg'>
             <SectionHeading>{person.name}</SectionHeading>
-            <h2 className='fw-bold mb-2 mt-2'>تعريف:</h2>
+            <ArticleHeading mt={2}>تعريف:</ArticleHeading>
             <p dangerouslySetInnerHTML={{ __html: person.description }} />
-            <h3 className='fw-bold mb-2'>أبرز الأعمال:</h3>
-            {
-              person?.work?.map((work, index) => {
-                return (
-                  <div className='fw-bold my-1' key={index}>
-                    <JsxParser components={{ Link }} jsx={`- ${work}`} />
-                  </div>
-                )
-              })
-            }
+            <hr className='w-50 mx-auto' />
+            <ArticleHeading>أبرز الأعمال:</ArticleHeading>
+            {person?.work?.map((work, index) => {
+              return (
+                <div className='fw-bold my-1' key={index}>
+                  <JsxParser components={{ Link }} jsx={`- ${work}`} />
+                </div>
+              )
+            })}
           </div>
         </>
       }
     </div>
   )
+}
+
+function ArticleHeading({ children, mt }) {
+  return <h3 className={`fw-bold mb-2 mt-${mt || 0}`}>{children}</h3>
 }
 
 export default PersonPage

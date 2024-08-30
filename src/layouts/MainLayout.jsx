@@ -13,20 +13,9 @@ const MainLayout = () => {
     <div className='d-flex flex-column min-vh-100'>
       <Header />
       <SubHeader />
-      <div className='container-xl flex-grow-1'>
-        <div className='row py-3'>
-          <div>
-            <Outlet />
-          </div>
-          <div>
-            {
-              pathname === '/' ? <div>
-                <SideBar />
-              </div> : ''
-            }
-          </div>
-
-        </div>
+      <div className='container-xl flex-grow-1 py-3'>
+        <div><Outlet /></div>
+        {pathname === '/' && <SideBar />}
       </div>
       <Footer />
       <ScrollToTop />

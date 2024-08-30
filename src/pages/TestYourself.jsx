@@ -3,7 +3,7 @@ import TestYourselfQuestionsCount from '../components/test_yourself/TestQuestion
 import TestYourselfQuestionText from '../components/test_yourself/TestQuestionText';
 import TestGoNextButton from '../components/test_yourself/TestGoNextButton';
 import TestShowResultButton from '../components/test_yourself/TestShowResultButton';
-import TestModal from '../components/test_yourself/TestModal';
+import Modal from '../components/global/Modal';
 import TestReasonButton from '../components/test_yourself/TestReasonButton';
 import LoadingSpinner from '../components/global/LoadingSpinner'
 import SectionHeading from '../components/global/SectionHeading';
@@ -49,20 +49,16 @@ const TestYourself = () => {
         <hr />
 
         <div className='mt-3 d-flex gap-2'>
-          {isAnswered && isLastQuestion ?
-            <>
-              <TestShowResultButton questionsLength={questions.length} score={score} />
-              <TestReasonButton setIsModalOpen={setIsModalOpen} />
-            </> :
-            isAnswered && !isLastQuestion ?
-              <>
-                <TestGoNextButton currentQuestionIndex={currentQuestionIndex} setCurrentQuestionIndex={setCurrentQuestionIndex} setIsAnswered={setIsAnswered} answerButtons={answerButtons.current} />
-                <TestReasonButton setIsModalOpen={setIsModalOpen} />
-              </>
-              : null}
+          {
+            isAnswered && isLastQuestion
+              ? <TestShowResultButton questionsLength={questions.length} score={score} />
+              : (isAnswered && !isLastQuestion) && <TestGoNextButton currentQuestionIndex={currentQuestionIndex} setCurrentQuestionIndex={setCurrentQuestionIndex} setIsAnswered={setIsAnswered} answerButtons={answerButtons.current} />
+          }
+
+          {isAnswered && <TestReasonButton setIsModalOpen={setIsModalOpen} />}
         </div>
 
-        {isModalOpen ? <TestModal setIsModalOpen={setIsModalOpen} answerReason={questions[currentQuestionIndex]?.answer_reason} /> : null}
+        {isModalOpen ? <Modal setIsModalOpen={setIsModalOpen} answerReason={questions[currentQuestionIndex]?.answer_reason} /> : null}
       </>}
     </>
   )
