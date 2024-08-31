@@ -42,7 +42,7 @@ const stepsList = [
         available: false,
       },
       {
-        option_text: "كتب",
+        option_text: "كتب دراسية",
         option_data: "books",
         will_next: true,
         available: true,

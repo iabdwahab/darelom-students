@@ -33,7 +33,7 @@ const TestYourself = () => {
   return (
     <>
       <SectionHeading fontSize='2'>اختبر نفسك</SectionHeading>
-      {isLoading ? <LoadingSpinner /> : <>
+      {isLoading ? <LoadingSpinner /> : <div className='mt-2'>
         <TestYourselfQuestionsCount currentQuestionIndex={currentQuestionIndex} questionsLength={questions.length} />
         <TestYourselfQuestionText questionText={questions[currentQuestionIndex]?.question_text} />
         <div className='row g-2'>
@@ -59,7 +59,7 @@ const TestYourself = () => {
         </div>
 
         {isModalOpen ? <Modal setIsModalOpen={setIsModalOpen} answerReason={questions[currentQuestionIndex]?.answer_reason} /> : null}
-      </>}
+      </div>}
     </>
   )
 }

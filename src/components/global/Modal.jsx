@@ -2,6 +2,7 @@ import React from 'react'
 import ModalHeader from '../modal/ModalHeader'
 import ModalBody from '../modal/ModalBody'
 import ModalFooter from '../modal/ModalFooter'
+import Button from '../global/Button'
 
 const Modal = ({ setIsModalOpen, answerReason }) => {
   return (
@@ -11,7 +12,7 @@ const Modal = ({ setIsModalOpen, answerReason }) => {
           <ModalHeader>"وَقُل رَّبِّ زِدْنِي عِِلْمًا"</ModalHeader>
           <ModalBody>{answerReason || 'للأسف، لا يوجد تعليل لهذه الإجابة حاليًا.'}</ModalBody>
           <ModalFooter>
-            <button type="button" className="btn btn-danger w-100" onClick={() => setIsModalOpen(false)}>إغلاق</button>
+            <Button text='إغلاق' color='danger' onClick={() => setIsModalOpen(false)} />
           </ModalFooter>
         </div>
       </div>

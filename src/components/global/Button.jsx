@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Button({ text, color, onClick }) {
+function Button({ text, color, widthPercentage, onClick }) {
   return (
-    <button className={`btn btn-${color || 'primary'} w-100 p-2`} onClick={onClick}>{text}</button>
+    <button className={`btn btn-${color || 'primary'} w-${widthPercentage || '100'} p-2`} onClick={onClick}>{text}</button>
   )
 }
 

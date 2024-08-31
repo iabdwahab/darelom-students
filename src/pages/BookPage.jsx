@@ -4,6 +4,7 @@ import LoadingSpinner from '../components/global/LoadingSpinner'
 import BackButton from '../components/book_page/BackButton'
 import BookIframe from '../components/book_page/BookIframe'
 import SectionHeading from '../components/global/SectionHeading'
+import DownloadButton from '../components/book_page/DownloadButton'
 
 const BookPage = () => {
   const { bookId } = useParams();
@@ -14,7 +15,10 @@ const BookPage = () => {
   return (
     <>
       <SectionHeading>كتاب: {book_name}</SectionHeading>
-      <BackButton />
+      <div className='my-2 d-flex justify-content-end gap-2'>
+        <DownloadButton bookId={bookId} />
+        <BackButton />
+      </div>
       {isIframeLoading ? <LoadingSpinner /> : null}
       <BookIframe bookId={bookId} isIframeLoading={isIframeLoading} setIsIframeLoading={setIsIframeLoading} />
     </>
