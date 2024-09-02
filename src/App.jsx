@@ -15,6 +15,7 @@ import BookPage from './pages/BookPage';
 import TestYourself from './pages/TestYourself'
 import TestResult from './components/test_yourself/TestResult';
 import PersonPage from './pages/PersonPage';
+import InfluencersPage from './pages/InfluencersPage';
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -28,6 +29,7 @@ const router = createHashRouter(
         <Route path='/test_yourself' element={<TestYourself />} />
         <Route path='/test_yourself/test_result' element={<TestResult />} />
         <Route path='/person/:personId' element={<PersonPage />} />
+        <Route path='/influencers' element={<InfluencersPage />} />
       </Route>
     </>
   )

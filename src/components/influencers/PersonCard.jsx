@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { API_URL } from '../../utils/global-variables';
 
 const PersonCard = ({ person }) => {
   const { name, image, id } = person;
   return (
     <>
       <div className="card">
-        <CardImage image={image} name={name} />
+        <CardImage image={API_URL + image} name={name} />
         <CardBody name={name} id={id} />
       </div>
     </>
@@ -36,7 +37,7 @@ function CardTitle({ name }) {
 }
 
 function InfoLink({ id }) {
-  return <Link to={`person/${id}`} className="btn btn-primary w-100">عرض المعلومات</Link>
+  return <Link to={`/person/${id}`} className="btn btn-primary w-100">عرض المعلومات</Link>
 }
 
 export default PersonCard
