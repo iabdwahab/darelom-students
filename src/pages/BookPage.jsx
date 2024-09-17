@@ -15,9 +15,13 @@ const BookPage = () => {
   return (
     <>
       <SectionHeading>كتاب: {book_name}</SectionHeading>
-      <div className='my-2 d-flex justify-content-end gap-2'>
-        <DownloadButton bookId={bookId} />
-        <BackButton />
+      <div className='my-2 d-flex justify-content-end row gx-2'>
+        <div className='col-md-auto col-6'>
+          <DownloadButton bookId={bookId} />
+        </div>
+        <div className='col-md-auto col-6'>
+          <BackButton />
+        </div>
       </div>
       {isIframeLoading ? <LoadingSpinner /> : null}
       <BookIframe bookId={bookId} isIframeLoading={isIframeLoading} setIsIframeLoading={setIsIframeLoading} />
