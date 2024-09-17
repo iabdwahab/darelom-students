@@ -1,3 +1,5 @@
+import { getCountFromServer } from "firebase/firestore";
+
 export function calculateTotal(student, grade) {
   if (typeof student.degrees !== 'string') {
 
@@ -30,5 +32,12 @@ export function calculatePercentage(total, grade) {
     "grade_4": 1400,
   }
 
-  return `%${(total * 100 / fullMark[grade]).toFixed(2)}`
+  return `${(total * 100 / fullMark[grade]).toFixed(2)}`
+}
+
+export async function getStudentsCount(degreesCollection) {
+  const snapshot = await getCountFromServer(degreesCollection);
+  const studentsCount = snapshot.data().count;
+
+  return studentsCount;
 }

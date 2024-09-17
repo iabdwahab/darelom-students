@@ -16,7 +16,7 @@ const SideBarDegrees = () => {
         setDegrees(data);
         setIsDataLoading(false);
       })
-  }, [])
+  }, []);
 
   return (
     <>
@@ -77,7 +77,7 @@ function TableBodyTr({ rank, student, grade }) {
     <tr className='degree_tr-linked' onClick={navigateToStudentPage}>
       <th scope="row">{rank}</th>
       <td>{student.name}</td>
-      <td className='text-center'>{calculatePercentage(student.total, grade)}</td>
+      <td className='text-center'>%{calculatePercentage(student.total, grade)}</td>
     </tr>
   )
 }

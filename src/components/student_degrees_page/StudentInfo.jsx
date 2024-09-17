@@ -1,7 +1,7 @@
 import React from 'react'
 import StudentInfoLine from './StudentInfoLine'
 
-const StudentInfo = ({ student, studentRank }) => {
+const StudentInfo = ({ student }) => {
   const personalData = [
     {
       title: "الاسم",
@@ -13,7 +13,7 @@ const StudentInfo = ({ student, studentRank }) => {
     },
     {
       title: "الترتيب",
-      value: studentRank
+      value: student.rank,
     },
     {
       title: "التقدير",
