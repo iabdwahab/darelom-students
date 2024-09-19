@@ -1,6 +1,7 @@
 import React from 'react'
 import Influencers from '../components/influencers/Influencers'
 import ResourcesSteps from '../components/resources_steps/ResourcesSteps'
+import TopStudents from '../components/top_students/TopStudents'
 
 const stepsList = [
   {
@@ -97,6 +98,7 @@ const HomePage = () => {
     <>
       <ResourcesSteps stepsList={stepsList} />
       <Influencers />
+      <TopStudents />
     </>
   )
 }

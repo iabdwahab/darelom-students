@@ -5,8 +5,9 @@ import TableBodyTR from '../components/degrees_page/TableBodyTR';
 import TableHead from '../components/degrees_page/TableHead';
 import SectionHeading from '../components/global/SectionHeading'
 import { app } from '../utils/firebaseInit';
-import { collection, getDocs, getFirestore, limit, orderBy, query, startAfter } from 'firebase/firestore';
+import { collection, getFirestore, limit, orderBy, query, startAfter } from 'firebase/firestore';
 import { getStudentsCount } from '../utils/Degrees';
+import { getDegreesGithub, getDegreesFirestore } from '../components/degrees_page/getDegrees';
 
 const db = getFirestore();
 
@@ -19,7 +20,36 @@ const DegreesPage = () => {
   const [lastStudent, setLastStudent] = useState(null);
   const [lastPage, setLastPage] = useState(false);
 
+  const degreesCollection = collection(db, `${grade}/degrees/2023_24`);
+
+  // Data Retrieved from Firestore
+  async function setDataAndHideLoaderFirestore(q) {
+    const studentsCount = await getStudentsCount(degreesCollection);
+    const { data, last } = await getDegreesFirestore(q);
+
+    setStudentsCount(studentsCount);
+    setDegrees([...degrees, ...data]);
+    setLastStudent(last);
+
+    if (last.data().rank === studentsCount) {
+      setLastPage(true);
+    }
+
+    setIsDataLoading(false);
+  }
+
+  // Data Retrieved from GitHub
+  // async function setDataAndHideLoaderGithub() {
+  //   const data = await getDegreesGithub(grade);
+
+  //   setDegrees(data.degrees);
+  //   setStudentsCount(data.degrees.length);
+  //   setIsDataLoading(false);
+  //   setLastPage(true);
+  // }
+
   useEffect(() => {
+    // Set Grade Name In Arabic
     switch (grade) {
       case 'grade_1':
         setGradeNameAr('الفرقة الأولى');
@@ -37,27 +67,14 @@ const DegreesPage = () => {
         setGradeNameAr('');
     }
 
-    const degreesCollection = collection(db, `${grade}/degrees/2023_24`);
-
-    async function getData() {
-      const studentsCount = await getStudentsCount(degreesCollection);
-      setStudentsCount(studentsCount);
-
-      // Initial query
-      const q = query(degreesCollection, orderBy('rank', 'asc'), limit(40));
-
-      getAndSetDegrees(q, degrees, setDegrees, setIsDataLoading, setLastStudent, setLastPage, studentsCount);
-    }
-
-    getData();
+    setDataAndHideLoaderFirestore(query(degreesCollection, orderBy('rank', 'asc'), limit(40)));
+    // setDataAndHideLoaderGithub();
   }, []);
 
   function handleMoreBtn() {
-    const degreesCollection = collection(db, `${grade}/degrees/2023_24`);
-    const q = query(degreesCollection, orderBy('rank', 'asc'), startAfter(lastStudent), limit(25));
+    const q = query(degreesCollection, orderBy('rank', 'asc'), startAfter(lastStudent), limit(40));
 
-
-    getAndSetDegrees(q, degrees, setDegrees, setIsDataLoading, setLastStudent, setLastPage, studentsCount);
+    setDataAndHideLoaderFirestore(q);
   }
 
   return (
@@ -84,26 +101,4 @@ const DegreesPage = () => {
   )
 }
 
-function getAndSetDegrees(q, degrees, setDegrees, setIsDataLoading, setLastStudent, setLastPage, studentsCount) {
-  getDocs(q).then(snapshot => {
-    try {
-      const data = snapshot.docs.map(doc => {
-        return doc.data();
-      });
-
-      setDegrees([...degrees, ...data]);
-      const last = snapshot.docs[snapshot.docs.length - 1];
-
-      setLastStudent(last || null);
-
-      if (last.data().rank === studentsCount) {
-        setLastPage(true);
-      }
-
-      setIsDataLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  })
-}
 export default DegreesPage

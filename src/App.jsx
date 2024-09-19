@@ -4,7 +4,7 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider
-} from 'react-router-dom'
+} from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
 import DegreesPage from './pages/DegreesPage';
