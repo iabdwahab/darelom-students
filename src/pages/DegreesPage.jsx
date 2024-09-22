@@ -8,6 +8,7 @@ import { app } from '../utils/firebaseInit';
 import { collection, getFirestore, limit, orderBy, query, startAfter } from 'firebase/firestore';
 import { getStudentsCount } from '../utils/Degrees';
 import { getDegreesGithub, getDegreesFirestore } from '../components/degrees_page/getDegrees';
+import { dbSource } from '../utils/global-variables';
 
 const db = getFirestore();
 
@@ -24,6 +25,7 @@ const DegreesPage = () => {
 
   // Data Retrieved from Firestore
   async function setDataAndHideLoaderFirestore(q) {
+
     const studentsCount = await getStudentsCount(degreesCollection);
     const { data, last } = await getDegreesFirestore(q);
 
@@ -39,14 +41,14 @@ const DegreesPage = () => {
   }
 
   // Data Retrieved from GitHub
-  // async function setDataAndHideLoaderGithub() {
-  //   const data = await getDegreesGithub(grade);
+  async function setDataAndHideLoaderGithub() {
+    const data = await getDegreesGithub(grade);
 
-  //   setDegrees(data.degrees);
-  //   setStudentsCount(data.degrees.length);
-  //   setIsDataLoading(false);
-  //   setLastPage(true);
-  // }
+    setDegrees(data.degrees);
+    setStudentsCount(data.degrees.length);
+    setIsDataLoading(false);
+    setLastPage(true);
+  }
 
   useEffect(() => {
     // Set Grade Name In Arabic
@@ -67,8 +69,11 @@ const DegreesPage = () => {
         setGradeNameAr('');
     }
 
-    setDataAndHideLoaderFirestore(query(degreesCollection, orderBy('rank', 'asc'), limit(40)));
-    // setDataAndHideLoaderGithub();
+    if (dbSource == 'github') {
+      setDataAndHideLoaderGithub();
+    } else {
+      setDataAndHideLoaderFirestore(query(degreesCollection, orderBy('rank', 'asc'), limit(40)));
+    }
   }, []);
 
   function handleMoreBtn() {

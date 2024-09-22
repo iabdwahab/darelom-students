@@ -4,6 +4,7 @@ import LoadingSpinner from '../global/LoadingSpinner';
 import SectionHeading from '../global/SectionHeading';
 import TableHead from './TableHead';
 import { getTopStudentsFirestore, getTopStudentsGithub } from './getTopStudents';
+import { dbSource } from '../../utils/global-variables';
 
 const TopStudents = () => {
   const [degrees, setDegrees] = useState([]);
@@ -11,8 +12,13 @@ const TopStudents = () => {
 
   useEffect(() => {
     async function setDataAndHideLoader() {
-      // const topStudents = await getTopStudentsGithub();
-      const topStudents = await getTopStudentsFirestore();
+      let topStudents;
+
+      if (dbSource == 'github') {
+        topStudents = await getTopStudentsGithub();
+      } else {
+        topStudents = await getTopStudentsFirestore();
+      }
 
       setDegrees(topStudents);
       setIsDataLoading(false);

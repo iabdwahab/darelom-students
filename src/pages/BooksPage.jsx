@@ -27,7 +27,7 @@ const BooksPage = () => {
       <div className='d-flex justify-content-between align-content-center'>
         <h2>اختر كتابًا:</h2>
         <div className='d-flex gap-2'>
-          <BackStepButton grade={grade} />
+          <BackStepButton grade={grade} backFrom='books' />
           <BackHomeButton />
         </div>
       </div>

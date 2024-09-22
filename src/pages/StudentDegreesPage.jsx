@@ -7,6 +7,7 @@ import StudentInfo from '../components/student_degrees_page/StudentInfo';
 import SectionHeading from '../components/global/SectionHeading';
 import { getStudentInfoGithub, getStudentInfoFirestore } from '../components/student_degrees_page/getStudentInfo';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
+import { dbSource } from '../utils/global-variables';
 
 const db = getFirestore();
 
@@ -18,12 +19,17 @@ const StudentDegreesPage = () => {
 
   useEffect(() => {
     async function setDataAndHideLoader() {
-      // const student = await getStudentInfoGithub(grade, studentId, setSubjects);
-      const student = await getStudentInfoFirestore(grade, studentId);
-      const subjects = (await getDoc(doc(db, `${grade}`, 'degrees'))).data().subjects;
+      let student;
+
+      if (dbSource == 'github') {
+        student = await getStudentInfoGithub(grade, studentId, setSubjects);
+      } else {
+        student = await getStudentInfoFirestore(grade, studentId);
+        const subjects = (await getDoc(doc(db, `${grade}`, 'degrees'))).data().subjects;
+        setSubjects(subjects)
+      }
 
       setStudent(student);
-      setSubjects(subjects)
       setIsLoading(false);
     }
 

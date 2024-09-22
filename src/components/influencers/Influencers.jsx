@@ -1,9 +1,6 @@
 import React from 'react'
 import PersonCard from './PersonCard'
 import SectionHeading from '../global/SectionHeading'
-import { API_URL } from '../../utils/global-variables'
-import Button from '../global/Button'
-import { Link, useNavigate } from 'react-router-dom'
 import LinkButton from '../global/LinkButton'
 
 const peopleList = [

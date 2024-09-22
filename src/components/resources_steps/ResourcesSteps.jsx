@@ -4,7 +4,6 @@ import BackButton from './BackButton';
 import StepButton from './StepButton';
 
 
-
 const ResourcesSteps = ({ stepsList }) => {
   const location = useLocation();
   const [currentStepIndex, setCurrentStepIndex] = useState(location.state?.initialStepIndex || 0);

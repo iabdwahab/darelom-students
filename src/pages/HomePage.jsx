@@ -49,6 +49,12 @@ const stepsList = [
         available: true,
       },
       {
+        option_text: "اختبر نفسك - أسئلة الطلاب",
+        option_data: "test_yourself_students",
+        will_next: true,
+        available: false,
+      },
+      {
         option_text: "اختبر نفسك [نسخة تجريبية]",
         option_data: "test_yourself",
         will_next: false,
