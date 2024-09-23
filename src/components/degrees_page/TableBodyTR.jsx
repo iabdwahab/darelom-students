@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const TableBodyTR = ({ student, grade }) => {
+  const { id, name, rank, total, total_percentage } = student
   const navigate = useNavigate();
 
   function navigateToStudentPage() {
@@ -10,11 +11,11 @@ const TableBodyTR = ({ student, grade }) => {
 
   return (
     <tr className='degree_tr-linked' onClick={navigateToStudentPage}>
-      <th scope="row" className='text-center'>{student.rank}</th>
-      <td className='text-center'>{student.id}</td>
-      <td style={{ whiteSpace: 'nowrap' }}>{student.name}</td>
-      <td className='text-center'>{student.total}</td>
-      <td className='text-center'>%{student.total_percentage}</td>
+      <th scope="row" className='text-center'>{rank}</th>
+      <td className='text-center'>{id}</td>
+      <td style={{ whiteSpace: 'nowrap' }}>{name}</td>
+      <td className='text-center'>{total}</td>
+      <td className='text-center'>%{total_percentage}</td>
     </tr>
   )
 }

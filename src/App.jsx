@@ -10,7 +10,7 @@ import HomePage from './pages/HomePage';
 import DegreesPage from './pages/DegreesPage';
 import StudentDegreesPage from './pages/StudentDegreesPage';
 import ErrorPage from './pages/ErrorPage';
-import BooksPage from './pages/BooksPage';
+import BooksSelector from './components/books_selector/BooksSelector';
 import BookPage from './pages/BookPage';
 import TestYourself from './pages/TestYourself'
 import TestResult from './components/test_yourself/TestResult';
@@ -29,14 +29,13 @@ const router = createHashRouter(
         <Route path='/degrees/:grade/2023_24/:studentId' element={<StudentDegreesPage />} />
 
         {/* Books */}
-        <Route path=':grade/books/:term' element={<BooksPage />} />
+        <Route path=':grade/books/:term' element={<BooksSelector />} />
         <Route path='/book/:bookId' element={<BookPage />} />
 
         {/* Test Yourself */}
         <Route path='/test_yourself' element={<TestYourself />} /> {/* FOR TEST FUNCTIONS */}
         <Route path='/test_yourself/test_result' element={<TestResult />} />
         <Route path=':grade/test_yourself_students/:term' element={<TestYourselfSubjectSelector />} />
-        {/* <Route path=':grade/test_yourself_students/:term/:subject' element={<TestYourself />} /> */}
         <Route path='/test_yourself/sended_questions' element={<TestYourself />} />
         <Route path='/:grade/:term/:subject/test_yourself_students' element={<TestYourself />} />
 

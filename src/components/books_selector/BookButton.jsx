@@ -17,7 +17,7 @@ const BookButton = ({ book }) => {
   if (isOptionsDisplayed) {
     return (
       <div className='d-flex gap-2'>
-        <Button text="استعراض" color="success" onClick={(previewBook)} />
+        <Button text="استعراض" color="success" onClick={previewBook} />
         <Button text="تحميل" onClick={downloadBook} />
         <Button text="إلغاء" color="danger" onClick={() => setIsOptionsDisplayed(false)} />
       </div>

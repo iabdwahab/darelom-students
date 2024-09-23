@@ -5,6 +5,7 @@ import BackButton from '../components/book_page/BackButton'
 import BookIframe from '../components/book_page/BookIframe'
 import SectionHeading from '../components/global/SectionHeading'
 import DownloadButton from '../components/book_page/DownloadButton'
+import ButtonContainer from '../components/book_page/ButtonContainer'
 
 const BookPage = () => {
   const { bookId } = useParams();
@@ -16,14 +17,15 @@ const BookPage = () => {
     <>
       <SectionHeading>كتاب: {book_name}</SectionHeading>
       <div className='my-2 d-flex justify-content-end row gx-2'>
-        <div className='col-md-auto col-6'>
+        <ButtonContainer>
           <DownloadButton bookId={bookId} />
-        </div>
-        <div className='col-md-auto col-6'>
+        </ButtonContainer>
+
+        <ButtonContainer>
           <BackButton />
-        </div>
+        </ButtonContainer>
       </div>
-      {isIframeLoading ? <LoadingSpinner /> : null}
+      {isIframeLoading && <LoadingSpinner />}
       <BookIframe bookId={bookId} isIframeLoading={isIframeLoading} setIsIframeLoading={setIsIframeLoading} />
     </>
   )

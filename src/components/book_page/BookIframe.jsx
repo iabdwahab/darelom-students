@@ -1,13 +1,17 @@
 import React from 'react'
 
 const BookIframe = ({ bookId, isIframeLoading, setIsIframeLoading }) => {
-  return (
-    <iframe src={`https://drive.google.com/file/d/${bookId}/preview`}
-      onLoad={() => setIsIframeLoading(false)}
-      className={`${isIframeLoading ? 'd-none' : ''} w-100`}
-      style={{ height: '500px' }}>
-    </iframe>
-  )
+  const source = `https://drive.google.com/file/d/${bookId}/preview`;
+  const className = `${isIframeLoading && 'd-none'} w-100`;
+  const styles = {
+    height: '500px',
+  }
+
+  function handleLoading() {
+    setIsIframeLoading(false);
+  }
+
+  return <iframe src={source} onLoad={handleLoading} className={className} style={styles}></iframe>
 }
 
 export default BookIframe

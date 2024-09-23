@@ -1,7 +1,7 @@
 import React from 'react'
-import PersonCard from './PersonCard'
 import SectionHeading from '../global/SectionHeading'
 import LinkButton from '../global/LinkButton'
+import PersonCard from '../person_card/PersonCard'
 
 const peopleList = [
   {
@@ -26,7 +26,7 @@ const peopleList = [
   },
 ]
 
-const Influencers = () => {
+const InfluencersShortList = () => {
   return (
     <div className='my-2'>
       <SectionHeading>أشخاص مؤثرون</SectionHeading>
@@ -45,4 +45,4 @@ const Influencers = () => {
 }
 
 
-export default Influencers
+export default InfluencersShortList

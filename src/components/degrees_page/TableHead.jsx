@@ -1,14 +1,20 @@
 import React from 'react'
 
 const TableHead = () => {
+  const data = [
+    { isCentered: true, text: '#' },
+    { isCentered: true, text: 'رقم الجلوس' },
+    { isCentered: false, text: 'الاسم' },
+    { isCentered: true, text: 'الإجمالي' },
+    { isCentered: true, text: 'النسبة' },
+  ]
+
   return (
     <thead>
       <tr>
-        <th scope="col" className='text-center'>#</th>
-        <th scope='col' className='text-center'>رقم الجلوس</th>
-        <th scope='col'>الاسم</th>
-        <th scope='col' className='text-center'>الإجمالي</th>
-        <th scope='col' className='text-center'>النسبة</th>
+        {data.map((item, index) => {
+          return <th key={index} scope='col' className={`${item.isCentered && 'text-center'}`}>{item.text}</th>
+        })}
       </tr>
     </thead>
   )

@@ -5,10 +5,13 @@ import TableBodyTR from '../components/degrees_page/TableBodyTR';
 import TableHead from '../components/degrees_page/TableHead';
 import SectionHeading from '../components/global/SectionHeading'
 import { app } from '../utils/firebaseInit';
-import { collection, getFirestore, limit, orderBy, query, startAfter } from 'firebase/firestore';
-import { getStudentsCount } from '../utils/Degrees';
-import { getDegreesGithub, getDegreesFirestore } from '../components/degrees_page/getDegrees';
+import { collection, getFirestore, limit, orderBy, query } from 'firebase/firestore';
+import { getDegreesGithub, getDegreesFirestore, getStudentsCount } from '../components/degrees_page/getData';
 import { dbSource } from '../utils/global-variables';
+import { translate } from '../utils/translations'
+import StudentsCount from '../components/degrees_page/StudentsCount';
+import LoadMoreButton from '../components/degrees_page/LoadMoreButton';
+import ResultsEnded from '../components/degrees_page/ResultsEnded';
 
 const db = getFirestore();
 
@@ -16,7 +19,6 @@ const DegreesPage = () => {
   const [degrees, setDegrees] = useState([]);
   const [isDataLoading, setIsDataLoading] = useState(true);
   const { grade } = useParams();
-  const [gradeNameAr, setGradeNameAr] = useState('');
   const [studentsCount, setStudentsCount] = useState(null);
   const [lastStudent, setLastStudent] = useState(null);
   const [lastPage, setLastPage] = useState(false);
@@ -27,13 +29,14 @@ const DegreesPage = () => {
   async function setDataAndHideLoaderFirestore(q) {
 
     const studentsCount = await getStudentsCount(degreesCollection);
-    const { data, last } = await getDegreesFirestore(q);
+    const { degreesData, lastStudentData } = await getDegreesFirestore(q);
 
     setStudentsCount(studentsCount);
-    setDegrees([...degrees, ...data]);
-    setLastStudent(last);
+    setDegrees([...degrees, ...degreesData]);
+    setLastStudent(lastStudentData);
 
-    if (last.data().rank === studentsCount) {
+    // If Degrees Data Ended
+    if (lastStudentData.data().rank === studentsCount) {
       setLastPage(true);
     }
 
@@ -51,56 +54,31 @@ const DegreesPage = () => {
   }
 
   useEffect(() => {
-    // Set Grade Name In Arabic
-    switch (grade) {
-      case 'grade_1':
-        setGradeNameAr('الفرقة الأولى');
-        break;
-      case 'grade_2':
-        setGradeNameAr('الفرقة الثانية');
-        break;
-      case 'grade_3':
-        setGradeNameAr('الفرقة الثالثة');
-        break;
-      case 'grade_4':
-        setGradeNameAr('الفرقة الرابعة');
-        break;
-      default:
-        setGradeNameAr('');
-    }
-
     if (dbSource == 'github') {
       setDataAndHideLoaderGithub();
     } else {
-      setDataAndHideLoaderFirestore(query(degreesCollection, orderBy('rank', 'asc'), limit(40)));
+      setDataAndHideLoaderFirestore(query(degreesCollection, orderBy('rank', 'asc'), limit(5)));
     }
   }, []);
 
-  function handleMoreBtn() {
-    const q = query(degreesCollection, orderBy('rank', 'asc'), startAfter(lastStudent), limit(40));
-
-    setDataAndHideLoaderFirestore(q);
-  }
-
   return (
     <div>
-      <SectionHeading fontSize={3} py={3}>ترتيب نتائج {gradeNameAr} 2023/24</SectionHeading>
-      <h3 className='py-2 fs-4'>عدد الطلاب: <span className='fw-bold'>{studentsCount || 'غير محدد.'}</span>.</h3>
+      <SectionHeading fontSize={3} py={3}>ترتيب نتائج {translate(grade)} 2023/24</SectionHeading>
+      <StudentsCount studentsCount={studentsCount} />
       <div className='table-responsive border'>
         <table className="table table-striped table-bordered">
           <TableHead />
           <tbody>
-            {degrees.map((student, index) => {
-              return <TableBodyTR key={index} student={student} grade={grade} />
+            {degrees.map((student) => {
+              return <TableBodyTR key={student.id} student={student} grade={grade} />
             })}
           </tbody>
         </table>
-        {isDataLoading ? <LoadingSpinner /> : null}
+        {isDataLoading && <LoadingSpinner />}
       </div>
+
       <div className='mt-3 mb-1'>
-        {!lastPage ? <button className='btn btn-primary w-100' onClick={() => handleMoreBtn()}>عرض المزيد</button>
-          : <h3 className='fw-bold text-center fs-5'>انتهت النتائج.</h3>
-        }
+        {lastPage ? <ResultsEnded /> : <LoadMoreButton degreesCollection={degreesCollection} lastStudent={lastStudent} setDataAndHideLoaderFirestore={setDataAndHideLoaderFirestore} />}
       </div>
     </div>
   )

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import LoadingSpinner from '../components/global/LoadingSpinner';
-import { API_URL } from '../utils/global-variables';
-import BackHomeButton from '../components/books_page/BackHomeButton';
-import BackStepButton from '../components/books_page/BackStepButton';
-import BookButton from '../components/books_page/BookButton';
+import LoadingSpinner from '../global/LoadingSpinner';
+import { API_URL } from '../../utils/global-variables';
+import BackHomeButton from './BackHomeButton';
+import BackStepButton from './BackStepButton';
+import BookButton from './BookButton';
+import SectionHeading from '../global/SectionHeading'
+import { translate } from '../../utils/translations'
 
 const BooksPage = () => {
   const { grade, term } = useParams();
@@ -24,13 +26,16 @@ const BooksPage = () => {
 
   return (
     <>
-      <div className='d-flex justify-content-between align-content-center'>
+      <div className='d-flex justify-content-between align-content-center mb-3'>
         <h2>اختر كتابًا:</h2>
         <div className='d-flex gap-2'>
           <BackStepButton grade={grade} backFrom='books' />
           <BackHomeButton />
         </div>
       </div>
+
+      <SectionHeading>{translate(grade)} - {translate(term)}</SectionHeading>
+
       {isLoading ? <LoadingSpinner /> :
         <div className='row g-2 my-2'>
           {books.map((book, index) => {

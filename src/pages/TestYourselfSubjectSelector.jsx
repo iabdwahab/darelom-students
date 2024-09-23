@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { app } from '../utils/firebaseInit';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import { useNavigate, useParams } from 'react-router-dom';
-import BackStepButton from '../components/books_page/BackStepButton';
-import BackHomeButton from '../components/books_page/BackHomeButton';
+import BackStepButton from '../components/books_selector/BackStepButton';
+import BackHomeButton from '../components/books_selector/BackHomeButton';
 import LoadingSpinner from '../components/global/LoadingSpinner';
 
 const db = getFirestore();

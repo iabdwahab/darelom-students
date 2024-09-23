@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { API_URL } from '../utils/global-variables'
-import PersonCard from '../components/influencers/PersonCard'
+import PersonCard from '../components/person_card/PersonCard'
 import LoadingSpinner from '../components/global/LoadingSpinner'
 import SectionHeading from '../components/global/SectionHeading'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import Influencers from '../components/influencers/Influencers'
+import InfluencersShortList from '../components/influencers_shortlist/InfluencersShortList'
 import ResourcesSteps from '../components/resources_steps/ResourcesSteps'
 import TopStudents from '../components/top_students/TopStudents'
 
@@ -103,7 +103,7 @@ const HomePage = () => {
   return (
     <>
       <ResourcesSteps stepsList={stepsList} />
-      <Influencers />
+      <InfluencersShortList />
       <TopStudents />
     </>
   )

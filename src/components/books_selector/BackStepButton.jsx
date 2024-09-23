@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const BackStepButton = ({ grade, backFrom }) => {
   const navigate = useNavigate();
+
   function goBack() {
     navigate(`/`, { state: { selections: [grade, backFrom], initialStepIndex: 2 } })
   }

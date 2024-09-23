@@ -1,4 +1,4 @@
-import { getDocs } from "firebase/firestore";
+import { getCountFromServer, getDocs } from "firebase/firestore";
 import { API_URL } from "../../utils/global-variables";
 
 export async function getDegreesGithub(grade) {
@@ -19,15 +19,18 @@ export async function getDegreesGithub(grade) {
 
 export async function getDegreesFirestore(q) {
   const snapshot = await getDocs(q);
-
-  const data = snapshot.docs.map((doc) => {
-    return doc.data();
-  });
-
-  const last = snapshot.docs[snapshot.docs.length - 1];
+  const degreesData = snapshot.docs.map((doc) => doc.data());
+  const lastStudentData = snapshot.docs[snapshot.docs.length - 1];
 
   return {
-    data,
-    last,
+    degreesData,
+    lastStudentData,
   };
+}
+
+export async function getStudentsCount(degreesCollection) {
+  const snapshot = await getCountFromServer(degreesCollection);
+  const studentsCount = snapshot.data().count;
+
+  return studentsCount;
 }
