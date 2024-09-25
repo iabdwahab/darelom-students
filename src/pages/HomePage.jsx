@@ -2,6 +2,7 @@ import React from 'react'
 import InfluencersShortList from '../components/influencers_shortlist/InfluencersShortList'
 import ResourcesSteps from '../components/resources_steps/ResourcesSteps'
 import TopStudents from '../components/top_students/TopStudents'
+import { Link } from 'react-router-dom'
 
 const stepsList = [
   {
@@ -52,7 +53,7 @@ const stepsList = [
         option_text: "اختبر نفسك - أسئلة الطلاب",
         option_data: "test_yourself_students",
         will_next: true,
-        available: false,
+        available: true,
       },
       {
         option_text: "اختبر نفسك [نسخة تجريبية]",

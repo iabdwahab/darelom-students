@@ -4,16 +4,14 @@ import LoadingSpinner from '../components/global/LoadingSpinner';
 import TableBodyTR from '../components/degrees_page/TableBodyTR';
 import TableHead from '../components/degrees_page/TableHead';
 import SectionHeading from '../components/global/SectionHeading'
-import { app } from '../utils/firebaseInit';
-import { collection, getFirestore, limit, orderBy, query } from 'firebase/firestore';
+import { firebaseDB } from '../utils/firebaseInit';
+import { collection, limit, orderBy, query } from 'firebase/firestore';
 import { getDegreesGithub, getDegreesFirestore, getStudentsCount } from '../components/degrees_page/getData';
 import { dbSource } from '../utils/global-variables';
 import { translate } from '../utils/translations'
 import StudentsCount from '../components/degrees_page/StudentsCount';
 import LoadMoreButton from '../components/degrees_page/LoadMoreButton';
 import ResultsEnded from '../components/degrees_page/ResultsEnded';
-
-const db = getFirestore();
 
 const DegreesPage = () => {
   const [degrees, setDegrees] = useState([]);
@@ -23,7 +21,7 @@ const DegreesPage = () => {
   const [lastStudent, setLastStudent] = useState(null);
   const [lastPage, setLastPage] = useState(false);
 
-  const degreesCollection = collection(db, `${grade}/degrees/2023_24`);
+  const degreesCollection = collection(firebaseDB, `${grade}/degrees/2023_24`);
 
   // Data Retrieved from Firestore
   async function setDataAndHideLoaderFirestore(q) {

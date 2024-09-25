@@ -1,11 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import SectionHeading from '../components/global/SectionHeading'
-import { app } from '../utils/firebaseInit';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import { Link, useParams } from 'react-router-dom';
+import { firebaseDB } from '../utils/firebaseInit';
+import { addDoc, collection } from 'firebase/firestore';
+import { useParams } from 'react-router-dom';
 import { translate } from '../utils/translations';
-
-const db = getFirestore();
 
 const SendQuestion = () => {
   const { grade, term, subject } = useParams();
@@ -26,9 +24,11 @@ const SendQuestion = () => {
 
       if (status === 'success') {
         msgEl.innerHTML = 'تم الإرسال بنجاح.';
+        msgEl.classList.remove('bg-danger');
         msgEl.classList.add('bg-success');
       } else {
         msgEl.innerHTML = 'فشل الإرسال.';
+        msgEl.classList.remove('bg-success');
         msgEl.classList.add('bg-danger');
       }
 
@@ -59,7 +59,7 @@ const SendQuestion = () => {
 
       if (question_text && isOptionsFilled) {
         try {
-          await addDoc(collection(db, `${grade}/test_yourself_students/questions/${term}/${subject}`), {
+          await addDoc(collection(firebaseDB, `${grade}/test_yourself_students/questions/${term}/${subject}`), {
             question_text,
             question_answer,
             question_options,
@@ -71,11 +71,12 @@ const SendQuestion = () => {
           formRef.current.reset();
 
         } catch (error) {
+          console.log(error.message)
           showMessage(msgRef, 'failed');
         };
       }
     });
-  });
+  }, []);
 
   const optionsInputsNames = ['الأول', 'الثاني', 'الثالث', 'الرابع'];
   const selectOptions = ['1', '2', '3', '4'];
@@ -93,7 +94,7 @@ const SendQuestion = () => {
           <div className='row g-2'>
             {optionsInputsNames.map((el, index) => {
               return (
-                <div className='col-sm-6'>
+                <div key={index} className='col-sm-6'>
                   <input type="text" className="form-control" placeholder={`الاختيار ${el}.`} required ref={(element) => optionsRef.current[index] = element} />
                 </div>
               )
@@ -104,7 +105,7 @@ const SendQuestion = () => {
           <InputLabel text='ما هو رقم الاختيار الصحيح؟' htmlFor='options-input' />
           <select className="form-control" id="options-input" ref={correctRef}>
             {selectOptions.map((el, index) => {
-              return <option value={index}>{el}</option>
+              return <option key={index} value={index}>{el}</option>
             })}
           </select>
         </div>

@@ -6,10 +6,9 @@ import TableHead from '../components/student_degrees_page/TableHead';
 import StudentInfo from '../components/student_degrees_page/StudentInfo';
 import SectionHeading from '../components/global/SectionHeading';
 import { getStudentInfoGithub, getStudentInfoFirestore } from '../components/student_degrees_page/getStudentInfo';
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
+import { firebaseDB } from '../utils/firebaseInit';
+import { doc, getDoc } from 'firebase/firestore';
 import { dbSource } from '../utils/global-variables';
-
-const db = getFirestore();
 
 const StudentDegreesPage = () => {
   const { grade, studentId } = useParams();
@@ -25,7 +24,7 @@ const StudentDegreesPage = () => {
         student = await getStudentInfoGithub(grade, studentId, setSubjects);
       } else {
         student = await getStudentInfoFirestore(grade, studentId);
-        const subjects = (await getDoc(doc(db, `${grade}`, 'degrees'))).data().subjects;
+        const subjects = (await getDoc(doc(firebaseDB, `${grade}`, 'degrees'))).data().subjects;
         setSubjects(subjects)
       }
 

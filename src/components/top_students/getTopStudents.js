@@ -7,10 +7,9 @@ import {
   query,
 } from "firebase/firestore";
 import { API_URL } from "../../utils/global-variables";
+import { firebaseDB } from "../../utils/firebaseInit";
 
 export async function getTopStudentsFirestore() {
-  const db = getFirestore();
-
   const data = [
     {
       grade: "grade_1",
@@ -34,7 +33,7 @@ export async function getTopStudentsFirestore() {
   for (let i = 1; i <= 4; i++) {
     // Get Top 3 Students
     const q = query(
-      collection(db, `grade_${i}/degrees/2023_24`),
+      collection(firebaseDB, `grade_${i}/degrees/2023_24`),
       orderBy("rank"),
       limit(3)
     );

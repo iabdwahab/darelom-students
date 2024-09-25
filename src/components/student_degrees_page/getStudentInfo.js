@@ -1,5 +1,5 @@
-import { app } from "../../utils/firebaseInit";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { firebaseDB } from "../../utils/firebaseInit";
+import { doc, getDoc } from "firebase/firestore";
 import { API_URL } from "../../utils/global-variables";
 
 export async function getStudentInfoGithub(grade, studentId, setSubjects) {
@@ -21,8 +21,7 @@ export async function getStudentInfoGithub(grade, studentId, setSubjects) {
 }
 
 export async function getStudentInfoFirestore(grade, studentId) {
-  const db = getFirestore();
-  const docRef = doc(db, `${grade}/degrees/2023_24`, studentId);
+  const docRef = doc(firebaseDB, `${grade}/degrees/2023_24`, studentId);
   const docSnap = await getDoc(docRef);
 
   return docSnap.data(); // student

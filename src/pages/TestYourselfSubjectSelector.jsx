@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { app } from '../utils/firebaseInit';
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
+import { firebaseDB } from '../utils/firebaseInit';
+import { doc, getDoc } from 'firebase/firestore';
 import { useNavigate, useParams } from 'react-router-dom';
 import BackStepButton from '../components/books_selector/BackStepButton';
 import BackHomeButton from '../components/books_selector/BackHomeButton';
 import LoadingSpinner from '../components/global/LoadingSpinner';
+import { translate } from '../utils/translations';
 
-const db = getFirestore();
 
 const TestYourselfSubjectSelector = () => {
   const navigate = useNavigate();
@@ -18,8 +18,8 @@ const TestYourselfSubjectSelector = () => {
   useEffect(() => {
 
     async function getSubjectFirestore() {
-      const snapshot = await getDoc(doc(db, `${grade}/test_yourself_students/subjects`, term));
-      const subjects = snapshot.data().subjects_list;
+      const snapshot = await getDoc(doc(firebaseDB, `${grade}/test_yourself_students/questions`, term));
+      const subjects = snapshot.data()?.subjects;
 
       setSubjects(subjects);
       setIsLoading(false);
@@ -43,7 +43,7 @@ const TestYourselfSubjectSelector = () => {
           {subjects?.map((subject, index) => {
             return (
               <div className='col-sm-6' key={index}>
-                <button className='btn btn-primary w-100' onClick={() => navigate(`/${grade}/test_yourself_students/${term}/${subject.id}`)}>{subject.text}</button>
+                <button className='btn btn-primary w-100' onClick={() => navigate(`/${grade}/${term}/${subject}/test_yourself_students`)}>{translate(subject)}</button>
               </div>
             )
           })}

@@ -11,9 +11,9 @@ import { API_URL } from '../utils/global-variables';
 import handleAnswerButtonClick from '../components/test_yourself/handleAnswerButtonClick';
 import { useLocation, useParams } from 'react-router-dom';
 
-import { app } from '../utils/firebaseInit';
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
-const db = getFirestore();
+import { firebaseDB } from '../utils/firebaseInit';
+import { collection, getDocs } from 'firebase/firestore';
+
 const TestYourself = () => {
   const { grade, term, subject } = useParams();
 
@@ -29,7 +29,7 @@ const TestYourself = () => {
   const locationPathname = currentLocation.pathname;
 
   function handleSettingQuestion(collectionPath) {
-    getDocs(collection(db, collectionPath)).then(snapshot => {
+    getDocs(collection(firebaseDB, collectionPath)).then(snapshot => {
       const questions = [];
       snapshot.docs.forEach((doc) => {
         questions.push(doc.data());
