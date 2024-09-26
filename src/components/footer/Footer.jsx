@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -10,13 +11,11 @@ const Footer = () => {
             <ColumnParagraph>إدارة الكلية غير مسئولة عن هذه المنصة.</ColumnParagraph>
             <ColumnParagraph>
               <span>للإبلاغ عن خطأ: </span>
-              <a href="https://forms.gle/nM4tsJ1bYt6YkQsw7">أبلغنا من هنا</a>.
-              <span> [Google Form].</span>
+              <Link to="/send_problem">أبلغنا من هنا</Link>.
             </ColumnParagraph>
             <ColumnParagraph>
               <span>لاقتراح تعديلات: </span>
-              <a href="https://forms.gle/unqbVhrNr1FJuzhN6">اقترح من هنا</a>.
-              <span> [Google Form].</span>
+              <Link to="/send_suggestion">اقترح من هنا</Link>.
             </ColumnParagraph>
             <ColumnParagraph>
               <span>إعلامات المنصة: </span>

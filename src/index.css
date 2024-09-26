@@ -23,6 +23,15 @@ table {
   padding: 0 !important;
 }
 
+form ::placeholder {
+  color: #c5c5c5 !important;
+  font-weight: 500;
+}
+
+form input {
+  font-weight: bold !important;
+}
+
 .degree_tr-linked:hover {
   cursor: pointer;
 }

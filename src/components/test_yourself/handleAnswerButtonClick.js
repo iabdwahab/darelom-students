@@ -20,7 +20,7 @@ export default function handleAnswerButtonClick(
     answerButtons.current[questions[currentQuestionIndex].question_answer];
   const clickedButton = e.target;
 
-  if (index === questions[currentQuestionIndex].question_answer) {
+  if (index == questions[currentQuestionIndex].question_answer) {
     clickedButton.classList.add("btn-success");
     setScore(score + 1);
     handleDisablingButtons();

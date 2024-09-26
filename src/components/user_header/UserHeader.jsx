@@ -11,15 +11,23 @@ const UserHeader = () => {
 
   async function handleSignout() {
     await signOut(firebaseAuth);
+    localStorage.setItem('loggedinUser', null);
+    localStorage.setItem('loggedinUserInfo', null);
   }
 
   return (
     <div className='border-bottom'>
-      <div className='container-xl py-3 d-flex gap-2'>
-        {loggedinUser ? <>
-          <button className='btn btn-primary w-100 p-2' onClick={() => navigate(`/${loggedinUserInfo?.grade}/send_question_selector`)}>أضف سؤالًا</button>
-          <button className='btn btn-primary w-100 p-2' onClick={handleSignout}>تسجيل الخروج</button>
-        </> : <button className='btn btn-primary w-100 p-2' onClick={() => navigate('signin')}>تسجيل الدخول</button>
+      <div className='container-xl py-3'>
+        {loggedinUser && <>
+          <p className='fs-4'>
+            <span>أهلًا، </span>
+            <span className='fw-bold'>{loggedinUserInfo.name}!</span>
+          </p>
+        </>}
+        {loggedinUserInfo ? <div className='d-flex gap-2'>
+          <button className={`btn btn-primary w-100 p-2 ${!loggedinUserInfo?.write_permission && 'disabled'}`} onClick={() => navigate(`/${loggedinUserInfo?.grade}/send_question_selector`)} >أضف سؤالًا {!loggedinUserInfo?.write_permission && '[تتم مراجعة حسابك]'}</button>
+          <button className='btn btn-danger w-100 p-2' onClick={handleSignout}>تسجيل الخروج</button>
+        </div> : <button className='btn btn-primary w-100 p-2' onClick={() => navigate('signin')}>تسجيل الدخول</button>
         }
       </div>
     </div>

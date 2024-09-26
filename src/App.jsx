@@ -17,34 +17,40 @@ import TestYourself from './pages/TestYourself'
 import TestResult from './components/test_yourself/TestResult';
 import PersonPage from './pages/PersonPage';
 import InfluencersPage from './pages/InfluencersPage';
-import SendQuestion from './pages/SendQuestion';
 import TestYourselfSubjectSelector from './pages/TestYourselfSubjectSelector';
-import SignupPage from './pages/SignupPage';
-import SigninPage from './pages/SigninPage';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { firebaseAuth, firebaseDB } from './utils/firebaseInit';
 import SendQuestionTermSelector from './pages/SendQuestionTermSelector';
 import SendQuestionSubjectSelector from './pages/SendQuestionSubjectSelector';
 import { doc, getDoc } from 'firebase/firestore';
+import SignUpComp from './components/users_accounts/SignUpComp';
+import SignInComp from './components/users_accounts/SignInComp';
+import SendQuestionForm from './components/send_question_form/SendQuestionForm';
+import SendSuggestionForm from './components/send_suggestion_form/SendSuggestionForm'
+import SendProblemForm from './components/send_problem_form/SendProblemForm';
 
 function App() {
   const [loggedinUser, setLoggedinUser] = useState(null);
+  const [loggedinUserInfo, setLoggedinUserInfo] = useState(JSON.parse(localStorage.getItem('loggedInUserInfo')));
 
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, async user => {
       if (user) {
         const userSnapshot = await getDoc(doc(firebaseDB, `users/${user.uid}`));
         const data = userSnapshot.data();
+
         localStorage.setItem('loggedinUserInfo', JSON.stringify(data));
+        setLoggedinUserInfo(data);
       } else {
         localStorage.setItem('loggedinUserInfo', JSON.stringify(null));
+        setLoggedinUserInfo(null);
       }
 
       setLoggedinUser(user);
       localStorage.setItem('loggedinUser', JSON.stringify(user));
     });
-  }, [])
+  }, []);
 
   const router = createHashRouter(
     createRoutesFromElements(
@@ -73,13 +79,17 @@ function App() {
           <Route path='/person/:personId' element={<PersonPage />} />
 
           {/* Send Question Page */}
-          <Route path='/:grade/send_question_selector' element={loggedinUser ? <SendQuestionTermSelector /> : <SigninPage />} />
-          <Route path='/:grade/send_question_selector/:term' element={<SendQuestionSubjectSelector />} />
-          <Route path='/:grade/:term/:subject/send_question' element={<SendQuestion />} />
+          <Route path='/:grade/send_question_selector' element={(loggedinUserInfo?.write_permission) ? <SendQuestionTermSelector /> : <ErrorPage />} />
+          <Route path='/:grade/send_question_selector/:term' element={(loggedinUserInfo?.write_permission) ? <SendQuestionSubjectSelector /> : <ErrorPage />} />
+          <Route path='/:grade/:term/:subject/send_question' element={(loggedinUserInfo?.write_permission) ? <SendQuestionForm /> : <ErrorPage />} />
 
           {/* Users */}
-          <Route path='/signup' element={!loggedinUser ? <SignupPage /> : <Navigate to="/" />} />
-          <Route path='/signin' element={!loggedinUser ? <SigninPage /> : <Navigate to="/" />} />
+          <Route path='/signup' element={!loggedinUser ? <SignUpComp /> : <Navigate to='/' />} />
+          <Route path='/signin' element={!loggedinUser ? <SignInComp /> : <Navigate to='/' />} />
+
+          <Route path='/send_suggestion' element={<SendSuggestionForm />} />
+          <Route path='/send_problem' element={<SendProblemForm />} />
+
         </Route>
       </>
     )
