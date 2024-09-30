@@ -3,7 +3,7 @@ import React from 'react'
 
 const LoadMoreButton = ({ degreesCollection, lastStudent, setDataAndHideLoaderFirestore }) => {
   function handleMoreBtn() {
-    const q = query(degreesCollection, orderBy('rank', 'asc'), startAfter(lastStudent), limit(5));
+    const q = query(degreesCollection, orderBy('rank', 'asc'), startAfter(lastStudent), limit(40));
 
     setDataAndHideLoaderFirestore(q);
   }

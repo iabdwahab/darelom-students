@@ -21,8 +21,10 @@ export function translate(en) {
     nsoos_gahilya: "نصوص جاهلية",
     farsy: "فارسي",
     ebry: "عبري",
+    riyadat_aamal: "ريادة أعمال",
     nazm_oslobiya: "النظم والأسلوبية",
-    adab_islamy: "أدب إسلامي",
+    quran_ahwal: "القرآن الكريم والأحوال الشخصية",
+    adab_islamy_omawy: "أدب إسلامي وأموي",
     mawarith: "مواريث",
     maajim_aswat: "المعاجم وعلم الأصوات",
     nsoos_islamya_omawya: "نصوص إسلامية وأموية",
@@ -43,6 +45,9 @@ export function translate(en) {
     horoob_salibiya: "حروب صليبيبة",
     nsoos_haditha: "نصوص أدبية حديثة",
     naqd_hadith: "نقد أدبي حديث",
+
+    mojalad_tasgilat: "مجلد مجمع للمواد",
+    groupped_channel: "قناة تجمع المواد",
   };
 
   return translations[en];

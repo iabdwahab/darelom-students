@@ -29,6 +29,8 @@ import SignInComp from './components/users_accounts/SignInComp';
 import SendQuestionForm from './components/send_question_form/SendQuestionForm';
 import SendSuggestionForm from './components/send_suggestion_form/SendSuggestionForm'
 import SendProblemForm from './components/send_problem_form/SendProblemForm';
+import Schedule from './components/schedule/Schedule';
+import LecturesRecordingsSelector from './components/lectures_recordings/LecturesRecordingsSelector';
 
 function App() {
   const [loggedinUser, setLoggedinUser] = useState(null);
@@ -89,6 +91,12 @@ function App() {
 
           <Route path='/send_suggestion' element={<SendSuggestionForm />} />
           <Route path='/send_problem' element={<SendProblemForm />} />
+
+          <Route path='/:grade/schedule' element={<Schedule />} />
+
+          <Route path='/:grade/lectures_recordings/:term' element={<LecturesRecordingsSelector />} />
+
+
 
         </Route>
       </>

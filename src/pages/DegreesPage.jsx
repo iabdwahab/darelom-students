@@ -55,7 +55,7 @@ const DegreesPage = () => {
     if (dbSource == 'github') {
       setDataAndHideLoaderGithub();
     } else {
-      setDataAndHideLoaderFirestore(query(degreesCollection, orderBy('rank', 'asc'), limit(5)));
+      setDataAndHideLoaderFirestore(query(degreesCollection, orderBy('rank', 'asc'), limit(40)));
     }
   }, []);
 

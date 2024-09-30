@@ -41,11 +41,17 @@ const stepsList = [
         option_text: "جدول المحاضرات",
         option_data: "schedule",
         will_next: false,
-        available: false,
+        available: true,
       },
       {
         option_text: "كتب دراسية",
         option_data: "books",
+        will_next: true,
+        available: true,
+      },
+      {
+        option_text: "تسجيلات محاضرات",
+        option_data: "lectures_recordings",
         will_next: true,
         available: true,
       },
@@ -62,21 +68,15 @@ const stepsList = [
         available: true,
       },
       {
-        option_text: "امتحانات الأعوام السابقة",
-        option_data: "books",
-        will_next: true,
-        available: false,
-      },
-      {
-        option_text: "تسجيلات محاضرات",
-        option_data: "lecture_recordings",
-        will_next: false,
-        available: false,
-      },
-      {
         option_text: "شروحات",
         option_data: "explanations",
         will_next: false,
+        available: false,
+      },
+      {
+        option_text: "امتحانات الأعوام السابقة",
+        option_data: "books",
+        will_next: true,
         available: false,
       },
     ]

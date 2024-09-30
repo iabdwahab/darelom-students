@@ -63,7 +63,7 @@ const TestYourself = () => {
       <SectionHeading fontSize='2'>اختبر نفسك</SectionHeading>
       {isLoading ? <LoadingSpinner /> :
         (questions.length ? <div className='mt-2'>
-          <TestYourselfQuestionsCount currentQuestionIndex={currentQuestionIndex} questionsLength={questions.length} />
+          <TestYourselfQuestionsCount currentQuestionIndex={currentQuestionIndex} questionsLength={questions.length} creatorName={questions[currentQuestionIndex]?.question_creator?.name} />
           <TestYourselfQuestionText questionText={questions[currentQuestionIndex]?.question_text} />
           <div className='row g-2'>
             {questions[currentQuestionIndex]?.question_options.map((option, index) => {
