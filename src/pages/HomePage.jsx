@@ -68,6 +68,12 @@ const stepsList = [
         available: true,
       },
       {
+        option_text: "مصادر إضافية",
+        option_data: "more_resources",
+        will_next: true,
+        available: true,
+      },
+      {
         option_text: "شروحات",
         option_data: "explanations",
         will_next: false,
@@ -104,7 +110,7 @@ const HomePage = () => {
   return (
     <>
       <ResourcesSteps stepsList={stepsList} />
-      <InfluencersShortList />
+      {/* <InfluencersShortList /> */}
       <TopStudents />
     </>
   )

@@ -1,8 +1,8 @@
 import React from 'react'
 
-const FieldContainer = ({ field }) => {
+const FieldContainer = ({ field, marginBottom = 3 }) => {
   return (
-    <div className="mb-3">
+    <div className={`mb-${marginBottom}`}>
       {field}
     </div>
   )

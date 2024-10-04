@@ -11,13 +11,6 @@ const TestYourselfQuestionsCount = ({ currentQuestionIndex, questionsLength, cre
         من
         <span className='fw-bold'> {questionsLength}</span>.
       </p>
-      {
-        creatorName && <p className='mb-0'>
-          السؤال من:
-          <span className='fw-bold'> {creatorName}</span>.
-        </p>
-      }
-
     </div>
   )
 }

@@ -31,6 +31,8 @@ import SendSuggestionForm from './components/send_suggestion_form/SendSuggestion
 import SendProblemForm from './components/send_problem_form/SendProblemForm';
 import Schedule from './components/schedule/Schedule';
 import LecturesRecordingsSelector from './components/lectures_recordings/LecturesRecordingsSelector';
+import MoreResourcesSubjectSelector from './pages/MoreResourcesSubjectSelector';
+import MoreResources from './pages/MoreResources';
 
 function App() {
   const [loggedinUser, setLoggedinUser] = useState(null);
@@ -67,6 +69,10 @@ function App() {
           <Route path=':grade/books/:term' element={<BooksSelector />} />
           <Route path='/book/:bookId' element={<BookPage />} />
 
+          {/* More Resources */}
+          <Route path=':grade/more_resources/:term' element={<MoreResourcesSubjectSelector />} />
+          <Route path=':grade/:term/more_resources/:subject' element={<MoreResources />} />
+
           {/* Test Yourself */}
           <Route path='/test_yourself' element={<TestYourself />} /> {/* FOR TEST FUNCTIONS */}
           <Route path='/test_yourself/test_result' element={<TestResult />} />
@@ -75,17 +81,17 @@ function App() {
           <Route path='/:grade/:term/:subject/test_yourself_students' element={<TestYourself />} />
 
           {/* Influencers */}
-          <Route path='/influencers' element={<InfluencersPage />} />
+          {/* <Route path='/influencers' element={<InfluencersPage />} /> */}
 
           {/* Person Page */}
-          <Route path='/person/:personId' element={<PersonPage />} />
+          {/* <Route path='/person/:personId' element={<PersonPage />} /> */}
 
           {/* Send Question Page */}
           <Route path='/:grade/send_question_selector' element={(loggedinUserInfo?.write_permission) ? <SendQuestionTermSelector /> : <ErrorPage />} />
           <Route path='/:grade/send_question_selector/:term' element={(loggedinUserInfo?.write_permission) ? <SendQuestionSubjectSelector /> : <ErrorPage />} />
           <Route path='/:grade/:term/:subject/send_question' element={(loggedinUserInfo?.write_permission) ? <SendQuestionForm /> : <ErrorPage />} />
 
-          {/* Users */}
+          {/* Users Functions */}
           <Route path='/signup' element={!loggedinUser ? <SignUpComp /> : <Navigate to='/' />} />
           <Route path='/signin' element={!loggedinUser ? <SignInComp /> : <Navigate to='/' />} />
 
@@ -95,9 +101,6 @@ function App() {
           <Route path='/:grade/schedule' element={<Schedule />} />
 
           <Route path='/:grade/lectures_recordings/:term' element={<LecturesRecordingsSelector />} />
-
-
-
         </Route>
       </>
     )

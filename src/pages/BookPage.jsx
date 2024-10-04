@@ -15,7 +15,7 @@ const BookPage = () => {
 
   return (
     <>
-      <SectionHeading>كتاب: {book_name}</SectionHeading>
+      <SectionHeading>كتاب: "{book_name}".</SectionHeading>
       <div className='my-2 d-flex justify-content-end row gx-2'>
         <ButtonContainer>
           <DownloadButton bookId={bookId} />
