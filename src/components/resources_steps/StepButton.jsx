@@ -17,7 +17,12 @@ const StepButton = ({ option, stepsList, currentStepIndex, setCurrentStepIndex, 
     }
   }
 
-  const isAvailalbe = option.available;
+  let isAvailalbe = true;
+
+  if (currentStepIndex > 0 && !option.availableAt?.includes(selections[0])) {
+    isAvailalbe = false
+  }
+
   const btnText = `${option.option_text} ${!isAvailalbe ? '[قريبًا]' : ''}`;
   const classNames = `btn btn-primary w-100 p-2 ${!isAvailalbe ? 'disabled' : ''}`;
 

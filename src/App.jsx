@@ -15,8 +15,6 @@ import BooksSelector from './components/books_selector/BooksSelector';
 import BookPage from './pages/BookPage';
 import TestYourself from './pages/TestYourself'
 import TestResult from './components/test_yourself/TestResult';
-import PersonPage from './pages/PersonPage';
-import InfluencersPage from './pages/InfluencersPage';
 import TestYourselfSubjectSelector from './pages/TestYourselfSubjectSelector';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
@@ -33,6 +31,7 @@ import Schedule from './components/schedule/Schedule';
 import LecturesRecordingsSelector from './components/lectures_recordings/LecturesRecordingsSelector';
 import MoreResourcesSubjectSelector from './pages/MoreResourcesSubjectSelector';
 import MoreResources from './pages/MoreResources';
+import FinalExamsSelector from './components/final_exams_selector/FinalExamsSelector';
 
 function App() {
   const [loggedinUser, setLoggedinUser] = useState(null);
@@ -68,6 +67,10 @@ function App() {
           {/* Books */}
           <Route path=':grade/books/:term' element={<BooksSelector />} />
           <Route path='/book/:bookId' element={<BookPage />} />
+
+          {/* Final Exams */}
+          <Route path=':grade/final_exams/:term' element={<FinalExamsSelector />} />
+          <Route path='/final_exam/:examId' element={<BookPage />} />
 
           {/* More Resources */}
           <Route path=':grade/more_resources/:term' element={<MoreResourcesSubjectSelector />} />

@@ -34,7 +34,8 @@ const Footer = () => {
         <hr />
         <p className='m-0'>
           <span>تم إنشاء المنصة بواسطة: </span>
-          <span className='text-warning'>إبراهيم عبد الوهاب.</span>
+          {/* <span className='text-warning'>إبراهيم عبد الوهاب.</span> */}
+          <span className='text-warning'>طلاب الدفعة 153.</span>
         </p>
       </div>
     </footer >
