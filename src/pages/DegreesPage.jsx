@@ -12,6 +12,7 @@ import { translate } from '../utils/translations'
 import StudentsCount from '../components/degrees_page/StudentsCount';
 import LoadMoreButton from '../components/degrees_page/LoadMoreButton';
 import ResultsEnded from '../components/degrees_page/ResultsEnded';
+import IDSearch from '../components/degrees_page/IDSearch';
 
 const DegreesPage = () => {
   const [degrees, setDegrees] = useState([]);
@@ -62,7 +63,9 @@ const DegreesPage = () => {
   return (
     <div>
       <SectionHeading fontSize={3} py={3}>ترتيب نتائج {translate(grade)} 2023/24</SectionHeading>
+      <IDSearch />
       <StudentsCount studentsCount={studentsCount} />
+
       <div className='table-responsive border'>
         <table className="table table-striped table-bordered">
           <TableHead />

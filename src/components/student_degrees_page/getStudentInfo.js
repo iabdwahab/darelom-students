@@ -1,11 +1,9 @@
-import { firebaseDB } from "../../utils/firebaseInit";
-import { doc, getDoc } from "firebase/firestore";
-import { API_URL } from "../../utils/global-variables";
+import { firebaseDB } from '../../utils/firebaseInit';
+import { doc, getDoc } from 'firebase/firestore';
+import { API_URL } from '../../utils/global-variables';
 
 export async function getStudentInfoGithub(grade, studentId, setSubjects) {
-  const res = await fetch(
-    `${API_URL}/darelom-students-data/degrees/2023_24/degrees_${grade}.json`
-  );
+  const res = await fetch(`${API_URL}/darelom-students-data/degrees/2023_24/degrees_${grade}.json`);
   const data = await res.json();
 
   let student;

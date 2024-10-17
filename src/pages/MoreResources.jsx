@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { firebaseDB } from '../utils/firebaseInit';
 import { doc, getDoc } from 'firebase/firestore';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import BackHomeButton from '../components/books_selector/BackHomeButton';
 import LoadingSpinner from '../components/global/LoadingSpinner';
 
@@ -43,7 +43,9 @@ const MoreResources = () => {
               resources?.map((resource, index) => {
                 return (
                   <div className='col-sm-6' key={index}>
-                    <button className='btn btn-primary w-100' onClick={() => window.location.href = resource.link}>{resource.title}</button>
+                    {/* {resource?.isBook ? <Lin className='btn btn-primary w-100' onClick={() => window.location.href = resource.link}>{resource.title}</Lin> :
+                      <button className='btn btn-primary w-100' onClick={() => window.location.href = resource.link}>{resource.title}</button>} */}
+                    <Link className='btn btn-primary w-100' to={resource?.isBook ? `/book/${resource.link}` : resource.link} state={{ book_name: resource.title }}>{resource.title}</Link>
                   </div>
                 )
               }) :

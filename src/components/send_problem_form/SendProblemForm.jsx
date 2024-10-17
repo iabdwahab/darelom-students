@@ -19,6 +19,7 @@ const SendProblemForm = () => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       e.stopPropagation();
+      console.log('s')
 
       const problem = form['textarea-field'].value;
 
