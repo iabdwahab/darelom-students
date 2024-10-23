@@ -9,3 +9,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <App />
   // {/* </React.StrictMode>, */ }
 )
+
+document.documentElement.setAttribute('data-bs-theme', localStorage.getItem('theme') || 'light');

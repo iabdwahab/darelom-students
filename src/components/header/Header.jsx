@@ -7,7 +7,7 @@ const Header = () => {
       <h1 className='fw-bold'>
         <Link to="/" className='text-dark'>منصة طلاب دار العلوم</Link>
       </h1>
-      <p className='text-danger fw-bold m-0'>[المنصة غير تابعة لإدارة الكلية]</p>
+      {/* <p className='text-danger fw-bold m-0'>[المنصة غير تابعة لإدارة الكلية]</p> */}
     </header>
   )
 }

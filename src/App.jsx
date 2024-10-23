@@ -32,6 +32,7 @@ import LecturesRecordingsSelector from './components/lectures_recordings/Lecture
 import MoreResourcesSubjectSelector from './pages/MoreResourcesSubjectSelector';
 import MoreResources from './pages/MoreResources';
 import FinalExamsSelector from './components/final_exams_selector/FinalExamsSelector';
+import GeneralSubjectsSelector from './pages/GeneralSubjectsSelector';
 
 function App() {
   const [loggedinUser, setLoggedinUser] = useState(null);
@@ -76,12 +77,17 @@ function App() {
           <Route path=':grade/more_resources/:term' element={<MoreResourcesSubjectSelector />} />
           <Route path=':grade/:term/more_resources/:subject' element={<MoreResources />} />
 
+          <Route path='/general_subjects' element={<GeneralSubjectsSelector />} />
+          <Route path='/general_subjects/:subject' element={<MoreResources />} />
+
+
           {/* Test Yourself */}
           <Route path='/test_yourself' element={<TestYourself />} /> {/* FOR TEST FUNCTIONS */}
           <Route path='/test_yourself/test_result' element={<TestResult />} />
           <Route path=':grade/test_yourself_students/:term' element={<TestYourselfSubjectSelector />} />
           <Route path='/test_yourself/sended_questions' element={<TestYourself />} />
           <Route path='/:grade/:term/:subject/test_yourself_students' element={<TestYourself />} />
+
 
           {/* Influencers */}
           {/* <Route path='/influencers' element={<InfluencersPage />} /> */}

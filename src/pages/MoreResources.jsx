@@ -15,8 +15,14 @@ const MoreResources = () => {
   useEffect(() => {
 
     async function getSubjectFirestore() {
-      const snapshot = await getDoc(doc(firebaseDB, `${grade}/more_resources/${term}/${subject}`));
-      console.log(snapshot.data())
+      let snapshot;
+
+      if (grade) {
+        snapshot = await getDoc(doc(firebaseDB, `${grade}/more_resources/${term}/${subject}`));
+      } else {
+        snapshot = await getDoc(doc(firebaseDB, `general_subjects/${subject}`));
+      }
+
       const resources = snapshot.data()?.resources || [];
 
       setResources(resources);

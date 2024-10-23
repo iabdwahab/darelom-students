@@ -30,6 +30,12 @@ const stepsList = [
         will_next: true,
         available: true,
       },
+      {
+        option_text: "مواد مشتركة",
+        option_data: "general_subjects",
+        will_next: false,
+        available: true,
+      },
     ]
   },
   {

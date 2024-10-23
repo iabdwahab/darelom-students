@@ -2,6 +2,7 @@ import React from 'react'
 import { firebaseAuth } from '../../utils/firebaseInit';
 import { signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom';
+import ThemeMode from '../theme_mode/ThemeMode';
 
 const UserHeader = () => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const UserHeader = () => {
           <button className='btn btn-danger w-100 p-2' onClick={handleSignout}>تسجيل الخروج</button>
         </div> : <button className='btn btn-primary w-100 p-2' onClick={() => navigate('signin')}>تسجيل الدخول</button>
         }
+        <ThemeMode />
       </div>
     </div>
   )

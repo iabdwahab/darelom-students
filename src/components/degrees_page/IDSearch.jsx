@@ -51,12 +51,12 @@ const IDSearch = () => {
   return (
     <form className="row g-3 mt-0 needs-validation" noValidate ref={formRef}>
       <p className='mb-2 fw-bold'>ابحث برقم الجلوس:</p>
-      <div className="col m-0">
-        <input type="text" className="form-control" id="student_id-input" placeholder="رقم الجلوس" minLength={5} maxLength={5} required />
+      <div className="col-12 col-sm-10 m-0 mb-2">
+        <input type="text" className="form-control py-2" id="student_id-input" placeholder="رقم الجلوس" minLength={5} maxLength={5} required />
         <div className="invalid-feedback">رقم الجلوس غير موجود.</div>
       </div>
-      <div className="col-auto m-0">
-        {isSending ? <SpinnerButton /> : <button type="submit" className="btn btn-primary mb-3 px-5">ابحث</button>}
+      <div className="col-12 col-sm-2 m-0">
+        {isSending ? <SpinnerButton /> : <button type="submit" className="btn btn-primary mb-3 py-2 w-100">ابحث</button>}
       </div>
     </form>
   )

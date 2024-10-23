@@ -18,11 +18,13 @@ const ResourcesSteps = ({ stepsList }) => {
       </div>
       <div className='row g-2 my-2'>
         {currentStep.options.map((option, index) => {
-          return (
-            <div className='col-sm-6' key={index}>
-              <StepButton option={option} stepsList={stepsList} currentStepIndex={currentStepIndex} setCurrentStepIndex={setCurrentStepIndex} selections={selections} setSelections={setSelections} />
-            </div>
-          )
+          if (currentStepIndex === 0 || option.availableAt?.includes(selections[0])) {
+            return (
+              <div className='col-sm-6' key={index}>
+                <StepButton option={option} stepsList={stepsList} currentStepIndex={currentStepIndex} setCurrentStepIndex={setCurrentStepIndex} selections={selections} setSelections={setSelections} />
+              </div>
+            )
+          }
         })}
       </div>
     </div>

@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='d-flex flex-wrap gap-4 gap-sm-5'>
 
           <Column title='تنبيهات هامة'>
-            <ColumnParagraph>إدارة الكلية غير مسئولة عن هذه المنصة.</ColumnParagraph>
+            {/* <ColumnParagraph>إدارة الكلية غير مسئولة عن هذه المنصة.</ColumnParagraph> */}
             <ColumnParagraph>
               <span>للإبلاغ عن خطأ: </span>
               <Link to="/send_problem">أبلغنا من هنا</Link>.
@@ -34,8 +34,8 @@ const Footer = () => {
         <hr />
         <p className='m-0'>
           <span>تم إنشاء المنصة بواسطة: </span>
-          <span className='text-warning'>إبراهيم عبد الوهاب.</span>
-          {/* <span className='text-warning'>طلاب الدفعة 153.</span> */}
+          {/* <span className='text-warning'>إبراهيم عبد الوهاب.</span> */}
+          <span className='text-warning'>طلاب الدفعة 153.</span>
         </p>
       </div>
     </footer >

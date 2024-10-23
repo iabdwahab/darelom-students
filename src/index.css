@@ -3,7 +3,20 @@
 }
 
 * {
-  font-family: "Cairo", sans-serif !important;
+  font-family: 'Cairo', sans-serif !important;
+}
+
+html[data-bs-theme='dark'] {
+  --bs-border-color: #616161;
+}
+html[data-bs-theme='dark'] .text-dark {
+  color: white !important;
+}
+html[data-bs-theme='dark'] .bg-dark {
+  background-color: #040a13 !important;
+}
+html[data-bs-theme='dark'] .btn-primary {
+  background-color: #031633 !important;
 }
 
 .header a,
