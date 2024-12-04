@@ -25,7 +25,7 @@ const Footer = () => {
 
           <Column title="روابط شخصية">
             <ColumnParagraph><a href="https://github.com/iabdwahab/darelom-students">ملفات المشروع على GitHub.</a></ColumnParagraph>
-            <ColumnParagraph><a href="https://iabdwahab.me">معرض الأعمال.</a></ColumnParagraph>
+            <ColumnParagraph><a href="https://iabdwahab.github.io">معرض الأعمال.</a></ColumnParagraph>
             <ColumnParagraph><a href="https://www.linkedin.com/in/iabdwahab/">LinkedIn.</a></ColumnParagraph>
             <ColumnParagraph><a href="https://github.com/iabdwahab">GitHub.</a></ColumnParagraph>
           </Column>
