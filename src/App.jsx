@@ -96,9 +96,9 @@ function App() {
           {/* <Route path='/person/:personId' element={<PersonPage />} /> */}
 
           {/* Send Question Page */}
-          <Route path='/:grade/send_question_selector' element={(loggedinUserInfo?.write_permission) ? <SendQuestionTermSelector /> : <ErrorPage />} />
-          <Route path='/:grade/send_question_selector/:term' element={(loggedinUserInfo?.write_permission) ? <SendQuestionSubjectSelector /> : <ErrorPage />} />
-          <Route path='/:grade/:term/:subject/send_question' element={(loggedinUserInfo?.write_permission) ? <SendQuestionForm /> : <ErrorPage />} />
+          <Route path='/:grade/send_question_selector' element={(loggedinUserInfo?.write_permission) ? <SendQuestionTermSelector /> : <SignInComp />} />
+          <Route path='/:grade/send_question_selector/:term' element={(loggedinUserInfo?.write_permission) ? <SendQuestionSubjectSelector /> : <SignInComp />} />
+          <Route path='/:grade/:term/:subject/send_question' element={(loggedinUserInfo?.write_permission) ? <SendQuestionForm /> : <SignInComp />} />
 
           {/* Users Functions */}
           <Route path='/signup' element={!loggedinUser ? <SignUpComp /> : <Navigate to='/' />} />

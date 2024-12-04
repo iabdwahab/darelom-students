@@ -14,6 +14,7 @@ const UserHeader = () => {
     await signOut(firebaseAuth);
     localStorage.setItem('loggedinUser', null);
     localStorage.setItem('loggedinUserInfo', null);
+    navigate('/');
   }
 
   return (
