@@ -4,9 +4,10 @@ import LoadingSpinner from '../global/LoadingSpinner';
 import { API_URL } from '../../utils/global-variables';
 import BackHomeButton from './BackHomeButton';
 import BackStepButton from './BackStepButton';
-import BookButton from './BookButton';
 import SectionHeading from '../global/SectionHeading'
 import { translate } from '../../utils/translations'
+import OneStepSelector from '../one_step_selector/OneStepSelector';
+import PDFButton from '../global/PDFButton';
 
 const BooksPage = () => {
   const { grade, term } = useParams();
@@ -26,6 +27,9 @@ const BooksPage = () => {
 
   return (
     <>
+      <OneStepSelector
+        dataList={books}
+      />
       <div className='d-flex justify-content-between align-content-center mb-3'>
         <h2>اختر كتابًا:</h2>
         <div className='d-flex gap-2'>
@@ -41,7 +45,7 @@ const BooksPage = () => {
           {books.map((book, index) => {
             return (
               <div className='col-sm-6' key={index}>
-                <BookButton book={book} grade={grade} term={term} />
+                <PDFButton pdf={book} />
               </div>
             )
           })}

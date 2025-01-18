@@ -4,9 +4,9 @@ import LoadingSpinner from '../global/LoadingSpinner';
 import { API_URL } from '../../utils/global-variables';
 import BackHomeButton from './BackHomeButton';
 import BackStepButton from './BackStepButton';
-import ExamButton from './ExamButton';
 import SectionHeading from '../global/SectionHeading'
 import { translate } from '../../utils/translations'
+import PDFButton from '../global/PDFButton';
 
 const FinalExamsSelector = () => {
   const [isError, setIsError] = useState(false);
@@ -50,7 +50,7 @@ const FinalExamsSelector = () => {
               {books.map((book, index) => {
                 return (
                   <div className='col-sm-6' key={index}>
-                    <ExamButton book={book} grade={grade} term={term} />
+                    <PDFButton pdf={book} />
                   </div>
                 )
               })}
