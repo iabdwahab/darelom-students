@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom';
 import LoadingSpinner from '../global/LoadingSpinner';
 import { API_URL } from '../../utils/global-variables'
 import { translate } from '../../utils/translations'
@@ -9,8 +9,18 @@ const schedule = () => {
   const { grade } = useParams();
   const [isFounded, setIsFounded] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const imgSrc = `${API_URL}/darelom-students-data/schedule/${grade}.jpg`;
+  let imgSrc = '';
+  let imageTitle;
+
+  if (grade === 'exams_schedule') {
+    imgSrc = `${API_URL}/darelom-students-data/schedule/exams_schedule.jpg`;
+    imageTitle = 'جدول امتحانات الفصل الدراسي الأول 2024';
+  } else {
+    imgSrc = `${API_URL}/darelom-students-data/schedule/${grade}.jpg`;
+    imageTitle = `جدول محاضرات ${translate(grade)}`;
+  }
   const downloadImage = useImageDownloader();
+
 
 
   function handleError() {
@@ -33,7 +43,7 @@ const schedule = () => {
 
       <div className={`d-${isFounded ? 'block' : 'none'}`}>
         <img src={imgSrc} className={`w-100`} alt="Schecule" onError={handleError} onLoad={handleLoading} />
-        <button className='btn btn-primary w-100' onClick={() => downloadImage(imgSrc, `جدول محاضرات ${translate(grade)}`)}>تحميل الجدول</button>
+        <button className='btn btn-primary w-100 mt-3' onClick={() => downloadImage(imgSrc, imageTitle)}>تحميل الجدول</button>
       </div>
     </div>
   )

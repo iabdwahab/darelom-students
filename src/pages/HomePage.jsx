@@ -57,7 +57,7 @@ const stepsList = [
         option_text: "تسجيلات محاضرات",
         option_data: "lectures_recordings",
         will_next: true,
-        availableAt: ['grade_2', 'grade_3'],
+        availableAt: ['grade_1', 'grade_2', 'grade_3'],
       },
       {
         option_text: "اختبر نفسك - أسئلة الطلاب",
