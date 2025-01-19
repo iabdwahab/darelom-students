@@ -88,13 +88,6 @@ function App() {
           <Route path='/test_yourself/sended_questions' element={<TestYourself />} />
           <Route path='/:grade/:term/:subject/test_yourself_students' element={<TestYourself />} />
 
-
-          {/* Influencers */}
-          {/* <Route path='/influencers' element={<InfluencersPage />} /> */}
-
-          {/* Person Page */}
-          {/* <Route path='/person/:personId' element={<PersonPage />} /> */}
-
           {/* Send Question Page */}
           <Route path='/:grade/send_question_selector' element={(loggedinUserInfo?.write_permission) ? <SendQuestionTermSelector /> : <SignInComp />} />
           <Route path='/:grade/send_question_selector/:term' element={(loggedinUserInfo?.write_permission) ? <SendQuestionSubjectSelector /> : <SignInComp />} />
