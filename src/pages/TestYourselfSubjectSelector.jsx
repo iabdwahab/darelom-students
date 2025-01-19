@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { firebaseDB } from '../utils/firebaseInit';
 import { doc, getDoc } from 'firebase/firestore';
 import { useNavigate, useParams } from 'react-router-dom';
 import BackStepButton from '../components/books_selector/BackStepButton';
-import BackHomeButton from '../components/books_selector/BackHomeButton';
 import LoadingSpinner from '../components/global/LoadingSpinner';
 import { translate } from '../utils/translations';
+import GoHomeButton from '../components/global/buttons/GoHomeButton';
 
 
 const TestYourselfSubjectSelector = () => {
@@ -35,7 +35,7 @@ const TestYourselfSubjectSelector = () => {
         <h2>اختر مادة:</h2>
         <div className='d-flex gap-2'>
           <BackStepButton grade={grade} backFrom='test_yourself_students' />
-          <BackHomeButton />
+          <GoHomeButton />
         </div>
       </div>
       {isLoading ? <LoadingSpinner /> :

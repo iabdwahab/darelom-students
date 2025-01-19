@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const BackHomeButton = () => {
+const GoHomeButton = () => {
   const navigate = useNavigate();
 
   function goHome() {
@@ -11,4 +11,4 @@ const BackHomeButton = () => {
   return <button className='btn btn-danger' onClick={goHome}>القائمة الرئيسية</button>
 }
 
-export default BackHomeButton
+export default GoHomeButton

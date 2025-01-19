@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { firebaseDB } from '../utils/firebaseInit';
 import { doc, getDoc } from 'firebase/firestore';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import BackHomeButton from '../components/books_selector/BackHomeButton';
 import LoadingSpinner from '../components/global/LoadingSpinner';
+import GoHomeButton from '../components/global/buttons/GoHomeButton';
 
 const MoreResources = () => {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ const MoreResources = () => {
         <h2>اختر شيئًا:</h2>
         <div className='d-flex gap-2'>
           <button className='btn btn-danger' onClick={() => navigate(-1)}>رجوع</button>
-          <BackHomeButton />
+          <GoHomeButton />
         </div>
       </div>
       {isLoading ? <LoadingSpinner /> :

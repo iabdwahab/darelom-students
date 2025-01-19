@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { firebaseDB } from '../utils/firebaseInit';
-import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { useNavigate, useParams } from 'react-router-dom';
-import BackStepButton from '../components/books_selector/BackStepButton';
-import BackHomeButton from '../components/books_selector/BackHomeButton';
 import LoadingSpinner from '../components/global/LoadingSpinner';
 import { translate } from '../utils/translations';
+import GoHomeButton from '../components/global/buttons/GoHomeButton';
 
 
 const GeneralSubjectsSelector = () => {
@@ -34,7 +33,7 @@ const GeneralSubjectsSelector = () => {
       <div className='d-flex justify-content-between align-content-center'>
         <h2>اختر مادة:</h2>
         <div className='d-flex gap-2'>
-          <BackHomeButton />
+          <GoHomeButton />
         </div>
       </div>
       {isLoading ? <LoadingSpinner /> :

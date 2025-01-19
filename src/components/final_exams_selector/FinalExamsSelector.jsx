@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import LoadingSpinner from '../global/LoadingSpinner';
 import { API_URL } from '../../utils/global-variables';
-import BackHomeButton from './BackHomeButton';
 import BackStepButton from './BackStepButton';
 import SectionHeading from '../global/SectionHeading'
 import { translate } from '../../utils/translations'
 import PDFButton from '../global/PDFButton';
+import GoHomeButton from '../global/buttons/GoHomeButton';
 
 const FinalExamsSelector = () => {
   const [isError, setIsError] = useState(false);
@@ -37,7 +37,7 @@ const FinalExamsSelector = () => {
         <h2>اختر امتحانًا:</h2>
         <div className='d-flex gap-2'>
           <BackStepButton grade={grade} backFrom='final_exams' />
-          <BackHomeButton />
+          <GoHomeButton />
         </div>
       </div>
 
