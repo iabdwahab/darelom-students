@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { firebaseDB } from '../../utils/firebaseInit'
+import { addDoc, collection } from 'firebase/firestore'
 import Form from '../send_question_form/Form'
 import FieldContainer from '../form/FieldContainer'
 import SubmitButton from '../form/SubmitButton'
 import SuggestionTextAreaField from './SuggestionTextAreaField'
-import { firebaseDB } from '../../utils/firebaseInit'
-import { addDoc, collection } from 'firebase/firestore'
 import SpinnerButton from '../global/SpinnerButton'
 import SectionHeading from '../global/SectionHeading'
 

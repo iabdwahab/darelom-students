@@ -1,5 +1,3 @@
-import React from 'react'
-
 const LoadingSpinner = ({ hasText = true }) => {
   return (
     <div className='d-block text-center py-4'>

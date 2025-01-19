@@ -1,42 +1,31 @@
-import {
-  collection,
-  getDocs,
-  getFirestore,
-  limit,
-  orderBy,
-  query,
-} from "firebase/firestore";
-import { API_URL } from "../../utils/global-variables";
-import { firebaseDB } from "../../utils/firebaseInit";
+import { collection, getDocs, limit, orderBy, query } from 'firebase/firestore';
+import { API_URL } from '../../utils/global-variables';
+import { firebaseDB } from '../../utils/firebaseInit';
 
 export async function getTopStudentsFirestore() {
   const data = [
     {
-      grade: "grade_1",
-      grade_ar_name: "الفرقة الأولى",
+      grade: 'grade_1',
+      grade_ar_name: 'الفرقة الأولى',
     },
     {
-      grade: "grade_2",
-      grade_ar_name: "الفرقة الثانية",
+      grade: 'grade_2',
+      grade_ar_name: 'الفرقة الثانية',
     },
     {
-      grade: "grade_3",
-      grade_ar_name: "الفرقة الثالثة",
+      grade: 'grade_3',
+      grade_ar_name: 'الفرقة الثالثة',
     },
     {
-      grade: "grade_4",
-      grade_ar_name: "الفرقة الرابعة",
+      grade: 'grade_4',
+      grade_ar_name: 'الفرقة الرابعة',
     },
   ];
 
   // Loop on grades and retrieve top 3 students
   for (let i = 1; i <= 4; i++) {
     // Get Top 3 Students
-    const q = query(
-      collection(firebaseDB, `grade_${i}/degrees/2023_24`),
-      orderBy("rank"),
-      limit(3)
-    );
+    const q = query(collection(firebaseDB, `grade_${i}/degrees/2023_24`), orderBy('rank'), limit(3));
 
     const degreesList = [];
     const snapshot = await getDocs(q);
@@ -52,9 +41,7 @@ export async function getTopStudentsFirestore() {
 }
 
 export async function getTopStudentsGithub() {
-  const res = await fetch(
-    `${API_URL}/darelom-students-data/top_degrees_2023_24.json`
-  );
+  const res = await fetch(`${API_URL}/darelom-students-data/top_degrees_2023_24.json`);
 
   return await res.json();
 }

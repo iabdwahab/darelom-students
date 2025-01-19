@@ -1,4 +1,3 @@
-import React from 'react'
 import StudentInfoLine from './StudentInfoLine'
 
 const StudentInfo = ({ student }) => {

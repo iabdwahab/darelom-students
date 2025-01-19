@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
-import SectionHeading from '../global/SectionHeading'
+import { useEffect, useRef, useState } from 'react'
 import { firebaseDB } from '../../utils/firebaseInit';
 import { addDoc, collection } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import { translate } from '../../utils/translations';
+import SectionHeading from '../global/SectionHeading'
 import Form from './Form';
 import FieldContainer from '../form/FieldContainer';
-import TextAreaField from '../form/TextAreaField';
 import OptionsField from './OptionsField';
 import AnswerField from './AnswerField';
 import ReasonField from './ReasonField';

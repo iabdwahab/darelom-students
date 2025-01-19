@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import LoadingSpinner from '../components/global/LoadingSpinner'
 import BackButton from '../components/book_page/BackButton'

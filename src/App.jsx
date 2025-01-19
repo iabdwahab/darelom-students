@@ -1,4 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect, useState } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { firebaseAuth, firebaseDB } from './utils/firebaseInit';
+import { doc, getDoc } from 'firebase/firestore';
 import {
   createHashRouter,
   createRoutesFromElements,
@@ -6,6 +9,7 @@ import {
   Route,
   RouterProvider
 } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
 import DegreesPage from './pages/DegreesPage';
@@ -16,12 +20,8 @@ import BookPage from './pages/BookPage';
 import TestYourself from './pages/TestYourself'
 import TestResult from './components/test_yourself/TestResult';
 import TestYourselfSubjectSelector from './pages/TestYourselfSubjectSelector';
-import { onAuthStateChanged } from 'firebase/auth';
-import { useEffect, useState } from 'react';
-import { firebaseAuth, firebaseDB } from './utils/firebaseInit';
 import SendQuestionTermSelector from './pages/SendQuestionTermSelector';
 import SendQuestionSubjectSelector from './pages/SendQuestionSubjectSelector';
-import { doc, getDoc } from 'firebase/firestore';
 import SignUpComp from './components/users_accounts/SignUpComp';
 import SignInComp from './components/users_accounts/SignInComp';
 import SendQuestionForm from './components/send_question_form/SendQuestionForm';

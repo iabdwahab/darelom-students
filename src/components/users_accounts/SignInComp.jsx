@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import SectionHeading from '../global/SectionHeading';
+import { useEffect, useRef, useState } from 'react';
 import { firebaseAuth } from '../../utils/firebaseInit';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import SectionHeading from '../global/SectionHeading';
 import PasswordField from '../form/PasswordField';
 import EmailField from '../form/EmailField';
 import Form from '../form/Form';

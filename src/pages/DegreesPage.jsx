@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import LoadingSpinner from '../components/global/LoadingSpinner';
-import TableBodyTR from '../components/degrees_page/TableBodyTR';
-import TableHead from '../components/degrees_page/TableHead';
-import SectionHeading from '../components/global/SectionHeading'
 import { firebaseDB } from '../utils/firebaseInit';
 import { collection, limit, orderBy, query } from 'firebase/firestore';
 import { getDegreesGithub, getDegreesFirestore, getStudentsCount } from '../components/degrees_page/getData';
 import { dbSource } from '../utils/global-variables';
 import { translate } from '../utils/translations'
+import LoadingSpinner from '../components/global/LoadingSpinner';
+import TableBodyTR from '../components/degrees_page/TableBodyTR';
+import TableHead from '../components/degrees_page/TableHead';
+import SectionHeading from '../components/global/SectionHeading'
 import StudentsCount from '../components/degrees_page/StudentsCount';
 import LoadMoreButton from '../components/degrees_page/LoadMoreButton';
 import ResultsEnded from '../components/degrees_page/ResultsEnded';

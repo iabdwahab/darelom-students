@@ -1,4 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { API_URL } from '../utils/global-variables';
+import { useLocation, useParams } from 'react-router-dom';
+import { firebaseDB } from '../utils/firebaseInit';
+import { collection, getDocs } from 'firebase/firestore';
 import TestYourselfQuestionsCount from '../components/test_yourself/TestQuestionsCount';
 import TestYourselfQuestionText from '../components/test_yourself/TestQuestionText';
 import TestGoNextButton from '../components/test_yourself/TestGoNextButton';
@@ -7,12 +11,7 @@ import Modal from '../components/global/Modal';
 import TestReasonButton from '../components/test_yourself/TestReasonButton';
 import LoadingSpinner from '../components/global/LoadingSpinner'
 import SectionHeading from '../components/global/SectionHeading';
-import { API_URL } from '../utils/global-variables';
 import handleAnswerButtonClick from '../components/test_yourself/handleAnswerButtonClick';
-import { useLocation, useParams } from 'react-router-dom';
-
-import { firebaseDB } from '../utils/firebaseInit';
-import { collection, getDocs } from 'firebase/firestore';
 
 const TestYourself = () => {
   const { grade, term, subject } = useParams();

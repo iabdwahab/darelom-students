@@ -1,4 +1,3 @@
-import React from 'react'
 import ModalHeader from '../modal/ModalHeader'
 import ModalBody from '../modal/ModalBody'
 import ModalFooter from '../modal/ModalFooter'

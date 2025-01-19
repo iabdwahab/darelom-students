@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import LoadingSpinner from '../components/global/LoadingSpinner';
 import TableBodyTR from '../components/student_degrees_page/TableBodyTR';

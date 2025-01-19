@@ -1,5 +1,3 @@
-import React from 'react'
-
 const FieldContainer = ({ field, marginBottom = 3 }) => {
   return (
     <div className={`mb-${marginBottom}`}>

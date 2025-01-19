@@ -1,5 +1,3 @@
-import React from 'react'
-
 const DownloadButton = ({ bookId }) => {
   const className = 'btn btn-primary p-2 px-5 w-100';
 

@@ -1,5 +1,3 @@
-import React from 'react'
-
 const OptionsField = ({ optionsRef }) => {
   const optionsInputsNames = ['الأول', 'الثاني', 'الثالث', 'الرابع'];
 

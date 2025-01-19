@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ProblemTextAreaField from './ProblemTextAreaField';
 import { addDoc, collection } from 'firebase/firestore';
 import { firebaseDB } from '../../utils/firebaseInit';

@@ -1,5 +1,3 @@
-import React from 'react'
-
 const BookIframe = ({ bookId, isIframeLoading, setIsIframeLoading }) => {
   const source = `https://drive.google.com/file/d/${bookId}/preview`;
   const className = `${isIframeLoading && 'd-none'} w-100`;

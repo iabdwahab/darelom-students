@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import Header from '../components/header/Header'
 import SubHeader from '../components/header/SubHeader'
@@ -14,7 +14,7 @@ const MainLayout = () => {
 
   useEffect(() => {
 
-    onAuthStateChanged(firebaseAuth, user => {
+    onAuthStateChanged(firebaseAuth, () => {
       setIsLoading(false);
     })
 

@@ -1,5 +1,3 @@
-import React from 'react'
-
 const TextAreaField = ({ label, placeholder, invalidFeedback, minLength = 10, rows = 4, fontSize = 5, id = 'textarea-field' }) => {
   return (
     <>

@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import LoadingSpinner from '../global/LoadingSpinner';
-import BackHomeButton from './BackHomeButton';
 import BackStepButton from './BackStepButton';
 import SectionHeading from '../global/SectionHeading'
 import { translate } from '../../utils/translations'
 import { firebaseDB } from '../../utils/firebaseInit';
 import { doc, getDoc } from 'firebase/firestore';
 import Button from '../global/Button';
-
+import GoHomeButton from '../global/buttons/GoHomeButton';
 
 const LecturesRecordingsSelector = () => {
   const { grade, term } = useParams();
@@ -47,7 +46,7 @@ const LecturesRecordingsSelector = () => {
         <h2>اختر مادة:</h2>
         <div className='d-flex gap-2'>
           <BackStepButton grade={grade} backFrom='lectures_recordings' />
-          <BackHomeButton />
+          <GoHomeButton />
         </div>
       </div>
 

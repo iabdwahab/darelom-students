@@ -1,5 +1,3 @@
-import React from 'react'
-
 const BackButton = ({ currentStepIndex, setCurrentStepIndex, selections, setSelections }) => {
   function goBack() {
     if (currentStepIndex > 0) {

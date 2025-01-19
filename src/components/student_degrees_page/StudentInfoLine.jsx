@@ -1,5 +1,3 @@
-import React from 'react'
-
 const StudentInfoLine = ({ title, value }) => {
   return (
     <h4 className='mb-1'>

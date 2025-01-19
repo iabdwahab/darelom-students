@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { firebaseDB } from '../utils/firebaseInit';
 import { doc, getDoc } from 'firebase/firestore';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../components/global/LoadingSpinner';
 import { translate } from '../utils/translations';
 import GoHomeButton from '../components/global/buttons/GoHomeButton';
 
-
 const GeneralSubjectsSelector = () => {
   const navigate = useNavigate();
 
-  const { grade, term } = useParams();
   const [subjects, setSubjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 

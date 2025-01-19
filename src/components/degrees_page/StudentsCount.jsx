@@ -1,5 +1,3 @@
-import React from 'react'
-
 const StudentsCount = ({ studentsCount }) => {
   const count = <span className='fw-bold'>{studentsCount || 'غير محدد'}</span>;
 

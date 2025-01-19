@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const ThemeMode = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');

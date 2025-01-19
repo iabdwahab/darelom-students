@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SectionHeading from '../global/SectionHeading';
 import { firebaseAuth, firebaseDB } from '../../utils/firebaseInit';
 import { createUserWithEmailAndPassword } from 'firebase/auth';

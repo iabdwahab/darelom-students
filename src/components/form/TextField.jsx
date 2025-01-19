@@ -1,6 +1,4 @@
-import React from 'react'
-
-const TextField = ({ label, placeholder, id, invalidFeedback, minLength = 3 }) => {
+const TextField = ({ label, placeholder, id, minLength = 3 }) => {
   return (
     <>
       <label htmlFor={id} className="form-label fw-bold">{label}:</label>

@@ -1,4 +1,3 @@
-import React from 'react'
 import ResourcesSteps from '../components/resources_steps/ResourcesSteps'
 import TopStudents from '../components/top_students/TopStudents'
 

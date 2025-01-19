@@ -1,5 +1,3 @@
-import React from 'react'
-
 const TableBodyTR = ({ subject, student, index }) => {
   const subjectDegree = student.degrees[index]
 

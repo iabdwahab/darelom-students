@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import LoadingSpinner from '../global/LoadingSpinner';
 import { API_URL } from '../../utils/global-variables'

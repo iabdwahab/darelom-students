@@ -1,6 +1,5 @@
-import React from 'react'
 
-const TestYourselfQuestionsCount = ({ currentQuestionIndex, questionsLength, creatorName }) => {
+const TestYourselfQuestionsCount = ({ currentQuestionIndex, questionsLength }) => {
   const currentQuestion = currentQuestionIndex + 1;
 
   return (

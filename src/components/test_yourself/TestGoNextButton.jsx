@@ -1,4 +1,3 @@
-import React from 'react'
 import Button from '../global/Button'
 
 function TestGoNextButton({ currentQuestionIndex, setCurrentQuestionIndex, setIsAnswered, answerButtons }) {
