@@ -24,11 +24,6 @@ const MainLayout = () => {
     <div className='d-flex flex-column min-vh-100'>
       <Header />
       <SubHeader />
-      <div className='subheader border-top bg-dark text-light fs-6' style={{ padding: '11px 0' }}>
-        <div className='container-xl text-center'>
-          يمكنكم الآن الاطلاع على: <Link to='exams_schedule/schedule'>جدول الامتحانات.</Link>
-        </div>
-      </div>
       <UserHeader />
 
       <div className='container-xl flex-grow-1 py-3'>
