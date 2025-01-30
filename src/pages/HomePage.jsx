@@ -86,7 +86,7 @@ const stepsList = [
         option_text: "امتحانات الأعوام السابقة",
         option_data: "final_exams",
         will_next: true,
-        availableAt: ['grade_1', 'grade_2'],
+        availableAt: ['grade_1', 'grade_2', 'grade_3', 'grade_4'],
       },
     ]
   },
