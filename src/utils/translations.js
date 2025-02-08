@@ -28,6 +28,8 @@ export function translate(en) {
     arood: 'العَروض',
     mawarith: 'مواريث',
     maajim_aswat: 'المعاجم وعلم الأصوات',
+    balaghat_quran: 'بلاغة القرآن',
+    qaet_bahth: 'قاعة البحث',
     nsoos_islamya_omawya: 'نصوص إسلامية وأموية',
     tareekh_omawy_abasy: 'تاريخ أموي وعباسي',
     aqida: 'العقيدة',
