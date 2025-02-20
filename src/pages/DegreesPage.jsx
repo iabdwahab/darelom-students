@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { firebaseDB } from '../utils/firebaseInit';
 import { collection, limit, orderBy, query } from 'firebase/firestore';
 import { getDegreesGithub, getDegreesFirestore, getStudentsCount } from '../components/degrees_page/getData';
@@ -21,6 +21,8 @@ const DegreesPage = () => {
   const [studentsCount, setStudentsCount] = useState(null);
   const [lastStudent, setLastStudent] = useState(null);
   const [lastPage, setLastPage] = useState(false);
+  const { pathname } = useLocation()
+
   console.log(degrees)
   const degreesCollection = collection(firebaseDB, `${grade}/degrees/${year}`);
 
@@ -58,11 +60,11 @@ const DegreesPage = () => {
     } else {
       setDataAndHideLoaderFirestore(query(degreesCollection, orderBy('rank', 'asc'), limit(40)));
     }
-  }, []);
+  }, [pathname]);
 
   return (
     <div>
-      <SectionHeading fontSize={3} py={3}>ترتيب نتائج {translate(grade)} 2023/24</SectionHeading>
+      <SectionHeading fontSize={3} py={3}>ترتيب نتائج {translate(grade)} {year.split('_').join('/')}</SectionHeading>
       <IDSearch />
       <StudentsCount studentsCount={studentsCount} />
 
