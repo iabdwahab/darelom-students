@@ -62,8 +62,8 @@ function App() {
         <Route path='/' element={<MainLayout />} errorElement={<ErrorPage />}>
           <Route path='/' element={<HomePage />} />
           {/* Degrees */}
-          <Route path='/degrees/:grade/2023_24' element={<DegreesPage />} />
-          <Route path='/degrees/:grade/2023_24/:studentId' element={<StudentDegreesPage />} />
+          <Route path='/degrees/:grade/:year' element={<DegreesPage />} />
+          <Route path='/degrees/:grade/:year/:studentId' element={<StudentDegreesPage />} />
 
           {/* Books */}
           <Route path=':grade/books/:term' element={<BooksSelector />} />

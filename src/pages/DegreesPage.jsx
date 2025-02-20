@@ -17,12 +17,12 @@ import IDSearch from '../components/degrees_page/IDSearch';
 const DegreesPage = () => {
   const [degrees, setDegrees] = useState([]);
   const [isDataLoading, setIsDataLoading] = useState(true);
-  const { grade } = useParams();
+  const { grade, year } = useParams();
   const [studentsCount, setStudentsCount] = useState(null);
   const [lastStudent, setLastStudent] = useState(null);
   const [lastPage, setLastPage] = useState(false);
-
-  const degreesCollection = collection(firebaseDB, `${grade}/degrees/2023_24`);
+  console.log(degrees)
+  const degreesCollection = collection(firebaseDB, `${grade}/degrees/${year}`);
 
   // Data Retrieved from Firestore
   async function setDataAndHideLoaderFirestore(q) {
@@ -44,7 +44,7 @@ const DegreesPage = () => {
 
   // Data Retrieved from GitHub
   async function setDataAndHideLoaderGithub() {
-    const data = await getDegreesGithub(grade);
+    const data = await getDegreesGithub(grade, year);
 
     setDegrees(data.degrees);
     setStudentsCount(data.degrees.length);
@@ -71,7 +71,7 @@ const DegreesPage = () => {
           <TableHead />
           <tbody>
             {degrees.map((student) => {
-              return <TableBodyTR key={student.id} student={student} grade={grade} />
+              return <TableBodyTR key={student.id} student={student} grade={grade} year={year} />
             })}
           </tbody>
         </table>

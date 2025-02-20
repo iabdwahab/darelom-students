@@ -11,7 +11,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { dbSource } from '../utils/global-variables';
 
 const StudentDegreesPage = () => {
-  const { grade, studentId } = useParams();
+  const { grade, year, studentId } = useParams();
   const [student, setStudent] = useState({});
   const [subjects, setSubjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -21,9 +21,9 @@ const StudentDegreesPage = () => {
       let student;
 
       if (dbSource == 'github') {
-        student = await getStudentInfoGithub(grade, studentId, setSubjects);
+        student = await getStudentInfoGithub(grade, year, studentId, setSubjects);
       } else {
-        student = await getStudentInfoFirestore(grade, studentId);
+        student = await getStudentInfoFirestore(grade, year, studentId);
         const subjects = (await getDoc(doc(firebaseDB, `${grade}`, 'degrees'))).data().subjects;
         setSubjects(subjects)
       }

@@ -1,11 +1,11 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const TableBodyTR = ({ student, grade }) => {
+const TableBodyTR = ({ student, grade, year }) => {
   const { id, name, rank, total, total_percentage } = student
   const navigate = useNavigate();
 
   function navigateToStudentPage() {
-    navigate(`/degrees/${grade}/2023_24/${student.id}`)
+    navigate(`/degrees/${grade}/${year}/${student.id}`)
   }
 
   return (

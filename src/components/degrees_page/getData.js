@@ -1,8 +1,8 @@
 import { getCountFromServer, getDocs } from 'firebase/firestore';
 import { API_URL } from '../../utils/global-variables';
 
-export async function getDegreesGithub(grade) {
-  const res = await fetch(`${API_URL}/darelom-students-data/degrees/2023_24/degrees_${grade}.json`);
+export async function getDegreesGithub(grade, year) {
+  const res = await fetch(`${API_URL}/darelom-students-data/degrees/${year}/degrees_${grade}.json`);
   const data = await res.json();
 
   data.degrees.sort((a, b) => {
