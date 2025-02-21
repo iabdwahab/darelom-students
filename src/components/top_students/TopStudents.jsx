@@ -41,7 +41,7 @@ const TopStudents = () => {
                     <TableHead />
                     <TableBody gradeDegree={gradeDegree} />
                   </table>
-                  <Link to={`degrees/${gradeDegree.grade}/2023_24`} className='d-block my-2 btn btn-primary fw-bold'>عرض القائمة كاملة</Link>
+                  <Link to={`degrees/${gradeDegree.grade}/2024_25`} className='d-block my-2 btn btn-primary fw-bold'>عرض القائمة كاملة</Link>
                 </div>
               )
             })}

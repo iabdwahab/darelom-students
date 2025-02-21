@@ -41,7 +41,7 @@ export async function getTopStudentsFirestore() {
 }
 
 export async function getTopStudentsGithub() {
-  const res = await fetch(`${API_URL}/darelom-students-data/top_degrees_2023_24.json`);
+  const res = await fetch(`${API_URL}/darelom-students-data/top_degrees.json`);
 
   return await res.json();
 }

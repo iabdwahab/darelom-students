@@ -10,7 +10,7 @@ const SubHeader = () => {
       </div>
       <div className='subheader bg-dark border-top text-light fs-6' style={{ padding: '11px 0' }}>
         <div className='container-xl text-center'>
-          يمكنكم الآن الاطلاع على: <Link to="/degrees/grade_2/2024_25">ترتيب الفرقة الثانية 2025.</Link>
+          يمكنكم الآن الاطلاع على ترتيب الفرق للفصل الدراسي الأول 2025.
         </div>
       </div>
     </>

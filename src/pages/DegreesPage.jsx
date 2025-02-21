@@ -23,7 +23,6 @@ const DegreesPage = () => {
   const [lastPage, setLastPage] = useState(false);
   const { pathname } = useLocation()
 
-  console.log(degrees)
   const degreesCollection = collection(firebaseDB, `${grade}/degrees/${year}`);
 
   // Data Retrieved from Firestore
