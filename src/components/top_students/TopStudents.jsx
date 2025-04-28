@@ -67,7 +67,7 @@ function TableBodyTr({ student, grade }) {
   const navigate = useNavigate();
 
   return (
-    <tr className='degree_tr-linked' onClick={() => navigate(`/degrees/${grade}/2023_24/${student.id}`)}>
+    <tr className='degree_tr-linked' onClick={() => navigate(`/degrees/${grade}/2024_25/${student.id}`)}>
       <th scope="row">{student.rank}</th>
       <td>{student.name}</td>
       <td className='text-center'>%{student.total_percentage}</td>

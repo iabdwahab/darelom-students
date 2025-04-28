@@ -74,7 +74,7 @@ const SignUpComp = () => {
         <FieldContainer field={<NameField />} />
         <FieldContainer field={<EmailField />} />
         <FieldContainer field={<GradeField />} />
-        <FieldContainer field={<TextAreaField placeholder='هذا مجرد مثال على الرسالة. نرجو مراعاة علامات الترقيم، والقواعد الإملائية. الهدف من وضع هذه الخانة هو التأكد من سلامة وجودة الأسئلة المرسلة. القبول يتوقف على هذه الرسالة.' label='اكتب رسالة مستخدمًا علامات الترقيم:' fontSize={6} minLength={100} invalidFeedback='الرسالة يجب أن تتكون من 100 حرف على الأقل.' />} />
+        <FieldContainer field={<TextAreaField placeholder='اكتب رسالة مراعيًا علامات الترقيم.' label='اكتب رسالة مستخدمًا علامات الترقيم:' fontSize={6} minLength={100} invalidFeedback='الرسالة يجب أن تتكون من 100 حرف على الأقل.' />} />
         <FieldContainer field={<PasswordField />} />
         {isLoading ? <SpinnerButton /> : <SubmitButton text='إنشاء حساب جديد' />}
         {isFailed && <p className='text-center my-2 p-2 bg-danger text-light fw-bold'>فشل التسجيل.</p>}
