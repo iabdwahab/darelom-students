@@ -31,3 +31,33 @@ export function calculatePercentage(total, grade) {
   }
   return `${(total * 100 / fullMark[grade]).toFixed(2)}`
 }
+
+export function handleSortingMethod(degrees, sortMethod) {
+
+  if (degrees.length) {
+
+    if (sortMethod === 'duplicated') {
+      degrees.sort((a, b) => {
+        return b.total - a.total;
+      });
+
+      let currentRank = 1;
+      let currentTotalDegree = degrees[0].total;
+
+      for (let i = 0; i < degrees.length; i++) {
+        if (degrees[i].total !== currentTotalDegree) {
+          currentRank = currentRank + 1;
+          currentTotalDegree = degrees[i].total;
+        }
+
+        degrees[i].rank = currentRank;
+
+      }
+    } else {
+
+      for (let i = 0; i < degrees.length; i++) {
+        degrees[i].rank = i + 1;
+      }
+    }
+  }
+}

@@ -22,6 +22,13 @@ const Footer = () => {
             </ColumnParagraph>
           </Column>
 
+          <Column title="أرشيف النتائج">
+            <ColumnParagraph><Link to="/degrees/grade_1/2023_24">الفرقة الأولى 2023/24.</Link></ColumnParagraph>
+            <ColumnParagraph><Link to="/degrees/grade_2/2023_24">الفرقة الثانية 2023/24.</Link></ColumnParagraph>
+            <ColumnParagraph><Link to="/degrees/grade_3/2023_24">الفرقة الثالثة 2023/24.</Link></ColumnParagraph>
+            <ColumnParagraph><Link to="/degrees/grade_4/2023_24">الفرقة الرابعة 2023/24.</Link></ColumnParagraph>
+          </Column>
+
           <Column title="روابط شخصية">
             <ColumnParagraph><a href="https://github.com/iabdwahab/darelom-students">ملفات المشروع على GitHub.</a></ColumnParagraph>
             <ColumnParagraph><a href="https://iabdwahab.github.io">معرض الأعمال.</a></ColumnParagraph>

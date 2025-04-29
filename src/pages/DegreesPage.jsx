@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react'
+import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { firebaseDB } from '../utils/firebaseInit';
 import { collection, limit, orderBy, query } from 'firebase/firestore';
 import { getDegreesGithub, getDegreesFirestore, getStudentsCount } from '../components/degrees_page/getData';
@@ -13,6 +13,7 @@ import StudentsCount from '../components/degrees_page/StudentsCount';
 import LoadMoreButton from '../components/degrees_page/LoadMoreButton';
 import ResultsEnded from '../components/degrees_page/ResultsEnded';
 import IDSearch from '../components/degrees_page/IDSearch';
+import { handleSortingMethod } from '../utils/Degrees';
 
 const DegreesPage = () => {
   const [degrees, setDegrees] = useState([]);
@@ -22,7 +23,9 @@ const DegreesPage = () => {
   const [lastStudent, setLastStudent] = useState(null);
   const [lastPage, setLastPage] = useState(false)
   const [sortMethod, setSortMethod] = useState('normal');
+  const selectElRef = useRef(null);
   const { pathname } = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams()
 
 
   const degreesCollection = collection(firebaseDB, `${grade}/degrees/${year}`);
@@ -57,45 +60,25 @@ const DegreesPage = () => {
 
   }
 
+  function handleSortMehtodChange(e) {
+    setSortMethod(e.target.value);
+    handleSortingMethod(degrees, e.target.value);
+    setSearchParams({ sortMethod: e.target.value });
+  }
+
   useEffect(() => {
     if (dbSource == 'github') {
       setDataAndHideLoaderGithub();
 
+      if (selectElRef.current) {
+        selectElRef.current.value = 'normal';
+      }
     } else {
       setDataAndHideLoaderFirestore(query(degreesCollection, orderBy('rank', 'asc'), limit(40)));
     }
   }, [pathname]);
 
-  function handleSortingMethod(e) {
-    setSortMethod(e.target.value);
-
-    if (degrees.length) {
-
-      if (e.target.value === 'duplicated') {
-        degrees.sort((a, b) => {
-          return b.total - a.total;
-        });
-
-        let currentRank = 1;
-        let currentTotalDegree = degrees[0].total;
-
-        for (let i = 0; i < degrees.length; i++) {
-          if (degrees[i].total !== currentTotalDegree) {
-            currentRank = currentRank + 1;
-            currentTotalDegree = degrees[i].total;
-          }
-
-          degrees[i].rank = currentRank;
-
-        }
-      } else {
-
-        for (let i = 0; i < degrees.length; i++) {
-          degrees[i].rank = i + 1;
-        }
-      }
-    }
-  }
+  handleSortingMethod(degrees, searchParams.get('sortMethod') || 'normal');
 
   return (
     <div>
@@ -105,7 +88,7 @@ const DegreesPage = () => {
 
       <div className='d-flex flex-column gap-2 mb-4'>
         <h5>طريقة الترتيب:</h5>
-        <select onChange={handleSortingMethod} className="form-select w-100" aria-label="Default select example" style={{ width: '100%', maxWidth: '400px' }}>
+        <select ref={selectElRef} onChange={handleSortMehtodChange} className="form-select w-100" aria-label="Default select example" style={{ width: '100%', maxWidth: '400px' }}>
           <option value='normal' defaultValue>الرتيب العادي</option>
           <option value='duplicated' >باعتبار المكرر</option>
         </select>
