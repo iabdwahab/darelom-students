@@ -90,7 +90,7 @@ const DegreesPage = () => {
         <h5>طريقة الترتيب:</h5>
         <select ref={selectElRef} onChange={handleSortMehtodChange} className="form-select w-100" aria-label="Default select example" style={{ width: '100%', maxWidth: '400px' }}>
           <option value='normal' defaultValue>الرتيب العادي</option>
-          <option value='duplicated' >باعتبار المكرر</option>
+          <option value='duplicated' >باعتبار المركز المكرر</option>
         </select>
       </div>
 
