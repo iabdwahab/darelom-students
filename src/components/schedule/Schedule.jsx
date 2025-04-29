@@ -14,7 +14,7 @@ const schedule = () => {
 
   if (grade === 'exams_schedule') {
     imgSrc = `${API_URL}/darelom-students-data/schedule/exams_schedule.jpg`;
-    imageTitle = 'جدول امتحانات الفصل الدراسي الأول 2024';
+    imageTitle = 'جدول امتحانات الفصل الدراسي الثاني 2025';
   } else {
     imgSrc = `${API_URL}/darelom-students-data/schedule/${grade}.jpg`;
     imageTitle = `جدول محاضرات ${translate(grade)}`;
