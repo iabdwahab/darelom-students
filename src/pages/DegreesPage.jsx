@@ -20,8 +20,10 @@ const DegreesPage = () => {
   const { grade, year } = useParams();
   const [studentsCount, setStudentsCount] = useState(null);
   const [lastStudent, setLastStudent] = useState(null);
-  const [lastPage, setLastPage] = useState(false);
-  const { pathname } = useLocation()
+  const [lastPage, setLastPage] = useState(false)
+  const [sortMethod, setSortMethod] = useState('normal');
+  const { pathname } = useLocation();
+
 
   const degreesCollection = collection(firebaseDB, `${grade}/degrees/${year}`);
 
@@ -51,21 +53,63 @@ const DegreesPage = () => {
     setStudentsCount(data.degrees.length);
     setIsDataLoading(false);
     setLastPage(true);
+
+
   }
 
   useEffect(() => {
     if (dbSource == 'github') {
       setDataAndHideLoaderGithub();
+
     } else {
       setDataAndHideLoaderFirestore(query(degreesCollection, orderBy('rank', 'asc'), limit(40)));
     }
   }, [pathname]);
 
+  function handleSortingMethod(e) {
+    setSortMethod(e.target.value);
+
+    if (degrees.length) {
+
+      if (e.target.value === 'duplicated') {
+        degrees.sort((a, b) => {
+          return b.total - a.total;
+        });
+
+        let currentRank = 1;
+        let currentTotalDegree = degrees[0].total;
+
+        for (let i = 0; i < degrees.length; i++) {
+          if (degrees[i].total !== currentTotalDegree) {
+            currentRank = currentRank + 1;
+            currentTotalDegree = degrees[i].total;
+          }
+
+          degrees[i].rank = currentRank;
+
+        }
+      } else {
+
+        for (let i = 0; i < degrees.length; i++) {
+          degrees[i].rank = i + 1;
+        }
+      }
+    }
+  }
+
   return (
     <div>
       <SectionHeading fontSize={3} py={3}>ترتيب نتائج {translate(grade)} {year.split('_').join('/')}</SectionHeading>
-      <IDSearch />
       <StudentsCount studentsCount={studentsCount} />
+      <IDSearch />
+
+      <div className='d-flex flex-column gap-2 mb-4'>
+        <h5>طريقة الترتيب:</h5>
+        <select onChange={handleSortingMethod} className="form-select w-100" aria-label="Default select example" style={{ width: '100%', maxWidth: '400px' }}>
+          <option value='normal' defaultValue>الرتيب العادي</option>
+          <option value='duplicated' >باعتبار المكرر</option>
+        </select>
+      </div>
 
       <div className='table-responsive border'>
         <table className="table table-striped table-bordered">

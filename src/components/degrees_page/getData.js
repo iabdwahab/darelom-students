@@ -6,7 +6,7 @@ export async function getDegreesGithub(grade, year) {
   const data = await res.json();
 
   data.degrees.sort((a, b) => {
-    return a.rank - b.rank;
+    return b.total - a.total;
   });
 
   return {
