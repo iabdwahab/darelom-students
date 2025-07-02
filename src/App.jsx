@@ -10,6 +10,7 @@ import {
   RouterProvider
 } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
 import DegreesPage from './pages/DegreesPage';
@@ -33,6 +34,7 @@ import MoreResourcesSubjectSelector from './pages/MoreResourcesSubjectSelector';
 import MoreResources from './pages/MoreResources';
 import FinalExamsSelector from './components/final_exams_selector/FinalExamsSelector';
 import GeneralSubjectsSelector from './pages/GeneralSubjectsSelector';
+import StudentOverall from './pages/StudentOverall';
 
 function App() {
   const [loggedinUser, setLoggedinUser] = useState(null);
@@ -103,6 +105,8 @@ function App() {
           <Route path='/:grade/schedule' element={<Schedule />} />
 
           <Route path='/:grade/lectures_recordings/:term' element={<LecturesRecordingsSelector />} />
+
+          <Route path='/students/:student_id' element={<StudentOverall />} />
         </Route>
       </>
     )
