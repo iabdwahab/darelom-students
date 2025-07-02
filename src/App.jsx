@@ -35,7 +35,7 @@ import MoreResources from './pages/MoreResources';
 import FinalExamsSelector from './components/final_exams_selector/FinalExamsSelector';
 import GeneralSubjectsSelector from './pages/GeneralSubjectsSelector';
 import StudentOverall from './pages/StudentOverall';
-import Students from './pages/Students';
+import FindStudents from './pages/FindStudent';
 
 function App() {
   const [loggedinUser, setLoggedinUser] = useState(null);
@@ -66,7 +66,7 @@ function App() {
           <Route path='/' element={<HomePage />} />
 
           {/* Students */}
-          <Route path='/students' element={<Students />} />
+          <Route path='/find_student' element={<FindStudents />} />
           <Route path='/students/:student_id' element={<StudentOverall />} />
 
           {/* Degrees */}

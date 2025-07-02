@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase/initializing';
 import SectionHeading from '../components/global/SectionHeading';
 
-function Students() {
+function FindStudents() {
   const [studentId, setStudentId] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -54,8 +54,8 @@ function Students() {
             <div className="card-body">
               <SectionHeading>البحث عن بيانات طالب</SectionHeading>
               <form onSubmit={handleSearch}>
-                <div className="mb-3">
-                  <label htmlFor="studentId" className="form-label">الرقم الجامعي</label>
+                <div className="my-3">
+                  <label htmlFor="studentId" className="form-label">الرقم التعريفي:</label>
                   <input
                     type="number"
                     className="form-control"
@@ -89,4 +89,4 @@ function Students() {
   );
 }
 
-export default Students;
+export default FindStudents;

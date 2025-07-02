@@ -90,7 +90,7 @@ function StudentOverall() {
               <div className="accordion-body">
                 {terms.map((termData) => (
                   <div key={termData.term} className="mb-4">
-                    <h4>الترم: {termData.term} - العام الدراسي: {termData.year}.</h4>
+                    <h4>الفصل: {termData.term} - العام الدراسي: {termData.year}.</h4>
                     <p><strong>رقم الجلوس:</strong> {termData.seat_number}.</p>
                     <div className="table-responsive">
                       <table className="table table-bordered table-striped">
