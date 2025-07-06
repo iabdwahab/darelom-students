@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const ThemeMode = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -18,10 +18,10 @@ const ThemeMode = () => {
   }
 
   return (
-    <button className='btn btn-primary w-100 mt-2 p-2' onClick={handleClick}>
+    <button className="btn btn-primary w-100 mt-2 p-2" onClick={handleClick}>
       {theme === 'light' ? 'الوضع الداكن [لوليد]' : 'الوضع العادي [ليس لوليد]'}
     </button>
-  )
-}
+  );
+};
 
-export default ThemeMode
+export default ThemeMode;

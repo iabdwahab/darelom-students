@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import LoadingSpinner from '../components/global/LoadingSpinner';
 import TableBodyTR from '../components/student_degrees_page/TableBodyTR';
 import TableHead from '../components/student_degrees_page/TableHead';
 import StudentInfo from '../components/student_degrees_page/StudentInfo';
 import SectionHeading from '../components/global/SectionHeading';
-import { getStudentInfoGithub, getStudentInfoFirestore } from '../components/student_degrees_page/getStudentInfo';
+import {
+  getStudentInfoGithub,
+  getStudentInfoFirestore,
+} from '../components/student_degrees_page/getStudentInfo';
 import { firebaseDB } from '../utils/firebaseInit';
 import { doc, getDoc } from 'firebase/firestore';
 import { dbSource } from '../utils/global-variables';
@@ -25,7 +28,7 @@ const StudentDegreesPage = () => {
       } else {
         student = await getStudentInfoFirestore(grade, year, studentId);
         const subjects = (await getDoc(doc(firebaseDB, `${grade}`, 'degrees'))).data().subjects;
-        setSubjects(subjects)
+        setSubjects(subjects);
       }
 
       setStudent(student);
@@ -38,21 +41,25 @@ const StudentDegreesPage = () => {
   return (
     <>
       <SectionHeading fontSize={3}>نتائج المواد</SectionHeading>
-      {isLoading ? <LoadingSpinner /> :
-        <div className='mt-3'>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <div className="mt-3">
           <StudentInfo student={student} />
           <table className="table table-striped border table-bordered mt-4">
             <TableHead />
             <tbody>
               {subjects.map((subject, index) => {
-                return <TableBodyTR key={index} subject={subject} student={student} index={index} />
+                return (
+                  <TableBodyTR key={index} subject={subject} student={student} index={index} />
+                );
               })}
             </tbody>
           </table>
         </div>
-      }
+      )}
     </>
-  )
-}
+  );
+};
 
-export default StudentDegreesPage
+export default StudentDegreesPage;

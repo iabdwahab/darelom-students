@@ -1,5 +1,5 @@
 import { limit, orderBy, query, startAfter } from 'firebase/firestore';
-import React from 'react'
+import React from 'react';
 
 const LoadMoreButton = ({ degreesCollection, lastStudent, setDataAndHideLoaderFirestore }) => {
   function handleMoreBtn() {
@@ -9,8 +9,10 @@ const LoadMoreButton = ({ degreesCollection, lastStudent, setDataAndHideLoaderFi
   }
 
   return (
-    <button className='btn btn-primary w-100' onClick={handleMoreBtn}>عرض المزيد</button>
-  )
-}
+    <button className="btn btn-primary w-100" onClick={handleMoreBtn}>
+      عرض المزيد
+    </button>
+  );
+};
 
-export default LoadMoreButton
+export default LoadMoreButton;

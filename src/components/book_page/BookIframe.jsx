@@ -3,13 +3,13 @@ const BookIframe = ({ bookId, isIframeLoading, setIsIframeLoading }) => {
   const className = `${isIframeLoading && 'd-none'} w-100`;
   const styles = {
     height: '500px',
-  }
+  };
 
   function handleLoading() {
     setIsIframeLoading(false);
   }
 
-  return <iframe src={source} onLoad={handleLoading} className={className} style={styles}></iframe>
-}
+  return <iframe src={source} onLoad={handleLoading} className={className} style={styles}></iframe>;
+};
 
-export default BookIframe
+export default BookIframe;

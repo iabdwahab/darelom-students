@@ -9,8 +9,10 @@ const BackButton = ({ currentStepIndex, setCurrentStepIndex, selections, setSele
   const isFirstStep = currentStepIndex === 0;
 
   return (
-    <button className={`btn btn-danger ${isFirstStep ? 'd-none' : 'd-block'}`} onClick={goBack}>رجوع</button>
-  )
-}
+    <button className={`btn btn-danger ${isFirstStep ? 'd-none' : 'd-block'}`} onClick={goBack}>
+      رجوع
+    </button>
+  );
+};
 
-export default BackButton
+export default BackButton;

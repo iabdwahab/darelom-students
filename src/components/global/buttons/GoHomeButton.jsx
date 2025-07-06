@@ -7,7 +7,11 @@ const GoHomeButton = () => {
     navigate('/');
   }
 
-  return <button className='btn btn-danger' onClick={goHome}>القائمة الرئيسية</button>
-}
+  return (
+    <button className="btn btn-danger" onClick={goHome}>
+      القائمة الرئيسية
+    </button>
+  );
+};
 
-export default GoHomeButton
+export default GoHomeButton;

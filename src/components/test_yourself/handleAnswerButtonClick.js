@@ -1,4 +1,13 @@
-export default function handleAnswerButtonClick(e, index, setIsAnswered, answerButtons, currentQuestionIndex, questions, setScore, score) {
+export default function handleAnswerButtonClick(
+  e,
+  index,
+  setIsAnswered,
+  answerButtons,
+  currentQuestionIndex,
+  questions,
+  setScore,
+  score,
+) {
   function handleDisablingButtons() {
     answerButtons.current.forEach((btn) => {
       btn.disabled = true;
@@ -7,7 +16,8 @@ export default function handleAnswerButtonClick(e, index, setIsAnswered, answerB
   }
 
   setIsAnswered(true);
-  const correctAnswerButton = answerButtons.current[questions[currentQuestionIndex].question_answer];
+  const correctAnswerButton =
+    answerButtons.current[questions[currentQuestionIndex].question_answer];
   const clickedButton = e.target;
 
   if (index == questions[currentQuestionIndex].question_answer) {

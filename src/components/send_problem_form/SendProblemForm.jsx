@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react';
 import ProblemTextAreaField from './ProblemTextAreaField';
 import { addDoc, collection } from 'firebase/firestore';
 import { firebaseDB } from '../../utils/firebaseInit';
@@ -19,24 +19,21 @@ const SendProblemForm = () => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       e.stopPropagation();
-      console.log('s')
+      console.log('s');
 
       const problem = form['textarea-field'].value;
 
       if (form.checkValidity()) {
-
         try {
           setIsSending(true);
 
           await addDoc(collection(firebaseDB, `problems`), {
-            problem
+            problem,
           });
 
           formRef.current.reset();
           form.classList.remove('was-validated');
           setIsSended('success');
-
-
         } catch (error) {
           console.log(error.code);
           form.classList.add('was-validated');
@@ -47,15 +44,12 @@ const SendProblemForm = () => {
 
           setTimeout(() => {
             setIsSended('initial');
-          }, 3000)
-        };
-
-
+          }, 3000);
+        }
       } else {
         form.classList.add('was-validated');
       }
-
-    })
+    });
   }, []);
 
   return (
@@ -63,16 +57,15 @@ const SendProblemForm = () => {
       <SectionHeading>الإبلاغ عن مشكلة</SectionHeading>
       <Form formRef={formRef}>
         <FieldContainer field={<ProblemTextAreaField />} />
-        {isSending ? <SpinnerButton /> : <SubmitButton text='أرسل المشكلة' />}
+        {isSending ? <SpinnerButton /> : <SubmitButton text="أرسل المشكلة" />}
       </Form>
-      {isSended === 'initial' ? null
-        : isSended === 'success'
-          ? <p className='text-center my-2 p-2 bg-success text-light fw-bold'>تم الإرسال بنجاح.</p>
-          : <p className='text-center my-2 p-2 bg-danger text-light fw-bold'>فشل الإرسال.</p>
-      }
+      {isSended === 'initial' ? null : isSended === 'success' ? (
+        <p className="text-center my-2 p-2 bg-success text-light fw-bold">تم الإرسال بنجاح.</p>
+      ) : (
+        <p className="text-center my-2 p-2 bg-danger text-light fw-bold">فشل الإرسال.</p>
+      )}
     </>
+  );
+};
 
-  )
-}
-
-export default SendProblemForm
+export default SendProblemForm;

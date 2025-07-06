@@ -25,7 +25,11 @@ export async function getTopStudentsFirestore() {
   // Loop on grades and retrieve top 3 students
   for (let i = 1; i <= 4; i++) {
     // Get Top 3 Students
-    const q = query(collection(firebaseDB, `grade_${i}/degrees/2023_24`), orderBy('rank'), limit(3));
+    const q = query(
+      collection(firebaseDB, `grade_${i}/degrees/2023_24`),
+      orderBy('rank'),
+      limit(3),
+    );
 
     const degreesList = [];
     const snapshot = await getDocs(q);

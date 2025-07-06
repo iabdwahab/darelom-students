@@ -8,7 +8,7 @@ import EmailField from '../form/EmailField';
 import Form from '../form/Form';
 import SubmitButton from '../form/SubmitButton';
 import FieldContainer from '../form/FieldContainer';
-import SpinnerButton from '../global/SpinnerButton'
+import SpinnerButton from '../global/SpinnerButton';
 
 const SignInComp = () => {
   const navigate = useNavigate();
@@ -24,7 +24,6 @@ const SignInComp = () => {
       e.stopPropagation();
 
       if (form.checkValidity()) {
-
         try {
           setIsLoading(true);
 
@@ -33,11 +32,9 @@ const SignInComp = () => {
           await signInWithEmailAndPassword(firebaseAuth, email, password);
 
           navigate('/');
-
         } catch (error) {
           console.log(error.code);
           setIsFailed(true);
-
         } finally {
           setIsLoading(false);
 
@@ -45,11 +42,9 @@ const SignInComp = () => {
             setIsFailed(false);
           }, 3000);
         }
-
       } else {
         form.classList.add('was-validated');
       }
-
     });
   }, []);
 
@@ -59,12 +54,16 @@ const SignInComp = () => {
       <Form formRef={formRef}>
         <FieldContainer field={<EmailField />} />
         <FieldContainer field={<PasswordField />} />
-        {isLoading ? <SpinnerButton /> : <SubmitButton text='تسجيل الدخول' />}
-        {isFailed && <p className='text-center my-2 p-2 bg-danger text-light fw-bold'>فشل التسجيل.</p>}
+        {isLoading ? <SpinnerButton /> : <SubmitButton text="تسجيل الدخول" />}
+        {isFailed && (
+          <p className="text-center my-2 p-2 bg-danger text-light fw-bold">فشل التسجيل.</p>
+        )}
       </Form>
-      <p className='text-center mt-2 fw-bold'>هل تريد إنشاء حساب؟ <Link to="/signup">إنشاء حساب</Link>.</p>
+      <p className="text-center mt-2 fw-bold">
+        هل تريد إنشاء حساب؟ <Link to="/signup">إنشاء حساب</Link>.
+      </p>
     </div>
-  )
-}
+  );
+};
 
-export default SignInComp
+export default SignInComp;

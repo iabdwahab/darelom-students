@@ -8,7 +8,11 @@ function BackButton() {
     navigate(-1);
   }
 
-  return <button className={className} onClick={goBack}>رجوع</button>
+  return (
+    <button className={className} onClick={goBack}>
+      رجوع
+    </button>
+  );
 }
 
-export default BackButton
+export default BackButton;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const TableHead = () => {
   return (
@@ -6,10 +6,12 @@ const TableHead = () => {
       <tr>
         <th scope="col">#</th>
         <th scope="col">الاسم</th>
-        <th scope="col" className='text-center'>النسبة</th>
+        <th scope="col" className="text-center">
+          النسبة
+        </th>
       </tr>
     </thead>
-  )
-}
+  );
+};
 
-export default TableHead
+export default TableHead;

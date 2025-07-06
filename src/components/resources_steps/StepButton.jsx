@@ -1,6 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 
-const StepButton = ({ option, stepsList, currentStepIndex, setCurrentStepIndex, selections, setSelections }) => {
+const StepButton = ({
+  option,
+  stepsList,
+  currentStepIndex,
+  setCurrentStepIndex,
+  selections,
+  setSelections,
+}) => {
   const navigate = useNavigate();
 
   function handleStep() {
@@ -8,7 +15,7 @@ const StepButton = ({ option, stepsList, currentStepIndex, setCurrentStepIndex, 
       return navigate('/test_yourself');
     }
 
-    if (currentStepIndex < stepsList.length - 1 && (option.will_next)) {
+    if (currentStepIndex < stepsList.length - 1 && option.will_next) {
       setCurrentStepIndex(currentStepIndex + 1);
       setSelections([...selections, option.option_data]);
     } else {
@@ -23,8 +30,7 @@ const StepButton = ({ option, stepsList, currentStepIndex, setCurrentStepIndex, 
     <button className={classNames} onClick={handleStep}>
       {btnText}
     </button>
-  )
+  );
+};
 
-}
-
-export default StepButton
+export default StepButton;

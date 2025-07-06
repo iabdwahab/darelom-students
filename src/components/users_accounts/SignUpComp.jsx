@@ -10,7 +10,7 @@ import PasswordField from '../form/PasswordField';
 import NameField from '../form/NameField';
 import GradeField from '../form/GradeField';
 import SubmitButton from '../form/SubmitButton';
-import TextAreaField from '../form/TextAreaField'
+import TextAreaField from '../form/TextAreaField';
 import SpinnerButton from '../global/SpinnerButton';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,7 +27,6 @@ const SignUpComp = () => {
       e.stopPropagation();
 
       if (form.checkValidity()) {
-
         try {
           setIsLoading(true);
           const name = e.target['name-input'].value;
@@ -39,7 +38,7 @@ const SignUpComp = () => {
 
           const uid = cred.user.uid;
 
-          await setDoc(doc(firebaseDB, "users", uid), {
+          await setDoc(doc(firebaseDB, 'users', uid), {
             name,
             email,
             grade,
@@ -49,18 +48,15 @@ const SignUpComp = () => {
           });
 
           navigate('/');
-
         } catch (error) {
           console.log(error.code);
           setIsFailed(true);
-
         } finally {
           setIsLoading(false);
           setTimeout(() => {
             setIsFailed(false);
           }, 3000);
         }
-
       } else {
         form.classList.add('was-validated');
       }
@@ -74,13 +70,25 @@ const SignUpComp = () => {
         <FieldContainer field={<NameField />} />
         <FieldContainer field={<EmailField />} />
         <FieldContainer field={<GradeField />} />
-        <FieldContainer field={<TextAreaField placeholder='اكتب رسالة مراعيًا علامات الترقيم.' label='اكتب رسالة مستخدمًا علامات الترقيم:' fontSize={6} minLength={100} invalidFeedback='الرسالة يجب أن تتكون من 100 حرف على الأقل.' />} />
+        <FieldContainer
+          field={
+            <TextAreaField
+              placeholder="اكتب رسالة مراعيًا علامات الترقيم."
+              label="اكتب رسالة مستخدمًا علامات الترقيم:"
+              fontSize={6}
+              minLength={100}
+              invalidFeedback="الرسالة يجب أن تتكون من 100 حرف على الأقل."
+            />
+          }
+        />
         <FieldContainer field={<PasswordField />} />
-        {isLoading ? <SpinnerButton /> : <SubmitButton text='إنشاء حساب جديد' />}
-        {isFailed && <p className='text-center my-2 p-2 bg-danger text-light fw-bold'>فشل التسجيل.</p>}
+        {isLoading ? <SpinnerButton /> : <SubmitButton text="إنشاء حساب جديد" />}
+        {isFailed && (
+          <p className="text-center my-2 p-2 bg-danger text-light fw-bold">فشل التسجيل.</p>
+        )}
       </Form>
     </div>
-  )
-}
+  );
+};
 
-export default SignUpComp
+export default SignUpComp;

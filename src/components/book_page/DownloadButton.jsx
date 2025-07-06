@@ -5,7 +5,11 @@ const DownloadButton = ({ bookId }) => {
     window.location.href = `https://drive.google.com/uc?export=download&id=${bookId}`;
   }
 
-  return <button className={className} onClick={startDownloading}>تحميل</button>
-}
+  return (
+    <button className={className} onClick={startDownloading}>
+      تحميل
+    </button>
+  );
+};
 
-export default DownloadButton
+export default DownloadButton;

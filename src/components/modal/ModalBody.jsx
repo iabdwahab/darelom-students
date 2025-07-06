@@ -1,9 +1,9 @@
 const ModalBody = ({ children }) => {
   return (
     <div className="modal-body pb-1">
-      <p className='text-center fw-bold'>{children}</p>
+      <p className="text-center fw-bold">{children}</p>
     </div>
-  )
-}
+  );
+};
 
-export default ModalBody
+export default ModalBody;

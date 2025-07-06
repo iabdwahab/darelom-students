@@ -1,6 +1,5 @@
 export function calculateTotal(student, grade) {
   if (typeof student.degrees !== 'string') {
-
     for (let i = 0; i < student.degrees.length; i++) {
       let degree = student.degrees[i];
 
@@ -18,24 +17,21 @@ export function calculateTotal(student, grade) {
         student.total += Number(degree);
       }
     }
-
   }
 }
 
 export function calculatePercentage(total, grade) {
   const fullMark = {
-    "grade_1": 1300,
-    "grade_2": 1400,
-    "grade_3": 1400,
-    "grade_4": 1400,
-  }
-  return `${(total * 100 / fullMark[grade]).toFixed(2)}`
+    grade_1: 1300,
+    grade_2: 1400,
+    grade_3: 1400,
+    grade_4: 1400,
+  };
+  return `${((total * 100) / fullMark[grade]).toFixed(2)}`;
 }
 
 export function handleSortingMethod(degrees, sortMethod) {
-
   if (degrees.length) {
-
     if (sortMethod === 'duplicated') {
       degrees.sort((a, b) => {
         return b.total - a.total;
@@ -51,10 +47,8 @@ export function handleSortingMethod(degrees, sortMethod) {
         }
 
         degrees[i].rank = currentRank;
-
       }
     } else {
-
       for (let i = 0; i < degrees.length; i++) {
         degrees[i].rank = i + 1;
       }
