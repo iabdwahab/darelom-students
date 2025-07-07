@@ -35,6 +35,8 @@ import MoreResources from './pages/MoreResources';
 import FinalExamsSelector from './components/final_exams_selector/FinalExamsSelector';
 import GeneralSubjectsSelector from './pages/GeneralSubjectsSelector';
 
+import StudentOverallPage from './pages/StudentOverallPage'
+
 function App() {
   const [loggedinUser, setLoggedinUser] = useState(null);
   const [loggedinUserInfo, setLoggedinUserInfo] = useState(
@@ -114,6 +116,13 @@ function App() {
             path="/:grade/lectures_recordings/:term"
             element={<LecturesRecordingsSelector />}
           />
+
+          {/* Student Overall */}
+          <Route
+            path="/students/:student_id"
+            element={<StudentOverallPage />}
+          />
+
         </Route>
       </>,
     ),
