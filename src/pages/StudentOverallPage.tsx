@@ -3,6 +3,7 @@ import { supabase } from '../supabase/initializing';
 import { calculateMaxAndTotal } from '../utils/studentOverall';
 import { useParams } from 'react-router-dom';
 import { translate } from '../utils/translations';
+import LoadingSpinner from '../components/global/LoadingSpinner';
 
 function StudentOverallPage() {
   const [studentInfo, setStudentInfo] = useState<{
@@ -15,10 +16,12 @@ function StudentOverallPage() {
     firstGradeInPlatform: 2024,
   });
   const [degreesData, setDegreesData] = useState<Record<number, any[]>>({});
+  const [loading, setLoading] = useState(false);
   const { student_id } = useParams();
   const accordionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setLoading(true);
     fetchData();
     // eslint-disable-next-line
   }, [student_id]);
@@ -45,6 +48,11 @@ function StudentOverallPage() {
       });
       setDegreesData(grouped);
     }
+    setLoading(false);
+  }
+
+  if (loading) {
+    return <LoadingSpinner />;
   }
 
   return (
