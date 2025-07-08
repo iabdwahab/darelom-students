@@ -81,7 +81,8 @@ function StudentOverallPage() {
           >
             الرقم التعريفي
           </button>
-          ، أو <Link to="/send_problem">أبلغنا عن مشكلة</Link>.
+          ، أو <Link to="/send_problem">أبلغنا عن مشكلة</Link>. يمكنك الذهاب إلى{' '}
+          <Link to="/find_student">صفحة البحث عن الطالب</Link>.
         </div>
         {/* الرقم التعريفي Modal */}
         <div
