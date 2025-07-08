@@ -36,6 +36,7 @@ import FinalExamsSelector from './components/final_exams_selector/FinalExamsSele
 import GeneralSubjectsSelector from './pages/GeneralSubjectsSelector';
 
 import StudentOverallPage from './pages/StudentOverallPage'
+import FindStudent from './pages/FindStudent';
 
 function App() {
   const [loggedinUser, setLoggedinUser] = useState(null);
@@ -122,6 +123,12 @@ function App() {
             path="/students/:student_id"
             element={<StudentOverallPage />}
           />
+
+          <Route
+            path="/find_student"
+            element={<FindStudent />}
+          />
+
 
         </Route>
       </>,
