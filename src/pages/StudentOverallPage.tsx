@@ -63,8 +63,64 @@ function StudentOverallPage() {
     return (
       <main>
         <div className="alert alert-danger text-center my-5">
-          عذرًا؛ لم يتم العثور على بيانات الطالب في قاعدة البيانات. يرجى التأكد من الرقم التعريفي،
-          أو <Link to="/send_problem">أبلغنا عن مشكلة</Link>.
+          عذرًا؛ لم يتم العثور على بيانات الطالب في قاعدة البيانات. يرجى التأكد من{' '}
+          <button
+            type="button"
+            className="text-decoration-underline p-0 m-0 align-baseline"
+            style={{
+              color: 'rgb(110 168 254)',
+              fontSize: '1em',
+              verticalAlign: 'middle',
+              background: 'none',
+              border: 'none',
+            }}
+            data-bs-toggle="modal"
+            data-bs-target="#idInfoModal"
+            tabIndex={0}
+            aria-label="ما هو الرقم التعريفي؟"
+          >
+            الرقم التعريفي
+          </button>
+          ، أو <Link to="/send_problem">أبلغنا عن مشكلة</Link>.
+        </div>
+        {/* الرقم التعريفي Modal */}
+        <div
+          className="modal fade"
+          id="idInfoModal"
+          tabIndex={-1}
+          aria-labelledby="idInfoModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="idInfoModalLabel">
+                  ما هو الرقم التعريفي؟
+                </h5>
+              </div>
+              <div className="modal-body text-end">
+                الرقم التعريفي هو رقم جلوس أول فرقة التحق بها الطالب + العام الدراسي، وهذا يعني
+                -افتراضًا-:
+                <br />
+                <br />
+                - إذا كان الطالب بدأ من الفرقة الأولى عام 2024، وكان رقم جلوسه: "12345"؛ فإن رقمه
+                التعريفي: "123452024".
+                <br />
+                <br />
+                - إذا كان الطالب مُحَوَّلًا أو بدأ من فرقة أعلى، وكان رقم جلوسه: "34567"، وبدأ من
+                العام الدراسي 2025؛ فإن رقمه التعريفي: "345672025".
+                <br />
+                <br />- الدرجات المتوفرة في المنصة تبدأ من العام الدراسي 2024، لذلك تم استخدام رقم
+                جلوس هذا العام لجميع الفرق في إنشاء الرقم التعريفي، فإن كان الطالب في هذا العام في
+                الفرقة الثالثة وكان رقم جلوسه "34567"؛ فإن رقمه التعريفي "345672024".
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-danger w-100" data-bs-dismiss="modal">
+                  إغلاق
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     );
