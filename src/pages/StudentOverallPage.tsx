@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { supabase } from '../supabase/initializing';
 import { calculateMaxAndTotal } from '../utils/studentOverall';
 import { useParams } from 'react-router-dom';
@@ -14,12 +14,14 @@ function StudentOverallPage() {
     totalDegree: { max: 0, total: 0 },
     firstGradeInPlatform: 2024,
   });
-
+  const [degreesData, setDegreesData] = useState<Record<number, any[]>>({});
   const { student_id } = useParams();
+  const accordionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetchData();
-  }, []);
+    // eslint-disable-next-line
+  }, [student_id]);
 
   async function fetchData() {
     const { data, error } = await supabase
@@ -35,6 +37,13 @@ function StudentOverallPage() {
         totalDegree: calculateMaxAndTotal(data),
         firstGradeInPlatform: data[0].grade,
       });
+      // Group by grade
+      const grouped: Record<number, any[]> = {};
+      data.forEach((rec: any) => {
+        if (!grouped[rec.grade]) grouped[rec.grade] = [];
+        grouped[rec.grade].push(rec);
+      });
+      setDegreesData(grouped);
     }
   }
 
@@ -65,6 +74,68 @@ function StudentOverallPage() {
           </span>
         </h4>
       </section>
+      <div className="accordion mt-4" id="gradesAccordion" ref={accordionRef}>
+        {Object.entries(degreesData).map(([grade, terms], idx) => (
+          <div className="accordion-item" key={grade}>
+            <h2 className="accordion-header" id={`heading${grade}`}>
+              <button
+                className={`accordion-button ${idx !== 0 ? 'collapsed' : ''}`}
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target={`#collapse${grade}`}
+                aria-expanded={idx === 0}
+                aria-controls={`collapse${grade}`}
+              >
+                {translate(`grade_${grade}`)}
+              </button>
+            </h2>
+            <div
+              id={`collapse${grade}`}
+              className={`accordion-collapse collapse ${idx === 0 ? 'show' : ''}`}
+              aria-labelledby={`heading${grade}`}
+              data-bs-parent="#gradesAccordion"
+            >
+              <div className="accordion-body">
+                {terms.map((termData: any) => (
+                  <div key={termData.term} className="mb-4">
+                    <div className="table-responsive border-secondary-subtle rounded-2 py-1 my-0 ">
+                      <h3 className="fs-5 p-2 my-0 mb-2">
+                        الفصل الدراسي: {termData.term} - العام الدراسي: {termData.year}.
+                      </h3>
+                      <table className="table table-striped border">
+                        <thead>
+                          <tr>
+                            <th className="bg-dark text-white border-start py-2">المادة</th>
+                            <th className="text-center bg-dark text-white py-2">الدرجة</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {termData.degrees.map((degreeObj: any, idx: number) => {
+                            const subject = degreeObj.name || degreeObj.id;
+                            let degree = degreeObj.degree;
+                            if (typeof degree === 'string' && degree.startsWith('/')) {
+                              degree = degree.slice(1);
+                            }
+                            const degreeValue = parseInt(degree, 10);
+                            const degreeClass =
+                              degreeValue >= 50 ? 'text-bg-success' : 'text-bg-danger';
+                            return (
+                              <tr key={idx}>
+                                <td className="fw-bold">{subject}</td>
+                                <td className={`${degreeClass} text-center`}>{degree}</td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </main>
   );
 }
