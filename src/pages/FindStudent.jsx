@@ -52,7 +52,7 @@ function FindStudent() {
         <div>
           <div className=" shadow-sm">
             <div className="card-body">
-              <SectionHeading>البحث عن بيانات طالب</SectionHeading>
+              <SectionHeading>البحث عن بيانات الطالب</SectionHeading>
               <form onSubmit={handleSearch} className='col-md-6 mx-auto'>
                 <div className="my-3">
                   <label htmlFor="studentId" className="form-label d-flex align-items-center gap-1">
