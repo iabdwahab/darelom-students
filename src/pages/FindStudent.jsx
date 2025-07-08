@@ -47,19 +47,20 @@ function FindStudent() {
   };
 
   return (
-    <main className="container my-5">
+    <main className="container">
       <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card shadow-sm">
+        <div>
+          <div className=" shadow-sm">
             <div className="card-body">
               <SectionHeading>البحث عن بيانات طالب</SectionHeading>
-              <form onSubmit={handleSearch}>
+              <form onSubmit={handleSearch} className='col-md-6 mx-auto'>
                 <div className="my-3">
                   <label htmlFor="studentId" className="form-label">الرقم التعريفي:</label>
                   <input
                     type="number"
                     className="form-control"
                     id="studentId"
+                    placeholder='123456789'
                     value={studentId}
                     onChange={(e) => {
                       if (e.target.value.length <= 9) {
