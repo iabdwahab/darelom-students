@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { supabase } from '../supabase/initializing';
 import { calculateMaxAndTotal } from '../utils/studentOverall';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { translate } from '../utils/translations';
 import LoadingSpinner from '../components/global/LoadingSpinner';
 
@@ -17,6 +17,7 @@ function StudentOverallPage() {
   });
   const [degreesData, setDegreesData] = useState<Record<number, any[]>>({});
   const [loading, setLoading] = useState(false);
+  const [notFound, setNotFound] = useState(false);
   const { student_id } = useParams();
   const accordionRef = useRef<HTMLDivElement>(null);
 
@@ -47,12 +48,26 @@ function StudentOverallPage() {
         grouped[rec.grade].push(rec);
       });
       setDegreesData(grouped);
+      setNotFound(false);
+    } else {
+      setNotFound(true);
     }
     setLoading(false);
   }
 
   if (loading) {
     return <LoadingSpinner />;
+  }
+
+  if (notFound) {
+    return (
+      <main>
+        <div className="alert alert-danger text-center my-5">
+          عذرًا؛ لم يتم العثور على بيانات الطالب في قاعدة البيانات. يرجى التأكد من الرقم التعريفي،
+          أو <Link to="/send_problem">أبلغنا عن مشكلة</Link>.
+        </div>
+      </main>
+    );
   }
 
   return (
