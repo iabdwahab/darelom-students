@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer bg-black py-4">
       <div className="container text-center text-light">
         <div className="d-flex flex-wrap gap-4 gap-sm-5">
-          <Column title="تنبيهات هامة">
+          <Column title="روابط هامة">
             {/* <ColumnParagraph>إدارة الكلية غير مسئولة عن هذه المنصة.</ColumnParagraph> */}
             <ColumnParagraph>
               <span>للإبلاغ عن خطأ: </span>
