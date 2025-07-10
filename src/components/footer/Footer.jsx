@@ -48,13 +48,13 @@ const Footer = () => {
             </ColumnParagraph>
             <hr />
             <ColumnParagraph>
-              <Link to="/ranking/grade_1/term_1/2024">الفرقة الثانية / الفصل الأول / 2024.</Link>
+              <Link to="/ranking/grade_2/term_1/2024">الفرقة الثانية / الفصل الأول / 2024.</Link>
             </ColumnParagraph>
             <ColumnParagraph>
-              <Link to="/ranking/grade_1/term_2/2024">الفرقة الثانية / الفصل الثاني / 2024.</Link>
+              <Link to="/ranking/grade_2/term_2/2024">الفرقة الثانية / الفصل الثاني / 2024.</Link>
             </ColumnParagraph>
             <ColumnParagraph>
-              <Link to="/ranking/grade_1/term_1/2025">الفرقة الثانية / الفصل الأول / 2025.</Link>
+              <Link to="/ranking/grade_2/term_1/2025">الفرقة الثانية / الفصل الأول / 2025.</Link>
             </ColumnParagraph>
             <hr />
             <ColumnParagraph>
