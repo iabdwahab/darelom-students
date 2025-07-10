@@ -7,6 +7,7 @@ const Footer = () => {
         <div className="d-flex flex-wrap gap-4 gap-sm-5">
           <Column title="روابط هامة">
             {/* <ColumnParagraph>إدارة الكلية غير مسئولة عن هذه المنصة.</ColumnParagraph> */}
+
             <ColumnParagraph>
               <span>للإبلاغ عن خطأ: </span>
               <Link to="/send_problem">أبلغنا من هنا</Link>.
@@ -19,20 +20,23 @@ const Footer = () => {
               <span>إعلامات المنصة: </span>
               <a href="https://t.me/darelom_students">قناة التليجرام</a>.
             </ColumnParagraph>
+            <ColumnParagraph>
+              <a href="https://github.com/iabdwahab/darelom-students">ملفات المشروع على GitHub.</a>
+            </ColumnParagraph>
           </Column>
 
           <Column title="أرشيف نتائج الأعوام">
             <ColumnParagraph>
-              <Link to="/degrees/grade_1/2023_24">الفرقة الأولى 2023/24.</Link>
+              <Link to="/degrees/grade_1/2023_24">الفرقة الأولى / 2024.</Link>
             </ColumnParagraph>
             <ColumnParagraph>
-              <Link to="/degrees/grade_2/2023_24">الفرقة الثانية 2023/24.</Link>
+              <Link to="/degrees/grade_2/2023_24">الفرقة الثانية / 2024.</Link>
             </ColumnParagraph>
             <ColumnParagraph>
-              <Link to="/degrees/grade_3/2023_24">الفرقة الثالثة 2023/24.</Link>
+              <Link to="/degrees/grade_3/2023_24">الفرقة الثالثة / 2024.</Link>
             </ColumnParagraph>
             <ColumnParagraph>
-              <Link to="/degrees/grade_4/2023_24">الفرقة الرابعة 2023/24.</Link>
+              <Link to="/degrees/grade_4/2023_24">الفرقة الرابعة / 2024.</Link>
             </ColumnParagraph>
           </Column>
 
@@ -78,12 +82,16 @@ const Footer = () => {
             </ColumnParagraph>
           </Column>
 
-          <Column title="روابط شخصية">
-            <ColumnParagraph>
-              <a href="https://github.com/iabdwahab/darelom-students">ملفات المشروع على GitHub.</a>
-            </ColumnParagraph>
+          <Column title="حسابات مطور المنصة">
+
             <ColumnParagraph>
               <a href="https://iabdwahab.github.io">معرض الأعمال.</a>
+            </ColumnParagraph>
+            <ColumnParagraph>
+              <a href="https://wa.me/+201280552925">WhatsApp.</a>
+            </ColumnParagraph>
+            <ColumnParagraph>
+              <a href="http://t.me/iabdwahab">Telegram.</a>
             </ColumnParagraph>
             <ColumnParagraph>
               <a href="https://www.linkedin.com/in/iabdwahab/">LinkedIn.</a>
