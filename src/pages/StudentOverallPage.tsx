@@ -179,9 +179,27 @@ function StudentOverallPage() {
                 {terms.map((termData: any) => (
                   <div key={termData.term} className="mb-4">
                     <div className="table-responsive border-secondary-subtle rounded-2 py-1 my-0 ">
-                      <h3 className="fs-5 p-2 my-0 mb-2">
-                        الفصل الدراسي: {termData.term} - العام الدراسي: {termData.year}.
-                      </h3>
+                      <div className="mb-4">
+                        <h4 className="mb-1 fs-5">
+                          <span className="fw-bold text-primary">الفصل الدراسي: </span>
+                          <span>{termData.term}.</span>
+                        </h4>
+                        <h4 className="mb-1 fs-5">
+                          <span className="fw-bold text-primary">العام الدراسي: </span>
+                          <span>{termData.year}.</span>
+                        </h4>
+                        <h4 className="mb-1 fs-5">
+                          <span className="fw-bold text-primary">النتيجة: </span>
+                          <span className="fs-5">
+                            {termData.total_degree.total}{' '}
+                            <span className="fs-6">({termData.total_degree.percentage}%)</span>.
+                          </span>
+                        </h4>
+                        <h4 className="mb-1 fs-5">
+                          <span className="fw-bold text-primary">المركز: </span>
+                          <span className="fs-5">{termData.rank}#.</span>
+                        </h4>
+                      </div>
                       <table className="table table-striped border">
                         <thead>
                           <tr>
