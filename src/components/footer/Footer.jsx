@@ -21,7 +21,7 @@ const Footer = () => {
             </ColumnParagraph>
           </Column>
 
-          <Column title="أرشيف النتائج">
+          <Column title="أرشيف نتائج الأعوام">
             <ColumnParagraph>
               <Link to="/degrees/grade_1/2023_24">الفرقة الأولى 2023/24.</Link>
             </ColumnParagraph>
@@ -33,6 +33,48 @@ const Footer = () => {
             </ColumnParagraph>
             <ColumnParagraph>
               <Link to="/degrees/grade_4/2023_24">الفرقة الرابعة 2023/24.</Link>
+            </ColumnParagraph>
+          </Column>
+
+          <Column title="أرشيف نتائج الفصول">
+            <ColumnParagraph>
+              <Link to="/ranking/grade_1/term_1/2024">الفرقة الأولى / الفصل الأول / 2024.</Link>
+            </ColumnParagraph>
+            <ColumnParagraph>
+              <Link to="/ranking/grade_1/term_2/2024">الفرقة الأولى / الفصل الثاني / 2024.</Link>
+            </ColumnParagraph>
+            <ColumnParagraph>
+              <Link to="/ranking/grade_1/term_1/2025">الفرقة الأولى / الفصل الأول / 2025.</Link>
+            </ColumnParagraph>
+            <hr />
+            <ColumnParagraph>
+              <Link to="/ranking/grade_1/term_1/2024">الفرقة الثانية / الفصل الأول / 2024.</Link>
+            </ColumnParagraph>
+            <ColumnParagraph>
+              <Link to="/ranking/grade_1/term_2/2024">الفرقة الثانية / الفصل الثاني / 2024.</Link>
+            </ColumnParagraph>
+            <ColumnParagraph>
+              <Link to="/ranking/grade_1/term_1/2025">الفرقة الثانية / الفصل الأول / 2025.</Link>
+            </ColumnParagraph>
+            <hr />
+            <ColumnParagraph>
+              <Link to="/ranking/grade_3/term_1/2024">الفرقة الثالثة / الفصل الأول / 2024.</Link>
+            </ColumnParagraph>
+            <ColumnParagraph>
+              <Link to="/ranking/grade_3/term_2/2024">الفرقة الثالثة / الفصل الثاني / 2024.</Link>
+            </ColumnParagraph>
+            <ColumnParagraph>
+              <Link to="/ranking/grade_3/term_1/2025">الفرقة الثالثة / الفصل الأول / 2025.</Link>
+            </ColumnParagraph>
+            <hr />
+            <ColumnParagraph>
+              <Link to="/ranking/grade_4/term_1/2024">الفرقة الرابعة / الفصل الأول / 2024.</Link>
+            </ColumnParagraph>
+            <ColumnParagraph>
+              <Link to="/ranking/grade_4/term_2/2024">الفرقة الرابعة / الفصل الثاني / 2024.</Link>
+            </ColumnParagraph>
+            <ColumnParagraph>
+              <Link to="/ranking/grade_4/term_1/2025">الفرقة الرابعة / الفصل الأول / 2025.</Link>
             </ColumnParagraph>
           </Column>
 
