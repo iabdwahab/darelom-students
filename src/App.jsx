@@ -14,6 +14,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
 import DegreesPage from './pages/DegreesPage';
+import RankingByTermPage from './pages/RankingByTermPage';
 import StudentDegreesPage from './pages/StudentDegreesPage';
 import ErrorPage from './pages/ErrorPage';
 import BooksSelector from './components/books_selector/BooksSelector';
@@ -70,6 +71,8 @@ function App() {
           {/* Degrees */}
           <Route path="/degrees/:grade/:year" element={<DegreesPage />} />
           <Route path="/degrees/:grade/:year/:studentId" element={<StudentDegreesPage />} />
+          <Route path='/ranking/:grade/:term/:year' element={<RankingByTermPage />} />
+
           {/* Books */}
           <Route path=":grade/books/:term" element={<BooksSelector />} />
           <Route path="/book/:bookId" element={<BookPage />} />
