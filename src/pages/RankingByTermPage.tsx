@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { supabase } from '../supabase/initializing';
 import LoadingSpinner from '../components/global/LoadingSpinner';
 
@@ -14,6 +14,8 @@ function RankingByTermPage() {
   const [rankingList, setRankingList] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getRankingSupabase(grade: string, term: string, year: string) {
@@ -67,7 +69,13 @@ function RankingByTermPage() {
           <tbody>
             {rankingList.map((student: StudentDegreeInterface) => {
               return (
-                <tr key={student.seat_number} className="degree_tr-linked" onClick={() => {}}>
+                <tr
+                  key={student.seat_number}
+                  className="degree_tr-linked"
+                  onClick={() => {
+                    navigate(`/students/${student.student_id}`);
+                  }}
+                >
                   <th scope="row" className="text-center">
                     {student.rank}
                   </th>
