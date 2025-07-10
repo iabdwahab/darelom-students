@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { supabase } from '../supabase/initializing';
 import LoadingSpinner from '../components/global/LoadingSpinner';
 
@@ -16,6 +16,7 @@ function RankingByTermPage() {
   const [isError, setIsError] = useState(false);
 
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     async function getRankingSupabase(grade: string, term: string, year: string) {
@@ -23,6 +24,9 @@ function RankingByTermPage() {
       term = term.split('_')[1];
 
       try {
+        setIsLoading(true);
+        setIsError(false);
+
         const { data, error } = await supabase
           .from('degrees')
           .select('student_id, name, seat_number, total_degree, rank')
@@ -30,6 +34,10 @@ function RankingByTermPage() {
           .eq('term', term)
           .eq('year', year)
           .order('rank', { ascending: true });
+
+        if (!data?.length) {
+          setIsError(true);
+        }
 
         setRankingList(data);
         setIsLoading(false);
@@ -42,7 +50,7 @@ function RankingByTermPage() {
     if (grade && term && year) {
       getRankingSupabase(grade, term, year);
     }
-  }, []);
+  }, [pathname]);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -51,7 +59,7 @@ function RankingByTermPage() {
   if (isError) {
     return (
       <main>
-        <h2>عذرًا؛ يبدو أن هناك خطأ.</h2>
+        <h2 className="text-center py-5">عذرًا؛ يبدو أن هناك خطأ. يرجى مراجعة رابط الصفحة.</h2>
       </main>
     );
   }
