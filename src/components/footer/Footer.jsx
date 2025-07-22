@@ -24,7 +24,7 @@ const Footer = () => {
               <a href="https://github.com/iabdwahab/darelom-students">ملفات المشروع على GitHub.</a>
             </ColumnParagraph>
           </Column>
-
+          {/* 
           <Column title="أرشيف نتائج الأعوام">
             <ColumnParagraph>
               <Link to="/degrees/grade_1/2023_24">الفرقة الأولى / 2024.</Link>
@@ -80,7 +80,7 @@ const Footer = () => {
             <ColumnParagraph>
               <Link to="/ranking/grade_4/term_1/2025">الفرقة الرابعة / الفصل الأول / 2025.</Link>
             </ColumnParagraph>
-          </Column>
+          </Column> */}
 
           <Column title="حسابات مطور المنصة">
 

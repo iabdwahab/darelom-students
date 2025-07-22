@@ -114,7 +114,7 @@ const HomePage = () => {
     <>
       <ResourcesSteps stepsList={stepsList} />
       {/* <InfluencersShortList /> */}
-      <TopStudents />
+      {/* <TopStudents /> */}
     </>
   );
 };
