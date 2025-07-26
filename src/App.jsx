@@ -69,9 +69,9 @@ function App() {
         <Route path="/" element={<MainLayout />} errorElement={<ErrorPage />}>
           <Route path="/" element={<HomePage />} />
           {/* Degrees */}
-          {/* <Route path="/degrees/:grade/:year" element={<DegreesPage />} />
+          <Route path="/degrees/:grade/:year" element={<DegreesPage />} />
           <Route path="/degrees/:grade/:year/:studentId" element={<StudentDegreesPage />} />
-          <Route path='/ranking/:grade/:term/:year' element={<RankingByTermPage />} /> */}
+          <Route path='/ranking/:grade/:term/:year' element={<RankingByTermPage />} />
 
           {/* Books */}
           <Route path=":grade/books/:term" element={<BooksSelector />} />
@@ -122,7 +122,7 @@ function App() {
           />
 
           {/* Student Overall */}
-          {/* <Route
+          <Route
             path="/students/:student_id"
             element={<StudentOverallPage />}
           />
@@ -130,7 +130,7 @@ function App() {
           <Route
             path="/find_student"
             element={<FindStudent />}
-          /> */}
+          />
 
 
         </Route>
