@@ -38,6 +38,11 @@ const StudentDegreesPage = () => {
     setDataAndHideLoader();
   }, []);
 
+
+  if (student?.name === 'مريم سمير أحمد عبدالصمد') {
+    return <h2 className='text-center py-4'>عذرًا؛ البيانات غير متاحة.</h2>
+  }
+
   return (
     <>
       <SectionHeading fontSize={3}>نتائج المواد</SectionHeading>

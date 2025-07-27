@@ -34,7 +34,7 @@ function StudentOverallPage() {
       .eq('student_id', student_id)
       .order('grade', { ascending: true })
       .order('term', { ascending: true });
-    console.log(data);
+
     if (data && data.length) {
       setStudentInfo({
         name: data[0].name,
@@ -125,6 +125,10 @@ function StudentOverallPage() {
         </div>
       </main>
     );
+  }
+
+  if (student_id === '201252024') {
+    return <h2 className="text-center py-4">عذرًا؛ البيانات غير متاحة.</h2>;
   }
 
   return (

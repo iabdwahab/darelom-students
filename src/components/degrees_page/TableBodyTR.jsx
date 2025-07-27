@@ -1,11 +1,20 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
 const TableBodyTR = ({ student, grade, year }) => {
-  const { id, name, rank, total, total_percentage } = student;
+  let { id, name, rank, total, total_percentage } = student;
   const navigate = useNavigate();
 
+  const isHided = name === 'مريم سمير أحمد عبدالصمد';
+
   function navigateToStudentPage() {
-    navigate(`/degrees/${grade}/${year}/${student.id}`);
+    if (!isHided) {
+      navigate(`/degrees/${grade}/${year}/${student.id}`);
+    }
+  }
+
+  if (isHided) {
+    id = 'محجوب';
+    name = 'محجوب';
   }
 
   return (

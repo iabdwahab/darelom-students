@@ -76,19 +76,21 @@ function RankingByTermPage() {
           <TableHead />
           <tbody>
             {rankingList.map((student: StudentDegreeInterface) => {
+              const isHided = student.name === 'مريم سمير أحمد عبدالصمد';
+              console.log(isHided && student.seat_number);
               return (
                 <tr
                   key={student.seat_number}
                   className="degree_tr-linked"
                   onClick={() => {
-                    navigate(`/students/${student.student_id}`);
+                    !isHided && navigate(`/students/${student.student_id}`);
                   }}
                 >
                   <th scope="row" className="text-center">
                     {student.rank}
                   </th>
-                  <td className="text-center">{student.seat_number}</td>
-                  <td style={{ whiteSpace: 'nowrap' }}>{student.name}</td>
+                  <td className="text-center">{isHided ? 'محجوب' : student.seat_number}</td>
+                  <td style={{ whiteSpace: 'nowrap' }}>{isHided ? 'محجوب' : student.name}</td>
                   <td className="text-center">{student.total_degree.total}</td>
                   <td className="text-center">%{student.total_degree.percentage}</td>
                 </tr>
