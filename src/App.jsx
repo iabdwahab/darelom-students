@@ -38,6 +38,7 @@ import GeneralSubjectsSelector from './pages/GeneralSubjectsSelector';
 
 import StudentOverallPage from './pages/StudentOverallPage'
 import FindStudent from './pages/FindStudent';
+import DegreesAnalyticsPage from './pages/DegreesAnalyticsPage';
 
 function App() {
   const [loggedinUser, setLoggedinUser] = useState(null);
@@ -132,6 +133,10 @@ function App() {
             element={<FindStudent />}
           />
 
+          <Route
+            path="/degrees_analytics/2025"
+            element={<DegreesAnalyticsPage />}
+          />
 
         </Route>
       </>,
