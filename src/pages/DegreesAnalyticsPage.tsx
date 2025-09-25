@@ -731,14 +731,23 @@ function DegreesAnalyticsPage() {
   ];
 
   return (
-    <main className="container-fluid py-5" dir="rtl">
+    <main className="container-fluid py-3" dir="rtl">
       {/* Page Title */}
-      <h2
-        className="text-center mx-auto border-bottom py-3 px-5 mb-5"
+      <div
+        className="text-center mx-auto border-bottom  px-5 mb-5"
         style={{ width: 'fit-content' }}
       >
-        تحليل نتائج الطلاب للعام الدراسي 2025
-      </h2>
+        <h2>تحليل نتائج الطلاب للعام الدراسي 2025</h2>
+        <p className="text-danger mt-1">[ميزة تجربيبة]</p>
+      </div>
+
+      <div>
+        <p className="my-4">
+          - يرجى الانتباه إلى أن بعض المواد في الفرقة الرابعة يشترك فيها طلاب اللائحة الجديدة مع
+          طلاب اللائحة القديمة، وأغلب طلاب اللائحة القديمة لا يحضرون الامتحانات، أو نتائجهم تكون
+          ضعيفة بعض الشيء؛ فيوثر هذا الأمر على النتيجة الإجمالية.
+        </p>
+      </div>
 
       {/* Grades Accordion */}
       <div className="accordion" id="gradesAccordion">
