@@ -740,76 +740,100 @@ function DegreesAnalyticsPage() {
         تحليل نتائج الطلاب للعام الدراسي 2025
       </h2>
 
-      {/* Subject Statistics */}
-      {data.map((item) => {
-        return (
-          <section className="py-5 px-2 mb-4  border rounded shadow-sm">
-            <h2 className="text-center mb-4">📊 إحصائيات المواد - الفرقة {item.grade}</h2>
+      {/* Grades Accordion */}
+      <div className="accordion" id="gradesAccordion">
+        {data.map((item, gradeIndex) => {
+          return (
+            <div className="accordion-item mb-3 border" key={gradeIndex}>
+              <h2 className="accordion-header" id={`heading${gradeIndex}`}>
+                <button
+                  className={`accordion-button ${gradeIndex !== 0 ? 'collapsed' : ''}`}
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target={`#collapse${gradeIndex}`}
+                  aria-expanded={gradeIndex === 0}
+                  aria-controls={`collapse${gradeIndex}`}
+                >
+                  <span className="fw-bold fs-5">📊 إحصائيات المواد - الفرقة {item.grade}</span>
+                  <span className="badge mx-2 bg-primary ms-2">
+                    {item.subjects_analytics.length} مادة
+                  </span>
+                </button>
+              </h2>
+              <div
+                id={`collapse${gradeIndex}`}
+                className={`accordion-collapse collapse ${gradeIndex === 0 ? 'show' : ''}`}
+                aria-labelledby={`heading${gradeIndex}`}
+                data-bs-parent="#gradesAccordion"
+              >
+                <div className="accordion-body">
+                  <div className="row g-4">
+                    {item.subjects_analytics.map((subject, idx) => {
+                      const percentage = parseFloat(
+                        subject.subject_students.subject_succeed_students_percentage,
+                      );
 
-            <div className="row g-4">
-              {item.subjects_analytics.map((subject, idx) => {
-                const percentage = parseFloat(
-                  subject.subject_students.subject_succeed_students_percentage,
-                );
+                      let progressClass = 'bg-danger';
+                      if (percentage >= 85) progressClass = 'bg-success';
+                      else if (percentage >= 70) progressClass = 'bg-info';
 
-                let progressClass = 'bg-danger';
-                if (percentage >= 85) progressClass = 'bg-success';
-                else if (percentage >= 70) progressClass = 'bg-info';
+                      return (
+                        <div className="col-md-6 col-lg-4" key={idx}>
+                          <div className="card shadow-sm h-100 subject-card">
+                            <div className="card-body d-flex flex-column justify-content-between">
+                              <h5 className="card-title fw-bold mb-3">{subject.subject_name}</h5>
 
-                return (
-                  <div className="col-md-6 col-lg-4" key={idx}>
-                    <div className="card shadow-sm h-100 subject-card">
-                      <div className="card-body d-flex flex-column justify-content-between">
-                        <h5 className="card-title fw-bold mb-3">{subject.subject_name}</h5>
+                              <table className="table table-sm table-borderless mb-3">
+                                <tbody>
+                                  <tr>
+                                    <td>📌 عدد الطلاب:</td>
+                                    <td className="text-end fw-bold">
+                                      {subject.subject_students.subject_students_count}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>✅ الناجحون:</td>
+                                    <td className="text-end fw-bold text-success">
+                                      {subject.subject_students.subject_succeed_students_count}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>📈 نسبة الناجحين:</td>
+                                    <td className="text-end fw-bold">{percentage}%</td>
+                                  </tr>
+                                  <tr>
+                                    <td>⚖️ متوسط الدرجات:</td>
+                                    <td className="text-end fw-bold">
+                                      {subject.subject_degree.average_degree}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
 
-                        <table className="table table-sm table-borderless mb-3">
-                          <tbody>
-                            <tr>
-                              <td>📌 عدد الطلاب:</td>
-                              <td className="text-end fw-bold">
-                                {subject.subject_students.subject_students_count}
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>✅ الناجحون:</td>
-                              <td className="text-end fw-bold text-success">
-                                {subject.subject_students.subject_succeed_students_count}
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>📈 نسبة الناجحين:</td>
-                              <td className="text-end fw-bold">{percentage}%</td>
-                            </tr>
-                            <tr>
-                              <td>⚖️ متوسط الدرجات:</td>
-                              <td className="text-end fw-bold">
-                                {subject.subject_degree.average_degree}
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-
-                        <div className="progress" style={{ height: '20px' }}>
-                          <div
-                            className={`progress-bar ${progressClass}`}
-                            role="progressbar"
-                            style={{ width: `${percentage}%` }}
-                            aria-valuenow={percentage}
-                            aria-valuemin={0}
-                            aria-valuemax={100}
-                          >
-                            {percentage}%
+                              <div className="progress" style={{ height: '20px' }}>
+                                <div
+                                  className={`progress-bar ${progressClass}`}
+                                  role="progressbar"
+                                  style={{ width: `${percentage}%` }}
+                                  aria-valuenow={percentage}
+                                  aria-valuemin={0}
+                                  aria-valuemax={100}
+                                >
+                                  {percentage}%
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
+                      );
+                    })}
                   </div>
-                );
-              })}
+                </div>
+              </div>
             </div>
-          </section>
-        );
-      })}
+          );
+        })}
+      </div>
 
       {/* Hover effect */}
       <style>{`
