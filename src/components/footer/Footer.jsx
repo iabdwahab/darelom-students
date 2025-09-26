@@ -87,9 +87,9 @@ const Footer = () => {
             <ColumnParagraph>
               <a href="https://iabdwahab.github.io">معرض الأعمال.</a>
             </ColumnParagraph>
-            <ColumnParagraph>
+            {/* <ColumnParagraph>
               <a href="https://wa.me/+201280552925">WhatsApp.</a>
-            </ColumnParagraph>
+            </ColumnParagraph> */}
             <ColumnParagraph>
               <a href="http://t.me/iabdwahab">Telegram.</a>
             </ColumnParagraph>
