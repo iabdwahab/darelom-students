@@ -15,6 +15,7 @@ import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
 import DegreesPage from './pages/DegreesPage';
 import RankingByTermPage from './pages/RankingByTermPage';
+import Ranking2025Term2 from './pages/Ranking2025Term2.jsx';
 import StudentDegreesPage from './pages/StudentDegreesPage';
 import ErrorPage from './pages/ErrorPage';
 import BooksSelector from './components/books_selector/BooksSelector';
@@ -39,6 +40,7 @@ import GeneralSubjectsSelector from './pages/GeneralSubjectsSelector';
 import StudentOverallPage from './pages/StudentOverallPage'
 import FindStudent from './pages/FindStudent';
 import DegreesAnalyticsPage from './pages/DegreesAnalyticsPage';
+// import RecordingsContact from './pages/RecordingsContact';
 
 function App() {
   const [loggedinUser, setLoggedinUser] = useState(null);
@@ -73,6 +75,9 @@ function App() {
           <Route path="/degrees/:grade/:year" element={<DegreesPage />} />
           <Route path="/degrees/:grade/:year/:studentId" element={<StudentDegreesPage />} />
           <Route path='/ranking/:grade/:term/:year' element={<RankingByTermPage />} />
+
+          <Route path='/ranking/:grade/term_2/2025' element={<Ranking2025Term2 />} />
+
 
           {/* Books */}
           <Route path=":grade/books/:term" element={<BooksSelector />} />

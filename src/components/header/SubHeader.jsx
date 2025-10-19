@@ -14,11 +14,7 @@ const SubHeader = () => {
         <div className='container-xl text-center'>
           يمكنكم الآن الاطلاع على: {''}
           <br />
-          <Link
-            to="/degrees_analytics/2025"
-          >
-            تحليل نتائج الطلاب للعام الدراسي 2025.
-          </Link>
+          <span>ترتيب نتائج الفصل الدراسي الثاني 2025.</span>
 
         </div>
       </div>
