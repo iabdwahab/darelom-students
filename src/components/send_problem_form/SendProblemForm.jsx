@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import ProblemTextAreaField from './ProblemTextAreaField';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { firebaseDB } from '../../utils/firebaseInit';
 import FieldContainer from '../form/FieldContainer';
 import SpinnerButton from '../global/SpinnerButton';
@@ -29,6 +29,7 @@ const SendProblemForm = () => {
 
           await addDoc(collection(firebaseDB, `problems`), {
             problem,
+            timestamp: serverTimestamp(),
           });
 
           formRef.current.reset();

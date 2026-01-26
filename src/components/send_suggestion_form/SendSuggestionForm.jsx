@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { firebaseDB } from '../../utils/firebaseInit';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import Form from '../send_question_form/Form';
 import FieldContainer from '../form/FieldContainer';
 import SubmitButton from '../form/SubmitButton';
@@ -28,6 +28,7 @@ const SendSuggestion = () => {
 
           await addDoc(collection(firebaseDB, `suggestions`), {
             suggestion,
+            timestamp: serverTimestamp(),
           });
 
           formRef.current.reset();
