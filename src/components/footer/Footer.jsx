@@ -38,6 +38,19 @@ const Footer = () => {
             <ColumnParagraph>
               <Link to="/degrees/grade_4/2023_24">الفرقة الرابعة / 2024.</Link>
             </ColumnParagraph>
+            <hr />
+            <ColumnParagraph>
+              <Link to="/degrees/grade_1/2024_25">الفرقة الأولى / 2025.</Link>
+            </ColumnParagraph>
+            <ColumnParagraph>
+              <Link to="/degrees/grade_2/2024_25">الفرقة الثانية / 2025.</Link>
+            </ColumnParagraph>
+            <ColumnParagraph>
+              <Link to="/degrees/grade_3/2024_25">الفرقة الثالثة / 2025.</Link>
+            </ColumnParagraph>
+            <ColumnParagraph>
+              <Link to="/degrees/grade_4/2024_25">الفرقة الرابعة / 2025.</Link>
+            </ColumnParagraph>
           </Column>
 
           <Column title="أرشيف نتائج الفصول">
