@@ -94,24 +94,48 @@ const Footer = () => {
             </ColumnParagraph>
           </Column>
 
-          <Column title="حسابات مطور المنصة">
-
-            {/* <ColumnParagraph>
+          <div>
+            <Column title="حسابات مطور المنصة" className="mb-4">
+              {/* <ColumnParagraph>
               <a href="https://iabdwahab.github.io">معرض الأعمال.</a>
             </ColumnParagraph> */}
-            {/* <ColumnParagraph>
+              {/* <ColumnParagraph>
               <a href="https://wa.me/+201280552925">WhatsApp.</a>
             </ColumnParagraph> */}
-            <ColumnParagraph>
-              <a href="http://t.me/iabdwahab">Telegram.</a>
-            </ColumnParagraph>
-            <ColumnParagraph>
-              <a href="https://www.linkedin.com/in/iabdwahab/">LinkedIn.</a>
-            </ColumnParagraph>
-            <ColumnParagraph>
-              <a href="https://github.com/iabdwahab">GitHub.</a>
-            </ColumnParagraph>
-          </Column>
+              <ColumnParagraph>
+                <a href="http://t.me/iabdwahab">Telegram.</a>
+              </ColumnParagraph>
+              <ColumnParagraph>
+                <a href="https://www.linkedin.com/in/iabdwahab/">LinkedIn.</a>
+              </ColumnParagraph>
+              <ColumnParagraph>
+                <a href="https://github.com/iabdwahab">GitHub.</a>
+              </ColumnParagraph>
+            </Column>
+            <Column title="بعض أعمال المطور">
+              {/* <ColumnParagraph>
+              <a href="https://iabdwahab.github.io">معرض الأعمال.</a>
+            </ColumnParagraph> */}
+              {/* <ColumnParagraph>
+              <a href="https://wa.me/+201280552925">WhatsApp.</a>
+            </ColumnParagraph> */}
+              <ColumnParagraph>
+                <a href="https://mothalthagency.com">موقع شركة مثلث.</a>
+                <ColumnParagraph>
+                  <a href="https://thecapital.sa">موقع شركة "ذا كابيتال".</a>
+                </ColumnParagraph>
+              </ColumnParagraph>
+              <ColumnParagraph>
+                <a href="https://iabdwahab.github.io/assembly-endgame/">Assembly Endgame.</a>
+              </ColumnParagraph>
+              <ColumnParagraph>
+                <a href="https://iabdwahab.github.io/positivus-agency">Positivus Agency.</a>
+              </ColumnParagraph>
+              <ColumnParagraph>
+                <a href="https://world-ranks-iabdwahab.vercel.app">World Ranks.</a>
+              </ColumnParagraph>
+            </Column>
+          </div>
         </div>
         <hr />
         <p className="m-0">
@@ -124,9 +148,9 @@ const Footer = () => {
   );
 };
 
-function Column({ title, children }) {
+function Column({ title, children, className }) {
   return (
-    <div className="text-end">
+    <div className={`text-end ${className}`}>
       <h4 className="mb-3">{title}:</h4>
       {children}
     </div>
