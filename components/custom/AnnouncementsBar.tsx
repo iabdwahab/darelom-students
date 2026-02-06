@@ -21,7 +21,7 @@ const announcements = [
 
 export default () => {
   return (
-    <div className="bg-black py-4 text-xl font-tajawal text-white px-4">
+    <div className="bg-black py-4 text-xl font-tajawal text-white px-4 border-y">
       <Swiper
         slidesPerView="auto"
         spaceBetween={50}
