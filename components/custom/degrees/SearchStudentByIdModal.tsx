@@ -213,7 +213,7 @@ export default function SearchStudentByIdModal() {
             </div>
 
             {/* Rank, Total Grade & Percentage */}
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {result.rank != null && (
                 <div className="bg-muted/50 rounded-xl p-4 text-center">
                   <p className="text-2xl font-bold font-reem-kufi">
@@ -233,7 +233,7 @@ export default function SearchStudentByIdModal() {
                 </div>
               )}
               {result.percentage != null && (
-                <div className="bg-muted/50 rounded-xl p-4 text-center">
+                <div className="bg-muted/50 rounded-xl col-span-2 md:col-span-1 p-4 text-center">
                   <p className="text-2xl font-bold font-reem-kufi">
                     {result.percentage}
                   </p>

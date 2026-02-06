@@ -47,7 +47,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <AnnouncementsBar />
           {children}
           <Footer />
         </ThemeProvider>
