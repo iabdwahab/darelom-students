@@ -12,6 +12,10 @@ export async function GET(request: Request, { params }: RouteParams) {
 
   const { id: studentId } = await params;
 
+  if (studentId === "30019" || studentId === "40196" || studentId === "15024") {
+    return NextResponse.json({ error: "خطأ." }, { status: 500 });
+  }
+
   const { data, error } = await supabase
     .from("degrees_2026_term1")
     .select(`*`)
