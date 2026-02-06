@@ -70,13 +70,6 @@ export default function LandingSection() {
 
           <div className="flex flex-col sm:flex-row gap-4 font-tajawal">
             <SearchStudentByIdModal />
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-lg px-8 py-6 cursor-pointer"
-            >
-              تصفح النتائج
-            </Button>
           </div>
         </div>
       </div>
