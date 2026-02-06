@@ -3,13 +3,13 @@ import {
   GraduationCap,
   BarChart3,
   Search,
-  ArrowLeft,
   BookOpen,
   Users,
   Star,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import SearchStudentByIdModal from "@/components/custom/degrees/SearchStudentByIdModal";
 
 const features = [
   {
@@ -68,10 +68,7 @@ export default function LandingSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 font-tajawal">
-            <Button size="lg" className="text-lg px-8 py-6 cursor-pointer">
-              اعرف ترتيبك الآن
-              <ArrowLeft className="size-5 mr-1" />
-            </Button>
+            <SearchStudentByIdModal />
             <Button
               variant="outline"
               size="lg"
