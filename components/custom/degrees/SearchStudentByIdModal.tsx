@@ -35,6 +35,31 @@ function parseSubjectDegrees(json: Json | null): SubjectDegree[] {
   );
 }
 
+const GRADE_LABELS: Record<number, string> = {
+  1: "الفرقة الأولى",
+  2: "الفرقة الثانية",
+  3: "الفرقة الثالثة",
+  4: "الفرقة الرابعة",
+};
+
+function getGradeFromSeatNumber(seatNumber: number): number | null {
+  if (seatNumber >= 10001 && seatNumber <= 19999) return 1;
+  if (seatNumber >= 20001 && seatNumber <= 29999) return 2;
+  if (seatNumber >= 30001 && seatNumber <= 39999) return 3;
+  if (seatNumber >= 40001 && seatNumber <= 49999) return 4;
+  return null;
+}
+
+function validateSeatNumber(value: string): string | null {
+  if (!value.trim()) return "يرجى إدخال رقم الجلوس";
+  if (!/^\d{5}$/.test(value.trim()))
+    return "رقم الجلوس يجب أن يكون ٥ أرقام فقط";
+  const num = parseInt(value.trim(), 10);
+  const grade = getGradeFromSeatNumber(num);
+  if (!grade) return "رقم الجلوس غير صالح";
+  return null;
+}
+
 export default function SearchStudentByIdModal() {
   const [open, setOpen] = useState(false);
   const [seatNumber, setSeatNumber] = useState("");
@@ -44,8 +69,9 @@ export default function SearchStudentByIdModal() {
   const [searched, setSearched] = useState(false);
 
   const handleSearch = async () => {
-    if (!seatNumber.trim()) {
-      setError("يرجى إدخال رقم الجلوس");
+    const validationError = validateSeatNumber(seatNumber);
+    if (validationError) {
+      setError(validationError);
       return;
     }
 
@@ -55,17 +81,22 @@ export default function SearchStudentByIdModal() {
     setSearched(true);
 
     try {
-      const res = await fetch(`/api/students/${seatNumber}/degrees`);
-      const data = await res.json();
+      const res = await fetch(`/api/students/${seatNumber.trim()}/degrees`);
 
-      if (!res.ok) {
-        setError(data.error || "حدث خطأ أثناء البحث. يرجى المحاولة مرة أخرى.");
+      if (res.status === 404) {
+        setError("لا توجد نتائج لرقم الجلوس المُدخل");
         return;
       }
 
+      if (!res.ok) {
+        setError("حدث خطأ أثناء جلب البيانات. يرجى المحاولة لاحقًا.");
+        return;
+      }
+
+      const data = await res.json();
       setResult(data);
     } catch {
-      setError("حدث خطأ أثناء البحث. يرجى المحاولة مرة أخرى.");
+      setError("تعذر الاتصال بالخادم. يرجى التحقق من اتصالك بالإنترنت.");
     } finally {
       setLoading(false);
     }
@@ -85,6 +116,9 @@ export default function SearchStudentByIdModal() {
   const takhallofat = result
     ? parseSubjectDegrees(result.student_takhallofat_degrees)
     : [];
+  const grade = result?.student_seatnumber
+    ? getGradeFromSeatNumber(Number(result.student_seatnumber))
+    : null;
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
@@ -171,6 +205,11 @@ export default function SearchStudentByIdModal() {
               <p className="text-sm text-muted-foreground">
                 رقم الجلوس: {result.student_seatnumber}
               </p>
+              {grade && (
+                <p className="text-sm text-muted-foreground">
+                  {GRADE_LABELS[grade]}
+                </p>
+              )}
             </div>
 
             {/* Rank, Total Grade & Percentage */}
