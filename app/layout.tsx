@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Reem_Kufi, Aref_Ruqaa_Ink, Tajawal } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const reemKufi = Reem_Kufi({
   variable: "--font-reem-kufi",
@@ -32,11 +34,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body
         className={`${reemKufi.variable} ${arefRuqaaInk.variable} ${tajawal.variable} ${arefRuqaaInk.className} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
