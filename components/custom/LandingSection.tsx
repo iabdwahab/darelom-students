@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import SearchStudentByIdModal from "@/components/custom/degrees/SearchStudentByIdModal";
+import HonorRollSection from "./HonorRollSection";
 
 const features = [
   {
@@ -79,6 +80,8 @@ export default function LandingSection() {
           </div>
         </div>
       </div>
+
+      <HonorRollSection />
 
       {/* Stats Section */}
       <div className="container mx-auto px-4 py-12">
