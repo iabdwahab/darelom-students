@@ -3,6 +3,7 @@ import { Reem_Kufi, Aref_Ruqaa_Ink, Tajawal } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import Header from "@/components/custom/Header";
+import AnnouncementsBar from "@/components/custom/AnnouncementsBar";
 
 const reemKufi = Reem_Kufi({
   variable: "--font-reem-kufi",
@@ -45,6 +46,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
+          <AnnouncementsBar />
           {children}
         </ThemeProvider>
       </body>

@@ -127,3 +127,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Swiper Styles */
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+.swiper-slide {
+  height: auto !important;
+}
