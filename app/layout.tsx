@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Reem_Kufi, Aref_Ruqaa_Ink, Tajawal } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+import Header from "@/components/custom/Header";
 
 const reemKufi = Reem_Kufi({
   variable: "--font-reem-kufi",
@@ -44,6 +44,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Header />
           {children}
         </ThemeProvider>
       </body>
