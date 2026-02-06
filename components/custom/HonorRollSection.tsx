@@ -10,22 +10,78 @@ interface HonorStudent {
 }
 
 const grades: { id: string; label: string; students: HonorStudent[] }[] = [
-  // {
-  //   id: "1",
-  //   label: "الفرقة الأولى",
-  //   students: [
-  //     { rank: 1, name: "أحمد محمد علي", percentage: "٩٨.٥٪" },
-  //     { rank: 2, name: "فاطمة عبد الرحمن", percentage: "٩٧.٠٪" },
-  //     { rank: 3, name: "عمر حسن إبراهيم", percentage: "٩٥.٥٪" },
-  //     { rank: 4, name: "نورا سعيد محمد", percentage: "٩٤.٠٪" },
-  //     { rank: 5, name: "يوسف أحمد حسين", percentage: "٩٣.٠٪" },
-  //     { rank: 6, name: "مريم خالد عبد الله", percentage: "٩٢.٠٪" },
-  //     { rank: 7, name: "علي محمود سعد", percentage: "٩١.٠٪" },
-  //     { rank: 8, name: "سارة إبراهيم عمر", percentage: "٩٠.٠٪" },
-  //     { rank: 9, name: "حسن عبد المنعم", percentage: "٨٩.٠٪" },
-  //     { rank: 10, name: "هدى محمد أحمد", percentage: "٨٨.٠٪" },
-  //   ],
-  // },
+  {
+    id: "1",
+    label: "الفرقة الأولى",
+    students: [
+      {
+        name: "جنى محمد كمال خشوعى محمد ضيف الله",
+        seatnumber: 10021,
+        percentage: "95.63%",
+        rank: 1,
+      },
+      {
+        name: "مريم إبراهيم محمد إمام مرسى",
+        seatnumber: 10104,
+        percentage: "92.88%",
+        rank: 2,
+      },
+      {
+        name: "بسمة السيد رياض أحمد الشافعى",
+        seatnumber: 10015,
+        percentage: "92.13%",
+        rank: 3,
+      },
+      {
+        name: "عبدالعزيز أحمد فاروق حسن أحمد",
+        seatnumber: 15027,
+        percentage: "91.25%",
+        rank: 4,
+      },
+      {
+        name: "مازن أيمن عبدالله أحمد محمد",
+        seatnumber: 15038,
+        percentage: "91.00%",
+        rank: 5,
+      },
+      {
+        name: "رقية عبدالحي مصطفي عبدالحي مصطفى",
+        seatnumber: 10034,
+        percentage: "90.88%",
+        rank: 6,
+      },
+      {
+        name: "جومانة أشرف أحمد محمد المرسى",
+        seatnumber: 10022,
+        percentage: "90.25%",
+        rank: 7,
+      },
+      {
+        name: "سهام إسلام صبري نصر عبدالصمد",
+        seatnumber: 15023,
+        percentage: "89.63%",
+        rank: 8,
+      },
+      {
+        name: "سلمى وليد محمود محمد أحمد",
+        seatnumber: 10045,
+        percentage: "89.50%",
+        rank: 9,
+      },
+      {
+        name: "مروة محمود محمد حسن سليمان",
+        seatnumber: 10103,
+        percentage: "89.50%",
+        rank: 9,
+      },
+      {
+        name: "ملك عصام عبدالشاعر",
+        seatnumber: 10112,
+        percentage: "89.13%",
+        rank: 10,
+      },
+    ],
+  },
   {
     id: "2",
     label: "الفرقة الثانية",
@@ -332,7 +388,7 @@ export default function HonorRollSection() {
             <ul className="divide-y">
               {grade.students.map((student) => (
                 <li
-                  key={student.rank}
+                  key={student.seatnumber}
                   className={`flex items-center gap-3 px-5 py-3 font-tajawal transition-colors ${
                     student.rank <= 3 ? "bg-primary/3" : "hover:bg-muted/30"
                   }`}
