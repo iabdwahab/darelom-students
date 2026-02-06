@@ -14,24 +14,32 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import type { Tables, Json } from "@/types/supabase";
 
-// TODO: Replace with your real data fetching logic
-interface StudentResult {
-  name: string;
-  seatNumber: string;
-  year: string;
-  semester: string;
-  gpa: string;
-  rank: number;
-  totalStudents: number;
-  subjects: { name: string; grade: string }[];
+type DegreeRow = Tables<"degrees_2026_term1">;
+
+type SubjectDegree = {
+  subject_name: string;
+  subject_degree: number;
+  subject_degree_before_compassion: string | number;
+};
+
+function parseSubjectDegrees(json: Json | null): SubjectDegree[] {
+  if (!json || !Array.isArray(json)) return [];
+  return json.filter(
+    (item): item is SubjectDegree =>
+      typeof item === "object" &&
+      item !== null &&
+      "subject_name" in item &&
+      "subject_degree" in item,
+  );
 }
 
 export default function SearchStudentByIdModal() {
   const [open, setOpen] = useState(false);
   const [seatNumber, setSeatNumber] = useState("");
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<StudentResult | null>(null);
+  const [result, setResult] = useState<DegreeRow | null>(null);
   const [error, setError] = useState("");
   const [searched, setSearched] = useState(false);
 
@@ -47,31 +55,15 @@ export default function SearchStudentByIdModal() {
     setSearched(true);
 
     try {
-      // TODO: Replace with actual API call
-      // const res = await fetch(`/api/students/${seatNumber}`);
-      // const data = await res.json();
-      // setResult(data);
+      const res = await fetch(`/api/students/${seatNumber}/degrees`);
+      const data = await res.json();
 
-      // Simulated delay for demo
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (!res.ok) {
+        setError(data.error || "حدث خطأ أثناء البحث. يرجى المحاولة مرة أخرى.");
+        return;
+      }
 
-      // Simulated result — replace with real data
-      setResult({
-        name: "محمد أحمد عبد الله",
-        seatNumber: seatNumber,
-        year: "الفرقة الثانية",
-        semester: "الفصل الدراسي الأول — ٢٠٢٦",
-        gpa: "٣.٤٥",
-        rank: 12,
-        totalStudents: 350,
-        subjects: [
-          { name: "النحو والصرف", grade: "A" },
-          { name: "البلاغة", grade: "B+" },
-          { name: "الأدب العربي", grade: "A-" },
-          { name: "علم اللغة", grade: "B" },
-          { name: "الدراسات الإسلامية", grade: "A" },
-        ],
-      });
+      setResult(data);
     } catch {
       setError("حدث خطأ أثناء البحث. يرجى المحاولة مرة أخرى.");
     } finally {
@@ -89,6 +81,11 @@ export default function SearchStudentByIdModal() {
     }
   };
 
+  const subjects = result ? parseSubjectDegrees(result.student_degrees) : [];
+  const takhallofat = result
+    ? parseSubjectDegrees(result.student_takhallofat_degrees)
+    : [];
+
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
@@ -98,7 +95,7 @@ export default function SearchStudentByIdModal() {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-md font-tajawal">
+      <DialogContent className="sm:max-w-md font-tajawal max-h-[90vh] overflow-y-auto">
         <DialogHeader className="text-right">
           <DialogTitle className="font-reem-kufi text-xl flex items-center gap-2 justify-center">
             <GraduationCap className="size-6" />
@@ -168,53 +165,94 @@ export default function SearchStudentByIdModal() {
 
             {/* Student Info */}
             <div className="text-center space-y-1">
-              <p className="text-lg font-bold font-reem-kufi">{result.name}</p>
+              <p className="text-lg font-bold font-reem-kufi">
+                {result.student_name}
+              </p>
               <p className="text-sm text-muted-foreground">
-                {result.year} • {result.semester}
+                رقم الجلوس: {result.student_seatnumber}
               </p>
             </div>
 
-            {/* Rank & GPA */}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="bg-muted/50 rounded-xl p-4 text-center">
-                <p className="text-2xl font-bold font-reem-kufi">
-                  {result.rank}
-                  <span className="text-sm text-muted-foreground font-tajawal">
-                    {" "}
-                    / {result.totalStudents}
-                  </span>
-                </p>
-                <p className="text-xs text-muted-foreground mt-1">الترتيب</p>
-              </div>
-              <div className="bg-muted/50 rounded-xl p-4 text-center">
-                <p className="text-2xl font-bold font-reem-kufi">
-                  {result.gpa}
-                </p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  المعدل التراكمي
-                </p>
-              </div>
+            {/* Rank, Total Grade & Percentage */}
+            <div className="grid grid-cols-3 gap-3">
+              {result.rank != null && (
+                <div className="bg-muted/50 rounded-xl p-4 text-center">
+                  <p className="text-2xl font-bold font-reem-kufi">
+                    #{result.rank}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">الترتيب</p>
+                </div>
+              )}
+              {result.total_degree != null && (
+                <div className="bg-muted/50 rounded-xl p-4 text-center">
+                  <p className="text-2xl font-bold font-reem-kufi">
+                    {result.total_degree}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    المجموع الكلي
+                  </p>
+                </div>
+              )}
+              {result.percentage != null && (
+                <div className="bg-muted/50 rounded-xl p-4 text-center">
+                  <p className="text-2xl font-bold font-reem-kufi">
+                    {result.percentage}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">النسبة</p>
+                </div>
+              )}
             </div>
 
-            {/* Subjects */}
-            <div className="space-y-2">
-              <p className="font-bold text-sm">المواد الدراسية</p>
-              <div className="rounded-xl border overflow-hidden">
-                {result.subjects.map((subject, i) => (
-                  <div
-                    key={subject.name}
-                    className={`flex items-center justify-between px-4 py-2.5 text-sm ${
-                      i !== result.subjects.length - 1 ? "border-b" : ""
-                    }`}
-                  >
-                    <span>{subject.name}</span>
-                    <span className="font-bold font-reem-kufi text-base">
-                      {subject.grade}
-                    </span>
-                  </div>
-                ))}
+            {result.student_totalgrade && (
+              <div className="text-center text-sm text-muted-foreground">
+                التقدير:{" "}
+                <span className="font-bold">{result.student_totalgrade}</span>
               </div>
-            </div>
+            )}
+
+            {/* Subjects */}
+            {subjects.length > 0 && (
+              <div className="space-y-2">
+                <p className="font-bold text-sm">المواد الدراسية</p>
+                <div className="rounded-xl border overflow-hidden">
+                  {subjects.map((subject, i) => (
+                    <div
+                      key={subject.subject_name}
+                      className={`flex items-center justify-between px-4 py-2.5 text-sm ${
+                        i !== subjects.length - 1 ? "border-b" : ""
+                      }`}
+                    >
+                      <span>{subject.subject_name}</span>
+                      <span className="font-bold font-reem-kufi text-base">
+                        {subject.subject_degree}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Takhallofat Degrees */}
+            {takhallofat.length > 0 && (
+              <div className="space-y-2">
+                <p className="font-bold text-sm">درجات التخلفات</p>
+                <div className="rounded-xl border overflow-hidden">
+                  {takhallofat.map((subject, i) => (
+                    <div
+                      key={subject.subject_name}
+                      className={`flex items-center justify-between px-4 py-2.5 text-sm ${
+                        i !== takhallofat.length - 1 ? "border-b" : ""
+                      }`}
+                    >
+                      <span>{subject.subject_name}</span>
+                      <span className="font-bold font-reem-kufi text-base">
+                        {subject.subject_degree}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Disclaimer */}
             <p className="text-[11px] text-muted-foreground/60 text-center leading-relaxed">
