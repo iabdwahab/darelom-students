@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import Header from "@/components/custom/Header";
 import AnnouncementsBar from "@/components/custom/AnnouncementsBar";
+import Footer from "@/components/custom/Footer";
 
 const reemKufi = Reem_Kufi({
   variable: "--font-reem-kufi",
@@ -41,13 +42,14 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
           <Header />
           <AnnouncementsBar />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
