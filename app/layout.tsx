@@ -37,6 +37,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.png" />
+      </head>
       <body
         className={`${reemKufi.variable} ${arefRuqaaInk.variable} ${tajawal.variable} ${arefRuqaaInk.className} antialiased`}
       >
