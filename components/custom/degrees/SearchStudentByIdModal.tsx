@@ -83,13 +83,16 @@ export default function SearchStudentByIdModal() {
     try {
       const res = await fetch(`/api/students/${seatNumber.trim()}/degrees`);
 
-      if (res.status === 404) {
-        setError("لا توجد نتائج لرقم الجلوس المُدخل");
+      if (res.status === 401) {
+        setError("تم حجب  إظهار النتيجة.");
+        return;
+      } else if (res.status === 404) {
+        setError("لا توجد نتائج لرقم الجلوس المُدخل.");
         return;
       }
 
-      if (!res.ok) {
-        setError("حدث خطأ أثناء جلب البيانات. يرجى المحاولة لاحقًا.");
+      if (res.status === 500) {
+        setError("حدث خطأ في الخادم. يرجى المحاولة لاحقًا.");
         return;
       }
 

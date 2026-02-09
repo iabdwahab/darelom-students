@@ -13,7 +13,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   const { id: studentId } = await params;
 
   if (studentId === "30019" || studentId === "40196" || studentId === "15024") {
-    return NextResponse.json({ error: "خطأ." }, { status: 500 });
+    return NextResponse.json({ error: "تم حجب النتيجة." }, { status: 401 });
   }
 
   const { data, error } = await supabase
@@ -21,10 +21,6 @@ export async function GET(request: Request, { params }: RouteParams) {
     .select(`*`)
     .eq("student_seatnumber", studentId)
     .single();
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
 
   if (!data) {
     return NextResponse.json({ message: "عفوًا، هناك خطأ." }, { status: 404 });
