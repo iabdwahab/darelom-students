@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import Header from "@/components/custom/Header";
 import AnnouncementsBar from "@/components/custom/AnnouncementsBar";
 import Footer from "@/components/custom/Footer";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const reemKufi = Reem_Kufi({
   variable: "--font-reem-kufi",
@@ -39,6 +40,8 @@ export default function RootLayout({
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.png" />
+
+        <GoogleTagManager gtmId="G-TNG2WDV91F" />
       </head>
       <body
         className={`${reemKufi.variable} ${arefRuqaaInk.variable} ${tajawal.variable} ${arefRuqaaInk.className} antialiased`}
