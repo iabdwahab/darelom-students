@@ -77,7 +77,7 @@ export default function LandingSection() {
         </div>
       </div>
 
-      {/* <HonorRollSection /> */}
+      <HonorRollSection />
 
       {/* Stats Section */}
       {/* <div className="container mx-auto px-4 py-12">
