@@ -26,9 +26,9 @@ const tajawal = Tajawal({
 });
 
 export const metadata: Metadata = {
-  title: "منصة طلاب دار العلوم",
-  description:
-    "منصة تم إنشاؤها عام 2024 بهدف معاونة الطلاب للوصول للمصادر التعليمية المختلفة الخاصة بكلية دار العلوم - جامعة القاهرة.",
+  title: "اكتشف ترتيبك بين زملائك",
+  // description:
+    // "منصة تم إنشاؤها عام 2024 بهدف معاونة الطلاب للوصول للمصادر التعليمية المختلفة الخاصة بكلية دار العلوم - جامعة القاهرة.",
 };
 
 export default function RootLayout({
@@ -52,9 +52,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
+          {/* <Header /> */}
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </ThemeProvider>
       </body>
     </html>

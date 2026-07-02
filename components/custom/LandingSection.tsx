@@ -53,7 +53,7 @@ export default function LandingSection() {
             className="mb-6 px-4 py-1.5 text-sm font-tajawal gap-2"
           >
             <Star className="size-3.5 fill-current" />
-            الفصل الدراسي الأول — ٢٠٢٦
+            العام الدراسي — ٢٠٢٦
           </Badge>
 
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-reem-kufi leading-tight mb-6">
@@ -64,20 +64,23 @@ export default function LandingSection() {
           </h2>
 
           <p className="text-lg sm:text-xl text-muted-foreground font-tajawal max-w-2xl mb-10 leading-relaxed">
-            منصة طلاب دار العلوم تساعدك على معرفة ترتيبك بين زملائك في الكلية،
+            نساعدك على معرفة ترتيبك بين زملائك في الكلية،
             ومتابعة أدائك الأكاديمي بسهولة خلال كل فصل دراسي.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 font-tajawal">
             <SearchStudentByIdModal />
           </div>
+            <span className="font-tajawal text-red-700 mt-4">
+              النتائج المتاحة -حاليًا- هي نتائج الفرقة الثالثة.
+            </span>
         </div>
       </div>
 
-      <HonorRollSection />
+      {/* <HonorRollSection /> */}
 
       {/* Stats Section */}
-      <div className="container mx-auto px-4 py-12">
+      {/* <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {stats.map((stat) => (
             <div
@@ -94,10 +97,10 @@ export default function LandingSection() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* Features Section */}
-      <div className="container mx-auto px-4 py-16">
+      {/* <div className="container mx-auto px-4 py-16">
         <h3 className="text-3xl sm:text-4xl font-bold font-reem-kufi text-center mb-4">
           ماذا نقدم لك؟
         </h3>
@@ -123,7 +126,7 @@ export default function LandingSection() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }
