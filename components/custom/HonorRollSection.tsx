@@ -238,84 +238,72 @@ const grades: { id: string; label: string; students: HonorStudent[] }[] = [
     }
 ],
   },
-  // {
-  //   id: "4",
-  //   label: "الفرقة الرابعة",
-  //   students: [
-  //     {
-  //       name: "روضة وليد محمد عبدالعزيز",
-  //       seatnumber: 40103,
-  //       percentage: "98.17%",
-  //       rank: 1,
-  //     },
-  //     {
-  //       name: "تسنيم عبدربه عبدالله محمود البعلى",
-  //       seatnumber: 40066,
-  //       percentage: "98.00%",
-  //       rank: 2,
-  //     },
-  //     {
-  //       name: "نسمة محمد خيرى حسن",
-  //       seatnumber: 40234,
-  //       percentage: "97.67%",
-  //       rank: 3,
-  //     },
-  //     {
-  //       name: "محمد صابر على السنوسى خليل",
-  //       seatnumber: 40182,
-  //       percentage: "97.00%",
-  //       rank: 4,
-  //     },
-  //     {
-  //       name: "مها جمعه صلاح عبدالتواب",
-  //       seatnumber: 40221,
-  //       percentage: "96.50%",
-  //       rank: 5,
-  //     },
-  //     {
-  //       name: "أحمد إبراهيم مصطفى عبدالله مصطفى",
-  //       seatnumber: 40017,
-  //       percentage: "96.00%",
-  //       rank: 6,
-  //     },
-  //     {
-  //       name: "على جمال حامد عبدالقادر سليمان",
-  //       seatnumber: 40152,
-  //       percentage: "95.83%",
-  //       rank: 7,
-  //     },
-  //     {
-  //       name: "سارة أحمد عبدالعزيز أحمد قمر",
-  //       seatnumber: 40109,
-  //       percentage: "95.67%",
-  //       rank: 8,
-  //     },
-  //     {
-  //       name: "محمد عبدالباسط محمد النجدي علي عبدالرحيم",
-  //       seatnumber: 40183,
-  //       percentage: "95.67%",
-  //       rank: 8,
-  //     },
-  //     {
-  //       name: "أحمد سامح أحمد ريحان فرج",
-  //       seatnumber: 40018,
-  //       percentage: "95.33%",
-  //       rank: 9,
-  //     },
-  //     {
-  //       name: "مريم محمود رجب تهامى",
-  //       seatnumber: 40204,
-  //       percentage: "95.33%",
-  //       rank: 9,
-  //     },
-  //     {
-  //       name: "مريم أحمد محمد سعداوى",
-  //       seatnumber: 40191,
-  //       percentage: "95.17%",
-  //       rank: 10,
-  //     },
-  //   ],
-  // },
+  {
+    id: "4",
+    label: "الفرقة الرابعة",
+    students: [
+    {
+        "name": "نسمة محمد خيرى حسن",
+        "seatnumber": 40234,
+        "rank": 1,
+        "percentage": "97.57%"
+    },
+    {
+        "name": "تسنيم عبدربه عبدالله محمود البعلى",
+        "seatnumber": 40066,
+        "rank": 2,
+        "percentage": "96.86%"
+    },
+    {
+        "name": "على جمال حامد عبدالقادر سليمان",
+        "seatnumber": 40152,
+        "rank": 3,
+        "percentage": "96.07%"
+    },
+    {
+        "name": "مريم أحمد محمد سعداوى",
+        "seatnumber": 40191,
+        "rank": 4,
+        "percentage": "95.21%"
+    },
+    {
+        "name": "ناريمان السيد عبدالحميد جمعة",
+        "seatnumber": 40226,
+        "rank": 5,
+        "percentage": "95.00%"
+    },
+    {
+        "name": "محمد صابر على السنوسى خليل",
+        "seatnumber": 40182,
+        "rank": 6,
+        "percentage": "94.64%"
+    },
+    {
+        "name": "روضة وليد محمد عبدالعزيز",
+        "seatnumber": 40103,
+        "rank": 7,
+        "percentage": "94.57%"
+    },
+    {
+        "name": "أحمد إبراهيم مصطفى عبدالله مصطفى",
+        "seatnumber": 40017,
+        "rank": 8,
+        "percentage": "94.50%"
+    },
+    {
+        "name": "مريم محمود رجب تهامى",
+        "seatnumber": 40204,
+        "rank": 9,
+        "percentage": "94.14%"
+    },
+    {
+        "name": "ندى أحمد عبده شبل حسن",
+        "seatnumber": 40229,
+        "rank": 10,
+        "percentage": "93.36%"
+    }
+],
+  },
 ];
 
 function RankIndicator({ rank }: { rank: number }) {
