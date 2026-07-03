@@ -82,96 +82,84 @@ const grades: { id: string; label: string; students: HonorStudent[] }[] = [
   //     },
   //   ],
   // },
-  // {
-  //   id: "2",
-  //   label: "الفرقة الثانية",
-  //   students: [
-  //     {
-  //       name: "شهد محمد حامد أحمد",
-  //       seatnumber: 20068,
-  //       percentage: "99.00%",
-  //       rank: 1,
-  //     },
-  //     {
-  //       name: "سالم محمد عطا الله محمد محمد",
-  //       seatnumber: 20256,
-  //       percentage: "99.00%",
-  //       rank: 1,
-  //     },
-  //     {
-  //       name: "حسين محمود حسين محمد محمد",
-  //       seatnumber: 20031,
-  //       percentage: "98.67%",
-  //       rank: 2,
-  //     },
-  //     {
-  //       name: "وعد عاصم عبدالرحمن عبدالعزيز",
-  //       seatnumber: 20135,
-  //       percentage: "98.50%",
-  //       rank: 3,
-  //     },
-  //     {
-  //       name: "ملك هانى محمد عبدالعال سيد",
-  //       seatnumber: 20112,
-  //       percentage: "98.00%",
-  //       rank: 4,
-  //     },
-  //     {
-  //       name: "محمد محمد عطية محمد إبراهيم",
-  //       seatnumber: 20096,
-  //       percentage: "97.83%",
-  //       rank: 5,
-  //     },
-  //     {
-  //       name: "نوران محمد ممدوح محمد",
-  //       seatnumber: 20129,
-  //       percentage: "97.33%",
-  //       rank: 6,
-  //     },
-  //     {
-  //       name: "الشيماء رجب خليفة أحمد",
-  //       seatnumber: 20016,
-  //       percentage: "96.67%",
-  //       rank: 7,
-  //     },
-  //     {
-  //       name: "سارة عماد عبدالمجيد ياسين المصري",
-  //       seatnumber: 20053,
-  //       percentage: "96.33%",
-  //       rank: 8,
-  //     },
-  //     {
-  //       name: "عبدالرحمن محمد رمضان عبدالنبي العطفى",
-  //       seatnumber: 20077,
-  //       percentage: "96.33%",
-  //       rank: 8,
-  //     },
-  //     {
-  //       name: "محمد سمير محمد فهمي فرج",
-  //       seatnumber: 20093,
-  //       percentage: "96.33%",
-  //       rank: 8,
-  //     },
-  //     {
-  //       name: "منة عصام محمد عبدالهادى حسن",
-  //       seatnumber: 20116,
-  //       percentage: "96.33%",
-  //       rank: 8,
-  //     },
-  //     {
-  //       name: "حبيبة عزت صديق محمد عثمان",
-  //       seatnumber: 20027,
-  //       percentage: "96.17%",
-  //       rank: 9,
-  //     },
-  //     {
-  //       name: "جنى يحيى عبدالنبى عبدالحميد",
-  //       seatnumber: 20024,
-  //       percentage: "95.83%",
-  //       rank: 10,
-  //     },
-  //   ],
-  // },
+  {
+    id: "2",
+    label: "الفرقة الثانية",
+    students: [
+    {
+        "name": "حسين محمود حسين محمد محمد",
+        "seatnumber": 20031,
+        "rank": 1,
+        "percentage": "98.14%"
+    },
+    {
+        "name": "وعد عاصم عبدالرحمن عبدالعزيز",
+        "seatnumber": 20135,
+        "rank": 2,
+        "percentage": "97.64%"
+    },
+    {
+        "name": "سالم محمد عطا الله محمد محمد",
+        "seatnumber": 20256,
+        "rank": 3,
+        "percentage": "96.79%"
+    },
+    {
+        "name": "جنى يحيى عبدالنبى عبدالحميد",
+        "seatnumber": 20024,
+        "rank": 4,
+        "percentage": "95.79%"
+    },
+    {
+        "name": "شهد محمد حامد أحمد",
+        "seatnumber": 20068,
+        "rank": 4,
+        "percentage": "95.79%"
+    },
+    {
+        "name": "محمود محمد محمود السعيد وهيدى",
+        "seatnumber": 20100,
+        "rank": 5,
+        "percentage": "95.57%"
+    },
+    {
+        "name": "منة عصام محمد عبدالهادى حسن",
+        "seatnumber": 20116,
+        "rank": 6,
+        "percentage": "95.50%"
+    },
+    {
+        "name": "عبدالرحمن محمد عبدالستار أحمد",
+        "seatnumber": 20078,
+        "rank": 7,
+        "percentage": "95.43%"
+    },
+    {
+        "name": "سارة عماد عبدالمجيد ياسين المصري",
+        "seatnumber": 20053,
+        "rank": 8,
+        "percentage": "95.07%"
+    },
+    {
+        "name": "فاطمة حسن عبده عيد جاد",
+        "seatnumber": 20082,
+        "rank": 8,
+        "percentage": "95.07%"
+    },
+    {
+        "name": "إياد هانى عبدالمنعم محمد جمعة",
+        "seatnumber": 20019,
+        "rank": 9,
+        "percentage": "95.00%"
+    },
+    {
+        "name": "حبيبة عزت صديق محمد عثمان",
+        "seatnumber": 20027,
+        "rank": 10,
+        "percentage": "94.86%"
+    }
+],
+  },
   {
     id: "3",
     label: "الفرقة الثالثة",
