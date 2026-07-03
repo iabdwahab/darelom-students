@@ -72,7 +72,7 @@ export default function LandingSection() {
             <SearchStudentByIdModal />
           </div>
             <span className="font-tajawal text-red-700 mt-4">
-              النتائج المتاحة -حاليًا- هي نتائج الفرقة الثالثة والرابعة.
+              ترقبوا ترتيب الفرقة الأولى.
             </span>
         </div>
       </div>
