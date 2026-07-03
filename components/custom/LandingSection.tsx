@@ -1,12 +1,4 @@
-import {
-  Trophy,
-  GraduationCap,
-  BarChart3,
-  Search,
-  BookOpen,
-  Users,
-  Star,
-} from "lucide-react";
+import { Trophy, GraduationCap, BarChart3, Search, BookOpen, Users, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import SearchStudentByIdModal from "@/components/custom/degrees/SearchStudentByIdModal";
@@ -16,14 +8,12 @@ const features = [
   {
     icon: Trophy,
     title: "ترتيب النتائج",
-    description:
-      "اعرف ترتيبك بين زملائك في كل فصل دراسي واطّلع على تقدمك الأكاديمي.",
+    description: "اعرف ترتيبك بين زملائك في كل فصل دراسي واطّلع على تقدمك الأكاديمي.",
   },
   {
     icon: BarChart3,
     title: "إحصائيات الأداء(قريبًا) ",
-    description:
-      "رسوم بيانية توضح أداءك الأكاديمي عبر الفصول الدراسية المختلفة.",
+    description: "رسوم بيانية توضح أداءك الأكاديمي عبر الفصول الدراسية المختلفة.",
   },
   {
     icon: Search,
@@ -48,32 +38,24 @@ export default function LandingSection() {
       {/* Hero Section */}
       <div className="container mx-auto px-4 pt-16 pb-12">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          <Badge
-            variant="secondary"
-            className="mb-6 px-4 py-1.5 text-sm font-tajawal gap-2"
-          >
+          <Badge variant="secondary" className="mb-6 px-4 py-1.5 text-sm font-tajawal gap-2">
             <Star className="size-3.5 fill-current" />
             العام الدراسي — ٢٠٢٦
           </Badge>
 
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-reem-kufi leading-tight mb-6">
             اكتشف ترتيبك
-            <span className="block mt-2 bg-linear-to-l from-primary/80 to-primary bg-clip-text text-transparent">
-              بين زملائك
-            </span>
+            <span className="block mt-2 bg-linear-to-l from-primary/80 to-primary bg-clip-text text-transparent">بين زملائك</span>
           </h2>
 
           <p className="text-lg sm:text-xl text-muted-foreground font-tajawal max-w-2xl mb-10 leading-relaxed">
-            نساعدك على معرفة ترتيبك بين زملائك في الكلية،
-            ومتابعة أدائك الأكاديمي بسهولة خلال كل فصل دراسي.
+            نساعدك على معرفة ترتيبك بين زملائك في الكلية، ومتابعة أدائك الأكاديمي بسهولة خلال كل فصل دراسي.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 font-tajawal">
             <SearchStudentByIdModal />
           </div>
-            <span className="font-tajawal text-red-700 mt-4">
-              ترقبوا ترتيب الفرقة الأولى.
-            </span>
+          <span className="font-tajawal text-red-700 mt-4">نتائج جميع الفرق متاحة الآن، بالتوفيق للجميع.</span>
         </div>
       </div>
 
