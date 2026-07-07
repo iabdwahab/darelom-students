@@ -7,6 +7,8 @@ import AnnouncementsBar from "@/components/custom/AnnouncementsBar";
 import Footer from "@/components/custom/Footer";
 import { GoogleTagManager } from "@next/third-parties/google";
 
+import { Analytics } from "@vercel/analytics/next";
+
 const reemKufi = Reem_Kufi({
   variable: "--font-reem-kufi",
   subsets: ["latin"],
@@ -28,7 +30,7 @@ const tajawal = Tajawal({
 export const metadata: Metadata = {
   title: "اكتشف ترتيبك بين زملائك",
   // description:
-    // "منصة تم إنشاؤها عام 2024 بهدف معاونة الطلاب للوصول للمصادر التعليمية المختلفة الخاصة بكلية دار العلوم - جامعة القاهرة.",
+  // "منصة تم إنشاؤها عام 2024 بهدف معاونة الطلاب للوصول للمصادر التعليمية المختلفة الخاصة بكلية دار العلوم - جامعة القاهرة.",
 };
 
 export default function RootLayout({
@@ -43,17 +45,11 @@ export default function RootLayout({
 
         <GoogleTagManager gtmId="G-TNG2WDV91F" />
       </head>
-      <body
-        className={`${reemKufi.variable} ${arefRuqaaInk.variable} ${tajawal.variable} ${arefRuqaaInk.className} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
+      <body className={`${reemKufi.variable} ${arefRuqaaInk.variable} ${tajawal.variable} ${arefRuqaaInk.className} antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {/* <Header /> */}
           {children}
+          <Analytics />
           {/* <Footer /> */}
         </ThemeProvider>
       </body>
