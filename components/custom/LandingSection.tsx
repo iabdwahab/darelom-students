@@ -53,7 +53,7 @@ export default function LandingSection() {
             نساعدك على معرفة ترتيبك بين زملائك في الكلية، ومتابعة أدائك الأكاديمي بسهولة خلال كل فصل دراسي.
           </p>
 
-          <div className="grid grid-cols-2 gap-4 font-tajawal">
+          <div className="grid md:grid-cols-2 gap-4 font-tajawal">
             <SearchStudentByIdModal />
             <SearchStudentByIdDofaa153Modal />
           </div>
