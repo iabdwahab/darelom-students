@@ -123,7 +123,7 @@ export default function SearchStudentByIdDofaa153Modal() {
             <GraduationCap className="size-6" />
             البحث برقم الجلوس
           </DialogTitle>
-          <DialogDescription className="text-center">أدخل رقم الجلوس للاطلاع على ترتيبك ونتائجك</DialogDescription>
+          <DialogDescription className="text-center">أدخل رقم جلوس الفرقة الثالثة 2026</DialogDescription>
         </DialogHeader>
 
         {/* Search Input */}
