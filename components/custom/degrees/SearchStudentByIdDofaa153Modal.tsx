@@ -9,50 +9,52 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import type { Tables, Json } from "@/types/supabase";
 
-type DegreeRow = Tables<"degrees_2026_term1">;
+type Dofaa153Row = Tables<"dofaa_153">;
 
-type SubjectDegree = {
-  subject_name: string;
-  subject_degree: number;
-  subject_degree_before_compassion: string | number;
+type GradeDegree = {
+  total: number;
+  percentage: string;
 };
 
-function parseSubjectDegrees(json: Json | null): SubjectDegree[] {
-  if (!json || !Array.isArray(json)) return [];
-  return json.filter(
-    (item): item is SubjectDegree => typeof item === "object" && item !== null && "subject_name" in item && "subject_degree" in item,
-  );
-}
-
-const GRADE_LABELS: Record<number, string> = {
-  1: "الفرقة الأولى",
-  2: "الفرقة الثانية",
-  3: "الفرقة الثالثة",
-  4: "الفرقة الرابعة",
+type GradesDegrees = {
+  grade1?: GradeDegree;
+  grade2?: GradeDegree;
+  grade3?: GradeDegree;
 };
 
-function getGradeFromSeatNumber(seatNumber: number): number | null {
-  if (seatNumber >= 10001 && seatNumber <= 19999) return 1;
-  if (seatNumber >= 20001 && seatNumber <= 29999) return 2;
-  if (seatNumber >= 30001 && seatNumber <= 39999) return 3;
-  if (seatNumber >= 40001 && seatNumber <= 49999) return 4;
-  return null;
+const GRADE_LABELS: Record<string, string> = {
+  grade1: "الفرقة الأولى",
+  grade2: "الفرقة الثانية",
+  grade3: "الفرقة الثالثة",
+};
+
+function parseGradesDegrees(json: Json | null): GradesDegrees {
+  if (!json || typeof json !== "object" || Array.isArray(json)) return {};
+
+  const result: GradesDegrees = {};
+  const obj = json as Record<string, unknown>;
+
+  (["grade1", "grade2", "grade3"] as const).forEach((key) => {
+    const value = obj[key];
+    if (value && typeof value === "object" && "total" in value && "percentage" in value) {
+      result[key] = value as GradeDegree;
+    }
+  });
+
+  return result;
 }
 
 function validateSeatNumber(value: string): string | null {
   if (!value.trim()) return "يرجى إدخال رقم الجلوس";
-  if (!/^\d{5}$/.test(value.trim())) return "رقم الجلوس يجب أن يكون ٥ أرقام فقط";
-  const num = parseInt(value.trim(), 10);
-  const grade = getGradeFromSeatNumber(num);
-  if (!grade) return "رقم الجلوس غير صالح";
+  if (!/^\d+$/.test(value.trim())) return "رقم الجلوس يجب أن يكون أرقام فقط";
   return null;
 }
 
-export default function SearchStudentByIdModal() {
+export default function SearchStudentByIdDofaa153Modal() {
   const [open, setOpen] = useState(false);
   const [seatNumber, setSeatNumber] = useState("");
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<DegreeRow | null>(null);
+  const [result, setResult] = useState<Dofaa153Row | null>(null);
   const [error, setError] = useState("");
   const [searched, setSearched] = useState(false);
 
@@ -69,10 +71,10 @@ export default function SearchStudentByIdModal() {
     setSearched(true);
 
     try {
-      const res = await fetch(`/api/students/${seatNumber.trim()}/degrees`);
+      const res = await fetch(`/api/students/${seatNumber.trim()}/dofaa_153`);
 
       if (res.status === 401) {
-        setError("تم حجب  إظهار النتيجة.");
+        setError("تم حجب إظهار النتيجة.");
         return;
       } else if (res.status === 404) {
         setError("لا توجد نتائج لرقم الجلوس المُدخل.");
@@ -103,15 +105,14 @@ export default function SearchStudentByIdModal() {
     }
   };
 
-  const subjects = result ? parseSubjectDegrees(result.student_degrees) : [];
-  const takhallofat = result ? parseSubjectDegrees(result.student_takhallofat_degrees) : [];
-  const grade = result?.student_seatnumber ? getGradeFromSeatNumber(Number(result.student_seatnumber)) : null;
+  const gradesDegrees = result ? parseGradesDegrees(result.grades_degrees) : {};
+  const gradeEntries = Object.entries(gradesDegrees) as [keyof GradesDegrees, GradeDegree][];
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button size="lg" className="text-lg px-8 py-6 cursor-pointer">
-          اعرف ترتيبك الآن
+          ترتيب الدفعة 153 الإجمالي
           <Search className="size-5 mr-1" />
         </Button>
       </DialogTrigger>
@@ -127,12 +128,12 @@ export default function SearchStudentByIdModal() {
 
         {/* Search Input */}
         <div className="space-y-3 mt-2">
-          <Label htmlFor="seat-number" className="font-tajawal">
+          <Label htmlFor="seat-number-dofaa153" className="font-tajawal">
             رقم الجلوس
           </Label>
           <div className="flex gap-2">
             <Input
-              id="seat-number"
+              id="seat-number-dofaa153"
               type="text"
               inputMode="numeric"
               placeholder="مثال: 12345"
@@ -174,9 +175,8 @@ export default function SearchStudentByIdModal() {
 
             {/* Student Info */}
             <div className="text-center space-y-1">
-              <p className="text-lg font-bold font-reem-kufi">{result.student_name}</p>
-              <p className="text-sm text-muted-foreground">رقم الجلوس: {result.student_seatnumber}</p>
-              {grade && <p className="text-sm text-muted-foreground">{GRADE_LABELS[grade]}</p>}
+              <p className="text-lg font-bold font-reem-kufi">{result.name}</p>
+              <p className="text-sm text-muted-foreground">رقم الجلوس: {result.seatnumber}</p>
             </div>
 
             {/* Rank, Total Grade & Percentage */}
@@ -201,42 +201,22 @@ export default function SearchStudentByIdModal() {
               )}
             </div>
 
-            {result.student_totalgrade && (
-              <div className="text-center text-sm text-muted-foreground">
-                التقدير: <span className="font-bold">{result.student_totalgrade}</span>
-              </div>
-            )}
-
-            {/* Subjects */}
-            {subjects.length > 0 && (
+            <span className="text-red-700 text-sm mb-2 text-center block">المجموع الكلي من 4100.</span>
+            {/* Grades Breakdown */}
+            {gradeEntries.length > 0 && (
               <div className="space-y-2">
-                <p className="font-bold text-sm">المواد الدراسية</p>
+                <p className="font-bold text-sm">تفاصيل الفرق الدراسية</p>
                 <div className="rounded-xl border overflow-hidden">
-                  {subjects.map((subject, i) => (
+                  {gradeEntries.map(([key, grade], i) => (
                     <div
-                      key={subject.subject_name}
-                      className={`flex items-center justify-between px-4 py-2.5 text-sm ${i !== subjects.length - 1 ? "border-b" : ""}`}
+                      key={key}
+                      className={`flex items-center justify-between px-4 py-2.5 text-sm ${i !== gradeEntries.length - 1 ? "border-b" : ""}`}
                     >
-                      <span>{subject.subject_name}</span>
-                      <span className="font-bold font-reem-kufi text-base">{subject.subject_degree}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Takhallofat Degrees */}
-            {takhallofat.length > 0 && (
-              <div className="space-y-2">
-                <p className="font-bold text-sm">درجات التخلفات</p>
-                <div className="rounded-xl border overflow-hidden">
-                  {takhallofat.map((subject, i) => (
-                    <div
-                      key={subject.subject_name}
-                      className={`flex items-center justify-between px-4 py-2.5 text-sm ${i !== takhallofat.length - 1 ? "border-b" : ""}`}
-                    >
-                      <span>{subject.subject_name}</span>
-                      <span className="font-bold font-reem-kufi text-base">{subject.subject_degree}</span>
+                      <span>{GRADE_LABELS[key] ?? key}</span>
+                      <div className="flex items-center gap-3">
+                        <span className="text-muted-foreground text-xs">{grade.percentage}</span>
+                        <span className="font-bold font-reem-kufi text-base">{grade.total}</span>
+                      </div>
                     </div>
                   ))}
                 </div>

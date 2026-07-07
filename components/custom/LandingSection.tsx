@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import SearchStudentByIdModal from "@/components/custom/degrees/SearchStudentByIdModal";
 import HonorRollSection from "./HonorRollSection";
+import SearchStudentByIdDofaa153Modal from "./degrees/SearchStudentByIdDofaa153Modal";
 
 const features = [
   {
@@ -52,8 +53,9 @@ export default function LandingSection() {
             نساعدك على معرفة ترتيبك بين زملائك في الكلية، ومتابعة أدائك الأكاديمي بسهولة خلال كل فصل دراسي.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 font-tajawal">
+          <div className="grid grid-cols-2 gap-4 font-tajawal">
             <SearchStudentByIdModal />
+            <SearchStudentByIdDofaa153Modal />
           </div>
           <span className="font-tajawal text-red-700 mt-4">نتائج جميع الفرق متاحة الآن، بالتوفيق للجميع.</span>
         </div>

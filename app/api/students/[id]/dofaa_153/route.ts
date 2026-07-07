@@ -1,0 +1,26 @@
+import { NextResponse } from "next/server";
+import { createClient } from "@/utils/supabase/server";
+
+type RouteParams = {
+  params: Promise<{
+    id: string;
+  }>;
+};
+
+export async function GET(request: Request, { params }: RouteParams) {
+  const supabase = await createClient();
+
+  const { id: studentId } = await params;
+
+  // if (studentId === "30019" || studentId === "40196" || studentId === "15024") {
+  //   return NextResponse.json({ error: "تم حجب النتيجة." }, { status: 401 });
+  // }
+
+  const { data, error } = await supabase.from("dofaa_153").select(`*`).eq("seatnumber", studentId).single();
+
+  if (!data) {
+    return NextResponse.json({ message: "عفوًا، هناك خطأ." }, { status: 404 });
+  }
+
+  return NextResponse.json(data);
+}
